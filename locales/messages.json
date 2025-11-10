@@ -1,0 +1,1906 @@
+[
+  {
+    "key_suggestion": "keyframes_spin_0_transform_rotate_0deg_50_transform_rotate_1",
+    "text_en": "\n            @keyframes spin {\n              0% {\n                transform: rotate(0deg);\n              }\n              50% {\n                transform: rotate(180deg);\n              }\n              100% {\n                transform: rotate(360deg);\n              }\n            }\n          ",
+    "files": [
+      "component\\checkout\\Checkout.js"
+    ]
+  },
+  {
+    "key_suggestion": "children",
+    "text_en": ", Children:",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "this_action_cannot_be_undone",
+    "text_en": "? This action cannot be undone.",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\DeleteManageCategoriesModal.js",
+      "component\\dashboard\\admin\\team\\DeleteTeamModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "the_yolk_s_on_you_manor_127_0_0_0_1",
+    "text_en": "\"The Yolk's On You Manor\" 127.0.0.0.1",
+    "files": [
+      "component\\nav\\TopNav.js"
+    ]
+  },
+  {
+    "key_suggestion": "4_5_5_from_128_reviews",
+    "text_en": "(4.5/5 from 128 reviews)",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "night",
+    "text_en": "/ night",
+    "files": [
+      "component\\room\\RoomCard.js"
+    ]
+  },
+  {
+    "key_suggestion": "per_night",
+    "text_en": "/ Per Night",
+    "files": [
+      "component\\rooms\\RoomCard.js"
+    ]
+  },
+  {
+    "key_suggestion": "off",
+    "text_en": "% OFF",
+    "files": [
+      "component\\checkout\\BookingSummary.js",
+      "component\\room\\RoomCard.js"
+    ]
+  },
+  {
+    "key_suggestion": "my_bookings",
+    "text_en": "🌟 My Bookings",
+    "files": [
+      "component\\dashboard\\user\\Booking.js"
+    ]
+  },
+  {
+    "key_suggestion": "100_views",
+    "text_en": "100 views",
+    "files": [
+      "component\\blogs\\LeftSideContent.js"
+    ]
+  },
+  {
+    "key_suggestion": "actions",
+    "text_en": "Actions",
+    "files": [
+      "component\\dashboard\\admin\\booking\\RoomAssignment.js",
+      "component\\dashboard\\admin\\manageroomcategories\\ManageRoomCategoriesTable.js",
+      "component\\dashboard\\admin\\manageroomcategories\\RoomNumbersTable.js",
+      "component\\dashboard\\admin\\team\\Team.js"
+    ]
+  },
+  {
+    "key_suggestion": "active",
+    "text_en": "Active",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\EditManageRoomCategoriesModal.js",
+      "component\\dashboard\\admin\\manageroomcategories\\RoomNumbersTable.js"
+    ]
+  },
+  {
+    "key_suggestion": "add_new_room_number",
+    "text_en": "Add New Room Number",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\RoomNumbersTable.js"
+    ]
+  },
+  {
+    "key_suggestion": "add_new_roomtype",
+    "text_en": "Add New RoomType",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\AddManageRoomCategoriesModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "add_new_team_member",
+    "text_en": "Add New Team Member",
+    "files": [
+      "component\\dashboard\\admin\\team\\AddTeamModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "add_room",
+    "text_en": "Add Room",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\RoomNumbersTable.js"
+    ]
+  },
+  {
+    "key_suggestion": "add_room_category",
+    "text_en": "Add Room Category",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\ManageRoomCategoriesTable.js"
+    ]
+  },
+  {
+    "key_suggestion": "add_team_member",
+    "text_en": "Add Team Member",
+    "files": [
+      "component\\dashboard\\admin\\team\\Team.js"
+    ]
+  },
+  {
+    "key_suggestion": "add_to_categories",
+    "text_en": "Add to Categories",
+    "files": [
+      "component\\dashboard\\admin\\category\\AICategoryGenerator.js"
+    ]
+  },
+  {
+    "key_suggestion": "add_to_favorites",
+    "text_en": "Add to Favorites",
+    "files": [
+      "component\\blogs\\LeftSideContent.js"
+    ]
+  },
+  {
+    "key_suggestion": "address",
+    "text_en": "Address",
+    "files": [
+      "component\\dashboard\\admin\\profile\\Profile.js",
+      "component\\dashboard\\user\\PersonolInfo.js"
+    ]
+  },
+  {
+    "key_suggestion": "address",
+    "text_en": "Address *",
+    "files": [
+      "component\\checkout\\BillingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "adults",
+    "text_en": "Adults:",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "ai_category_generator",
+    "text_en": "AI Category Generator",
+    "files": [
+      "component\\dashboard\\admin\\category\\AICategoryGenerator.js"
+    ]
+  },
+  {
+    "key_suggestion": "ai_suggestions_select_one",
+    "text_en": "AI Suggestions (Select one):",
+    "files": [
+      "component\\dashboard\\admin\\category\\AICategoryGenerator.js"
+    ]
+  },
+  {
+    "key_suggestion": "already_have_an_account_login",
+    "text_en": "Already have an account? Login",
+    "files": [
+      "app\\register\\page.js"
+    ]
+  },
+  {
+    "key_suggestion": "arabic",
+    "text_en": "Arabic",
+    "files": [
+      "component\\nav\\TopNav.js"
+    ]
+  },
+  {
+    "key_suggestion": "are_you_sure_you_want_to_delete",
+    "text_en": "Are you sure you want to delete",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\DeleteManageCategoriesModal.js",
+      "component\\dashboard\\admin\\team\\DeleteTeamModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "are_you_sure_you_want_to_delete_room",
+    "text_en": "Are you sure you want to delete room",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\RoomNumbersTable.js"
+    ]
+  },
+  {
+    "key_suggestion": "assign_room",
+    "text_en": "Assign Room",
+    "files": [
+      "component\\dashboard\\admin\\booking\\RoomAssignment.js"
+    ]
+  },
+  {
+    "key_suggestion": "available_rooms",
+    "text_en": "Available Rooms:",
+    "files": [
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "bed_style",
+    "text_en": "Bed Style",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\EditManageRoomCategoriesModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "bed_style",
+    "text_en": "Bed Style:",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "blog_post_submitted_successfully",
+    "text_en": "Blog post submitted successfully!",
+    "files": [
+      "component\\dashboard\\admin\\blog\\BlogForm.js"
+    ]
+  },
+  {
+    "key_suggestion": "book_now",
+    "text_en": "Book Now",
+    "files": [
+      "component\\nav\\Navbar.js",
+      "component\\rooms\\RoomCard.js",
+      "component\\snapbooking\\SnapBooking.js"
+    ]
+  },
+  {
+    "key_suggestion": "book_now",
+    "text_en": "Book Now →",
+    "files": [
+      "component\\room\\RoomCard.js"
+    ]
+  },
+  {
+    "key_suggestion": "booking_code",
+    "text_en": "Booking Code",
+    "files": [
+      "component\\dashboard\\admin\\booking\\Booking.js"
+    ]
+  },
+  {
+    "key_suggestion": "booking_date",
+    "text_en": "Booking Date",
+    "files": [
+      "component\\dashboard\\admin\\booking\\Booking.js",
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "booking_details",
+    "text_en": "Booking Details",
+    "files": [
+      "component\\dashboard\\admin\\booking\\BookingDetails.js",
+      "component\\dashboard\\user\\User.js"
+    ]
+  },
+  {
+    "key_suggestion": "booking_list",
+    "text_en": "Booking List",
+    "files": [
+      "component\\dashboard\\admin\\booking\\Booking.js"
+    ]
+  },
+  {
+    "key_suggestion": "booking_reference",
+    "text_en": "Booking Reference",
+    "files": [
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "booking_sheet",
+    "text_en": "Booking Sheet",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "booking_status",
+    "text_en": "Booking Status",
+    "files": [
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "bookings",
+    "text_en": "Bookings:",
+    "files": [
+      "component\\dashboard\\admin\\sale\\Reach.js"
+    ]
+  },
+  {
+    "key_suggestion": "brains_behind_the_brand",
+    "text_en": "Brains Behind the Brand",
+    "files": [
+      "component\\dashboard\\admin\\teamlist\\Team.js",
+      "component\\team\\Team.js"
+    ]
+  },
+  {
+    "key_suggestion": "bulk_upload_images",
+    "text_en": "Bulk Upload Images",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\EditManageRoomCategoriesModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "cancel",
+    "text_en": "Cancel",
+    "files": [
+      "component\\dashboard\\admin\\bloglist\\EditBlogModal.js",
+      "component\\dashboard\\admin\\booking\\BookingDetails.js",
+      "component\\dashboard\\admin\\booking\\RoomAssignment.js",
+      "component\\dashboard\\admin\\manageroomcategories\\AddManageRoomCategoriesModal.js",
+      "component\\dashboard\\admin\\manageroomcategories\\DeleteManageCategoriesModal.js",
+      "component\\dashboard\\admin\\manageroomcategories\\EditManageRoomCategoriesModal.js",
+      "component\\dashboard\\admin\\manageroomcategories\\RoomNumbersTable.js",
+      "component\\dashboard\\admin\\team\\AddTeamModal.js",
+      "component\\dashboard\\admin\\team\\DeleteTeamModal.js",
+      "component\\dashboard\\admin\\team\\EditTeamModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "cancelled",
+    "text_en": "Cancelled",
+    "files": [
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "categories",
+    "text_en": "Categories",
+    "files": [
+      "component\\blogs\\RightSideContent.js"
+    ]
+  },
+  {
+    "key_suggestion": "category",
+    "text_en": "Category",
+    "files": [
+      "component\\dashboard\\admin\\blog\\BlogForm.js",
+      "component\\dashboard\\admin\\category\\Category.js"
+    ]
+  },
+  {
+    "key_suggestion": "change_image",
+    "text_en": "Change Image",
+    "files": [
+      "component\\dashboard\\admin\\team\\EditTeamModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "change_password",
+    "text_en": "Change Password",
+    "files": [
+      "component\\dashboard\\user\\ChangePassword.js"
+    ]
+  },
+  {
+    "key_suggestion": "check_availability",
+    "text_en": "Check Availability",
+    "files": [
+      "component\\home\\Home.js"
+    ]
+  },
+  {
+    "key_suggestion": "check_in",
+    "text_en": "Check In",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "check_in_chill_out",
+    "text_en": "Check In & Chill Out",
+    "files": [
+      "component\\room\\Rooms.js"
+    ]
+  },
+  {
+    "key_suggestion": "check_in_out",
+    "text_en": "Check IN/Out",
+    "files": [
+      "component\\dashboard\\admin\\booking\\Booking.js"
+    ]
+  },
+  {
+    "key_suggestion": "check_out",
+    "text_en": "Check Out",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "check_in",
+    "text_en": "Check-In",
+    "files": [
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "check_in_date",
+    "text_en": "Check-in Date",
+    "files": [
+      "component\\home\\Home.js"
+    ]
+  },
+  {
+    "key_suggestion": "check_out",
+    "text_en": "Check-Out",
+    "files": [
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "check_out_date",
+    "text_en": "Check-out Date",
+    "files": [
+      "component\\home\\Home.js"
+    ]
+  },
+  {
+    "key_suggestion": "chgangepassword",
+    "text_en": "ChgangePassword",
+    "files": [
+      "component\\dashboard\\user\\User.js"
+    ]
+  },
+  {
+    "key_suggestion": "chinese",
+    "text_en": "Chinese",
+    "files": [
+      "component\\nav\\TopNav.js"
+    ]
+  },
+  {
+    "key_suggestion": "choose_your_preferred_payment",
+    "text_en": "Choose your preferred payment",
+    "files": [
+      "component\\checkout\\PaymentGateways.js"
+    ]
+  },
+  {
+    "key_suggestion": "click_to_view_details",
+    "text_en": "Click to view details",
+    "files": [
+      "component\\room\\RoomCard.js"
+    ]
+  },
+  {
+    "key_suggestion": "client",
+    "text_en": "Client",
+    "files": [
+      "component\\testimonial\\Testimonial.js"
+    ]
+  },
+  {
+    "key_suggestion": "clients_review_and_ratings",
+    "text_en": "Clients Review and Ratings",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "confirm_pay_now",
+    "text_en": "Confirm & Pay Now",
+    "files": [
+      "component\\checkout\\PaymentGateways.js"
+    ]
+  },
+  {
+    "key_suggestion": "confirm_delete",
+    "text_en": "Confirm Delete",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\DeleteManageCategoriesModal.js",
+      "component\\dashboard\\admin\\manageroomcategories\\RoomNumbersTable.js",
+      "component\\dashboard\\admin\\team\\DeleteTeamModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "confirm_password",
+    "text_en": "Confirm Password",
+    "files": [
+      "component\\dashboard\\admin\\profile\\Profile.js",
+      "component\\dashboard\\user\\ChangePassword.js",
+      "component\\dashboard\\user\\PersonolInfo.js"
+    ]
+  },
+  {
+    "key_suggestion": "confirmed",
+    "text_en": "Confirmed",
+    "files": [
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "country",
+    "text_en": "Country",
+    "files": [
+      "component\\checkout\\BillingDetails.js",
+      "component\\dashboard\\admin\\profile\\Profile.js",
+      "component\\dashboard\\user\\PersonolInfo.js"
+    ]
+  },
+  {
+    "key_suggestion": "customer",
+    "text_en": "Customer",
+    "files": [
+      "component\\dashboard\\admin\\booking\\Booking.js"
+    ]
+  },
+  {
+    "key_suggestion": "customer_information",
+    "text_en": "Customer Information",
+    "files": [
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "dashboard",
+    "text_en": "Dashboard",
+    "files": [
+      "component\\dashboard\\user\\User.js"
+    ]
+  },
+  {
+    "key_suggestion": "delete",
+    "text_en": "Delete",
+    "files": [
+      "component\\dashboard\\admin\\booking\\Booking.js",
+      "component\\dashboard\\admin\\manageroomcategories\\ManageRoomCategoriesTable.js",
+      "component\\dashboard\\admin\\manageroomcategories\\RoomNumbersTable.js",
+      "component\\dashboard\\admin\\team\\Team.js"
+    ]
+  },
+  {
+    "key_suggestion": "description",
+    "text_en": "Description",
+    "files": [
+      "component\\dashboard\\admin\\blog\\BlogForm.js",
+      "component\\dashboard\\admin\\bloglist\\EditBlogModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "details",
+    "text_en": "Details",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "discount",
+    "text_en": "Discount",
+    "files": [
+      "component\\checkout\\BookingSummary.js"
+    ]
+  },
+  {
+    "key_suggestion": "discount",
+    "text_en": "Discount (",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "discount",
+    "text_en": "Discount (%)",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\EditManageRoomCategoriesModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "discount",
+    "text_en": "Discount:",
+    "files": [
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "don_t_have_an_account_sign_up",
+    "text_en": "Don't have an account? Sign Up",
+    "files": [
+      "app\\login\\page.js"
+    ]
+  },
+  {
+    "key_suggestion": "edit",
+    "text_en": "Edit",
+    "files": [
+      "component\\dashboard\\admin\\booking\\Booking.js",
+      "component\\dashboard\\admin\\manageroomcategories\\ManageRoomCategoriesTable.js",
+      "component\\dashboard\\admin\\team\\Team.js"
+    ]
+  },
+  {
+    "key_suggestion": "edit_blog_post",
+    "text_en": "Edit Blog Post",
+    "files": [
+      "component\\dashboard\\admin\\bloglist\\EditBlogModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "edit_room",
+    "text_en": "Edit Room",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\RoomNumbersTable.js"
+    ]
+  },
+  {
+    "key_suggestion": "edit_team_member",
+    "text_en": "Edit Team Member",
+    "files": [
+      "component\\dashboard\\admin\\team\\EditTeamModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "email",
+    "text_en": "Email",
+    "files": [
+      "app\\register\\page.js",
+      "component\\dashboard\\admin\\booking\\BookingDetails.js",
+      "component\\dashboard\\admin\\profile\\Profile.js",
+      "component\\dashboard\\user\\PersonolInfo.js"
+    ]
+  },
+  {
+    "key_suggestion": "email",
+    "text_en": "Email *",
+    "files": [
+      "component\\checkout\\BillingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "english",
+    "text_en": "English",
+    "files": [
+      "component\\nav\\TopNav.js"
+    ]
+  },
+  {
+    "key_suggestion": "error",
+    "text_en": "Error:",
+    "files": [
+      "app\\room-details\\page.js",
+      "component\\blog\\Blog.js",
+      "component\\blogs\\Blogs.js",
+      "component\\dashboard\\admin\\booking\\Booking.js",
+      "component\\dashboard\\admin\\dashboard\\Dashboard.js",
+      "component\\dashboard\\admin\\hotel\\Hotel.js",
+      "component\\dashboard\\admin\\sale\\Sale.js"
+    ]
+  },
+  {
+    "key_suggestion": "facilities",
+    "text_en": "Facilities",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\EditManageRoomCategoriesModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "feel_free_to_ask_question",
+    "text_en": "FEEL FREE TO ASK QUESTION",
+    "files": [
+      "component\\faqsection\\Faqsection .js"
+    ]
+  },
+  {
+    "key_suggestion": "forgot_password",
+    "text_en": "Forgot Password?",
+    "files": [
+      "app\\login\\page.js"
+    ]
+  },
+  {
+    "key_suggestion": "french",
+    "text_en": "French",
+    "files": [
+      "component\\nav\\TopNav.js"
+    ]
+  },
+  {
+    "key_suggestion": "full_description",
+    "text_en": "Full Description",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\EditManageRoomCategoriesModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "full_name",
+    "text_en": "Full Name",
+    "files": [
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "generate_description_with_ai",
+    "text_en": "Generate description with AI",
+    "files": [
+      "component\\dashboard\\admin\\blog\\BlogForm.js"
+    ]
+  },
+  {
+    "key_suggestion": "generate_title_with_ai",
+    "text_en": "Generate title with AI",
+    "files": [
+      "component\\dashboard\\admin\\blog\\BlogForm.js"
+    ]
+  },
+  {
+    "key_suggestion": "generates_fresh_unique_categories_each_time",
+    "text_en": "Generates fresh, unique categories each time",
+    "files": [
+      "component\\dashboard\\admin\\category\\AICategoryGenerator.js"
+    ]
+  },
+  {
+    "key_suggestion": "german",
+    "text_en": "German",
+    "files": [
+      "component\\nav\\TopNav.js"
+    ]
+  },
+  {
+    "key_suggestion": "go_to_dashboard",
+    "text_en": "Go to Dashboard",
+    "files": [
+      "app\\dashboard\\user\\paypal\\success\\page.js",
+      "app\\dashboard\\user\\stripe\\success\\page.js"
+    ]
+  },
+  {
+    "key_suggestion": "guests",
+    "text_en": "Guests",
+    "files": [
+      "component\\dashboard\\admin\\booking\\Booking.js",
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "hindi",
+    "text_en": "Hindi",
+    "files": [
+      "component\\nav\\TopNav.js"
+    ]
+  },
+  {
+    "key_suggestion": "hotel_report",
+    "text_en": "Hotel Report",
+    "files": [
+      "component\\dashboard\\admin\\Admin.js"
+    ]
+  },
+  {
+    "key_suggestion": "image",
+    "text_en": "Image",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\ManageRoomCategoriesTable.js"
+    ]
+  },
+  {
+    "key_suggestion": "image_preview",
+    "text_en": "Image Preview:",
+    "files": [
+      "component\\dashboard\\admin\\snapbooking\\snapbooking.js"
+    ]
+  },
+  {
+    "key_suggestion": "inactive",
+    "text_en": "Inactive",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\EditManageRoomCategoriesModal.js",
+      "component\\dashboard\\admin\\manageroomcategories\\RoomNumbersTable.js"
+    ]
+  },
+  {
+    "key_suggestion": "japanese",
+    "text_en": "Japanese",
+    "files": [
+      "component\\nav\\TopNav.js"
+    ]
+  },
+  {
+    "key_suggestion": "let_s_start_a_free_of_questions_and_get_a_quick_support",
+    "text_en": "Let's Start a Free of Questions and Get a Quick Support",
+    "files": [
+      "component\\faqsection\\Faqsection .js"
+    ]
+  },
+  {
+    "key_suggestion": "link_url",
+    "text_en": "Link URL",
+    "files": [
+      "component\\dashboard\\admin\\snapbooking\\snapbooking.js"
+    ]
+  },
+  {
+    "key_suggestion": "listify_discover_compare_and_choose",
+    "text_en": "Listify: Discover, Compare, and Choose",
+    "files": [
+      "component\\home\\Home.js"
+    ]
+  },
+  {
+    "key_suggestion": "loading_blog_post",
+    "text_en": "Loading blog post...",
+    "files": [
+      "component\\blogs\\Blogs.js"
+    ]
+  },
+  {
+    "key_suggestion": "loading_booking_details",
+    "text_en": "Loading booking details...",
+    "files": [
+      "app\\room-details\\page.js"
+    ]
+  },
+  {
+    "key_suggestion": "loading_hotel_data",
+    "text_en": "Loading hotel data...",
+    "files": [
+      "component\\dashboard\\admin\\hotel\\Hotel.js"
+    ]
+  },
+  {
+    "key_suggestion": "loading_map_data",
+    "text_en": "Loading map data...",
+    "files": [
+      "component\\dashboard\\admin\\sale\\Reach.js"
+    ]
+  },
+  {
+    "key_suggestion": "loading_pricing",
+    "text_en": "Loading pricing...",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "loading_revenue_data",
+    "text_en": "Loading revenue data...",
+    "files": [
+      "component\\dashboard\\admin\\sale\\Sale.js"
+    ]
+  },
+  {
+    "key_suggestion": "loading_room_details",
+    "text_en": "Loading room details...",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "loading_rooms",
+    "text_en": "Loading rooms...",
+    "files": [
+      "app\\allrooms\\page.js"
+    ]
+  },
+  {
+    "key_suggestion": "loading_spinner",
+    "text_en": "Loading Spinner",
+    "files": [
+      "component\\dashboard\\user\\ChangePassword.js"
+    ]
+  },
+  {
+    "key_suggestion": "loading_user_data",
+    "text_en": "Loading user data...",
+    "files": [
+      "component\\dashboard\\admin\\dashboard\\Dashboard.js"
+    ]
+  },
+  {
+    "key_suggestion": "loading",
+    "text_en": "Loading...",
+    "files": [
+      "component\\blog\\Blog.js",
+      "component\\dashboard\\admin\\category\\Category.js"
+    ]
+  },
+  {
+    "key_suggestion": "log_in_with_google",
+    "text_en": "Log In with Google",
+    "files": [
+      "app\\login\\page.js",
+      "app\\register\\page.js"
+    ]
+  },
+  {
+    "key_suggestion": "login",
+    "text_en": "Login",
+    "files": [
+      "app\\login\\page.js",
+      "component\\nav\\TopNav.js"
+    ]
+  },
+  {
+    "key_suggestion": "login_image",
+    "text_en": "Login image",
+    "files": [
+      "app\\login\\page.js"
+    ]
+  },
+  {
+    "key_suggestion": "login_to_leave_a_comment",
+    "text_en": "Login to leave a comment.",
+    "files": [
+      "component\\blogs\\LeftSideContent.js"
+    ]
+  },
+  {
+    "key_suggestion": "logout",
+    "text_en": "Logout",
+    "files": [
+      "component\\dashboard\\user\\Logout.js",
+      "component\\dashboard\\user\\User.js"
+    ]
+  },
+  {
+    "key_suggestion": "luxury_resort",
+    "text_en": "Luxury Resort",
+    "files": [
+      "component\\snapbooking\\SnapBooking.js"
+    ]
+  },
+  {
+    "key_suggestion": "main",
+    "text_en": "Main",
+    "files": [
+      "component\\blogs\\LeftSideContent.js"
+    ]
+  },
+  {
+    "key_suggestion": "main_title",
+    "text_en": "Main Title",
+    "files": [
+      "component\\dashboard\\admin\\snapbooking\\snapbooking.js"
+    ]
+  },
+  {
+    "key_suggestion": "manage_your_third_party_integrations",
+    "text_en": "Manage your third-party integrations.",
+    "files": [
+      "component\\dashboard\\admin\\Admin.js"
+    ]
+  },
+  {
+    "key_suggestion": "mobile_number",
+    "text_en": "Mobile Number",
+    "files": [
+      "component\\dashboard\\admin\\profile\\Profile.js",
+      "component\\dashboard\\user\\PersonolInfo.js"
+    ]
+  },
+  {
+    "key_suggestion": "modern_employee_table",
+    "text_en": "modern employee table",
+    "files": [
+      "component\\dashboard\\admin\\team\\Team.js"
+    ]
+  },
+  {
+    "key_suggestion": "monthly_data",
+    "text_en": "Monthly Data",
+    "files": [
+      "component\\dashboard\\admin\\dashboard\\Dashboard.js"
+    ]
+  },
+  {
+    "key_suggestion": "monthly_revenue_overview",
+    "text_en": "Monthly Revenue Overview",
+    "files": [
+      "component\\dashboard\\admin\\sale\\Sale.js"
+    ]
+  },
+  {
+    "key_suggestion": "monthly_user_growth",
+    "text_en": "Monthly User Growth",
+    "files": [
+      "component\\dashboard\\admin\\dashboard\\Dashboard.js"
+    ]
+  },
+  {
+    "key_suggestion": "monthly_view",
+    "text_en": "Monthly View",
+    "files": [
+      "component\\dashboard\\admin\\sale\\Sale.js"
+    ]
+  },
+  {
+    "key_suggestion": "name",
+    "text_en": "Name",
+    "files": [
+      "app\\register\\page.js",
+      "component\\dashboard\\admin\\manageroomcategories\\AddManageRoomCategoriesModal.js",
+      "component\\dashboard\\admin\\manageroomcategories\\EditManageRoomCategoriesModal.js",
+      "component\\dashboard\\admin\\manageroomcategories\\ManageRoomCategoriesTable.js",
+      "component\\dashboard\\admin\\profile\\Profile.js",
+      "component\\dashboard\\admin\\team\\AddTeamModal.js",
+      "component\\dashboard\\admin\\team\\EditTeamModal.js",
+      "component\\dashboard\\admin\\team\\Team.js",
+      "component\\dashboard\\user\\PersonolInfo.js"
+    ]
+  },
+  {
+    "key_suggestion": "name",
+    "text_en": "Name *",
+    "files": [
+      "component\\checkout\\BillingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "new_blog_post",
+    "text_en": "New Blog Post",
+    "files": [
+      "component\\dashboard\\admin\\blog\\BlogForm.js"
+    ]
+  },
+  {
+    "key_suggestion": "new_password",
+    "text_en": "New Password",
+    "files": [
+      "component\\dashboard\\user\\ChangePassword.js"
+    ]
+  },
+  {
+    "key_suggestion": "no_blog_data_available",
+    "text_en": "No blog data available",
+    "files": [
+      "component\\blogs\\Blogs.js"
+    ]
+  },
+  {
+    "key_suggestion": "no_bookings_found",
+    "text_en": "No bookings found",
+    "files": [
+      "component\\dashboard\\admin\\booking\\Booking.js"
+    ]
+  },
+  {
+    "key_suggestion": "no_bookings_found",
+    "text_en": "No bookings found.",
+    "files": [
+      "component\\dashboard\\user\\Booking.js"
+    ]
+  },
+  {
+    "key_suggestion": "no_country_data_available",
+    "text_en": "No country data available",
+    "files": [
+      "component\\dashboard\\admin\\sale\\Reach.js"
+    ]
+  },
+  {
+    "key_suggestion": "no_images_available",
+    "text_en": "No images available",
+    "files": [
+      "component\\Bookingdetails\\ImageSlider.js"
+    ]
+  },
+  {
+    "key_suggestion": "no_room_type_data_available",
+    "text_en": "No room type data available",
+    "files": [
+      "component\\dashboard\\admin\\hotel\\Hotel.js"
+    ]
+  },
+  {
+    "key_suggestion": "no_rooms_assigned_yet",
+    "text_en": "No rooms assigned yet",
+    "files": [
+      "component\\dashboard\\admin\\booking\\RoomAssignment.js"
+    ]
+  },
+  {
+    "key_suggestion": "no_rooms_available",
+    "text_en": "No rooms available",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "no_rooms_available_for_the_selected_criteria",
+    "text_en": "No rooms available for the selected criteria",
+    "files": [
+      "component\\room\\Rooms.js"
+    ]
+  },
+  {
+    "key_suggestion": "no_slug_parameter_provided_in_url",
+    "text_en": "No slug parameter provided in URL",
+    "files": [
+      "component\\blogs\\Blogs.js"
+    ]
+  },
+  {
+    "key_suggestion": "number_of_guests",
+    "text_en": "Number of Guests",
+    "files": [
+      "component\\home\\Home.js"
+    ]
+  },
+  {
+    "key_suggestion": "number_of_persons",
+    "text_en": "Number of Persons",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "number_of_rooms",
+    "text_en": "Number of Rooms",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js",
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "old_password",
+    "text_en": "Old Password",
+    "files": [
+      "component\\dashboard\\user\\ChangePassword.js"
+    ]
+  },
+  {
+    "key_suggestion": "open_drawer",
+    "text_en": "open drawer",
+    "files": [
+      "component\\dashboard\\admin\\Admin.js"
+    ]
+  },
+  {
+    "key_suggestion": "orders_component",
+    "text_en": "Orders component",
+    "files": [
+      "component\\dashboard\\user\\Orders.js"
+    ]
+  },
+  {
+    "key_suggestion": "our_latest_testimonials_and_what_our_client_says",
+    "text_en": "Our Latest Testimonials and What Our Client Says",
+    "files": [
+      "component\\blog\\Blog.js",
+      "component\\testimonial\\Testimonial.js"
+    ]
+  },
+  {
+    "key_suggestion": "page_not_found",
+    "text_en": "Page Not Found",
+    "files": [
+      "component\\dashboard\\admin\\Admin.js"
+    ]
+  },
+  {
+    "key_suggestion": "paid",
+    "text_en": "Paid",
+    "files": [
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "password",
+    "text_en": "Password",
+    "files": [
+      "app\\login\\page.js",
+      "app\\register\\page.js",
+      "component\\dashboard\\admin\\profile\\Profile.js",
+      "component\\dashboard\\user\\PersonolInfo.js"
+    ]
+  },
+  {
+    "key_suggestion": "payment",
+    "text_en": "Payment",
+    "files": [
+      "component\\dashboard\\admin\\booking\\Booking.js"
+    ]
+  },
+  {
+    "key_suggestion": "payment_failed",
+    "text_en": "Payment Failed",
+    "files": [
+      "app\\dashboard\\user\\paypal\\cancel\\page.js",
+      "app\\dashboard\\user\\stripe\\cancel\\page.js"
+    ]
+  },
+  {
+    "key_suggestion": "payment_method",
+    "text_en": "Payment Method",
+    "files": [
+      "component\\checkout\\PaymentGateways.js",
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "payment_status",
+    "text_en": "Payment Status",
+    "files": [
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "payment_successful",
+    "text_en": "Payment Successful!",
+    "files": [
+      "app\\dashboard\\user\\paypal\\success\\page.js",
+      "app\\dashboard\\user\\stripe\\success\\page.js"
+    ]
+  },
+  {
+    "key_suggestion": "pending",
+    "text_en": "Pending",
+    "files": [
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "personol_info",
+    "text_en": "Personol Info ",
+    "files": [
+      "component\\dashboard\\user\\User.js"
+    ]
+  },
+  {
+    "key_suggestion": "persons",
+    "text_en": "Persons",
+    "files": [
+      "component\\rooms\\RoomCard.js"
+    ]
+  },
+  {
+    "key_suggestion": "phone",
+    "text_en": "Phone",
+    "files": [
+      "app\\register\\page.js",
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "phone",
+    "text_en": "Phone *",
+    "files": [
+      "component\\checkout\\BillingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "position",
+    "text_en": "Position",
+    "files": [
+      "component\\dashboard\\admin\\team\\AddTeamModal.js",
+      "component\\dashboard\\admin\\team\\EditTeamModal.js",
+      "component\\dashboard\\admin\\team\\Team.js"
+    ]
+  },
+  {
+    "key_suggestion": "post_image",
+    "text_en": "Post Image",
+    "files": [
+      "component\\dashboard\\admin\\bloglist\\EditBlogModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "preview",
+    "text_en": "Preview",
+    "files": [
+      "component\\dashboard\\admin\\bloglist\\EditBlogModal.js",
+      "component\\dashboard\\admin\\snapbooking\\snapbooking.js",
+      "component\\dashboard\\admin\\team\\AddTeamModal.js",
+      "component\\dashboard\\admin\\team\\EditTeamModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "price",
+    "text_en": "Price",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\EditManageRoomCategoriesModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "price",
+    "text_en": "Price:",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "price_night",
+    "text_en": "Price/Night",
+    "files": [
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "pricing_summary",
+    "text_en": "Pricing Summary",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "profile",
+    "text_en": "Profile",
+    "files": [
+      "component\\dashboard\\admin\\team\\Team.js"
+    ]
+  },
+  {
+    "key_suggestion": "profile_preview",
+    "text_en": "Profile Preview",
+    "files": [
+      "component\\dashboard\\admin\\profile\\Profile.js",
+      "component\\dashboard\\user\\PersonolInfo.js"
+    ]
+  },
+  {
+    "key_suggestion": "read_more",
+    "text_en": "Read More",
+    "files": [
+      "component\\blog\\Blog.js",
+      "component\\dashboard\\admin\\bloglist\\BlogList.js"
+    ]
+  },
+  {
+    "key_suggestion": "register",
+    "text_en": "Register",
+    "files": [
+      "app\\register\\page.js",
+      "component\\nav\\TopNav.js"
+    ]
+  },
+  {
+    "key_suggestion": "reports",
+    "text_en": "Reports",
+    "files": [
+      "component\\dashboard\\admin\\Admin.js"
+    ]
+  },
+  {
+    "key_suggestion": "reserve_your_room_and_your_future",
+    "text_en": "Reserve Your Room (and Your Future)",
+    "files": [
+      "component\\rooms\\Rooms.js"
+    ]
+  },
+  {
+    "key_suggestion": "room",
+    "text_en": "Room",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "room_assignments",
+    "text_en": "Room Assignments",
+    "files": [
+      "component\\dashboard\\admin\\booking\\RoomAssignment.js"
+    ]
+  },
+  {
+    "key_suggestion": "room_availability",
+    "text_en": "Room availability:",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "room_capacity",
+    "text_en": "Room Capacity",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\EditManageRoomCategoriesModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "room_facilities",
+    "text_en": "Room Facilities",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "room_information",
+    "text_en": "Room Information",
+    "files": [
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "room_management",
+    "text_en": "Room Management",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\EditManageRoomCategoriesModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "room_management_tabs",
+    "text_en": "room management tabs",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\EditManageRoomCategoriesModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "room_number",
+    "text_en": "Room Number",
+    "files": [
+      "component\\dashboard\\admin\\booking\\RoomAssignment.js",
+      "component\\dashboard\\admin\\manageroomcategories\\RoomNumbersTable.js"
+    ]
+  },
+  {
+    "key_suggestion": "room_preview",
+    "text_en": "Room Preview",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\EditManageRoomCategoriesModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "room_size",
+    "text_en": "Room Size",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\EditManageRoomCategoriesModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "room_type",
+    "text_en": "Room Type",
+    "files": [
+      "component\\dashboard\\admin\\booking\\BookingDetails.js",
+      "component\\dashboard\\admin\\booking\\RoomAssignment.js"
+    ]
+  },
+  {
+    "key_suggestion": "room_type_distribution",
+    "text_en": "Room Type Distribution",
+    "files": [
+      "component\\dashboard\\admin\\hotel\\Hotel.js"
+    ]
+  },
+  {
+    "key_suggestion": "rooms",
+    "text_en": "Rooms",
+    "files": [
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "rooms_currently_unavailable",
+    "text_en": "Rooms currently unavailable",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "sales_report",
+    "text_en": "Sales Report",
+    "files": [
+      "component\\dashboard\\admin\\Admin.js"
+    ]
+  },
+  {
+    "key_suggestion": "save",
+    "text_en": "Save",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\RoomNumbersTable.js"
+    ]
+  },
+  {
+    "key_suggestion": "save_changes",
+    "text_en": "Save Changes",
+    "files": [
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "search",
+    "text_en": "Search",
+    "files": [
+      "component\\blogs\\RightSideContent.js"
+    ]
+  },
+  {
+    "key_suggestion": "search_categories",
+    "text_en": "Search Categories",
+    "files": [
+      "component\\dashboard\\admin\\category\\Category.js"
+    ]
+  },
+  {
+    "key_suggestion": "select_room",
+    "text_en": "Select Room",
+    "files": [
+      "component\\dashboard\\admin\\booking\\RoomAssignment.js"
+    ]
+  },
+  {
+    "key_suggestion": "service_list",
+    "text_en": "Service List",
+    "files": [
+      "component\\service\\Service.js"
+    ]
+  },
+  {
+    "key_suggestion": "short_description",
+    "text_en": "Short Description",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\EditManageRoomCategoriesModal.js",
+      "component\\dashboard\\admin\\snapbooking\\snapbooking.js"
+    ]
+  },
+  {
+    "key_suggestion": "short_title",
+    "text_en": "Short Title",
+    "files": [
+      "component\\dashboard\\admin\\snapbooking\\snapbooking.js"
+    ]
+  },
+  {
+    "key_suggestion": "similar_blogs",
+    "text_en": "Similar blogs",
+    "files": [
+      "component\\blogs\\RightSideContent.js"
+    ]
+  },
+  {
+    "key_suggestion": "size",
+    "text_en": "Size:",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "sl",
+    "text_en": "Sl",
+    "files": [
+      "component\\dashboard\\admin\\booking\\Booking.js"
+    ]
+  },
+  {
+    "key_suggestion": "slug",
+    "text_en": "Slug",
+    "files": [
+      "component\\dashboard\\admin\\bloglist\\EditBlogModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "snap_booking",
+    "text_en": "Snap Booking",
+    "files": [
+      "component\\dashboard\\admin\\snapbooking\\snapbooking.js"
+    ]
+  },
+  {
+    "key_suggestion": "snap_booking",
+    "text_en": "Snap Booking ✨",
+    "files": [
+      "component\\snapbooking\\styles.js"
+    ]
+  },
+  {
+    "key_suggestion": "spanish",
+    "text_en": "Spanish",
+    "files": [
+      "component\\nav\\TopNav.js"
+    ]
+  },
+  {
+    "key_suggestion": "sq_ft",
+    "text_en": "sq ft",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\EditManageRoomCategoriesModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "state",
+    "text_en": "State *",
+    "files": [
+      "component\\checkout\\BillingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "status",
+    "text_en": "Status",
+    "files": [
+      "component\\dashboard\\admin\\booking\\Booking.js",
+      "component\\dashboard\\admin\\booking\\RoomAssignment.js",
+      "component\\dashboard\\admin\\manageroomcategories\\EditManageRoomCategoriesModal.js",
+      "component\\dashboard\\admin\\manageroomcategories\\RoomNumbersTable.js"
+    ]
+  },
+  {
+    "key_suggestion": "status_management",
+    "text_en": "Status Management",
+    "files": [
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "stay_duration",
+    "text_en": "Stay Duration",
+    "files": [
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "submit_review",
+    "text_en": "Submit Review",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "subtotal",
+    "text_en": "Subtotal",
+    "files": [
+      "component\\checkout\\BookingSummary.js"
+    ]
+  },
+  {
+    "key_suggestion": "subtotal",
+    "text_en": "Subtotal:",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js",
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "thank_you_for_your_subscription_now_everything_is_free",
+    "text_en": "Thank you for your subscription. Now Everything is free.",
+    "files": [
+      "app\\dashboard\\user\\paypal\\success\\page.js",
+      "app\\dashboard\\user\\stripe\\success\\page.js"
+    ]
+  },
+  {
+    "key_suggestion": "the_requested_page_could_not_be_found",
+    "text_en": "The requested page could not be found.",
+    "files": [
+      "component\\dashboard\\admin\\Admin.js"
+    ]
+  },
+  {
+    "key_suggestion": "thinking_woman",
+    "text_en": "Thinking Woman",
+    "files": [
+      "component\\faqsection\\Faqsection .js"
+    ]
+  },
+  {
+    "key_suggestion": "title",
+    "text_en": "Title",
+    "files": [
+      "component\\dashboard\\admin\\blog\\BlogForm.js",
+      "component\\dashboard\\admin\\bloglist\\EditBlogModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "total",
+    "text_en": "Total",
+    "files": [
+      "component\\checkout\\BookingSummary.js"
+    ]
+  },
+  {
+    "key_suggestion": "total_adults",
+    "text_en": "Total Adults",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\EditManageRoomCategoriesModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "total_children",
+    "text_en": "Total Children",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\EditManageRoomCategoriesModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "total_nights",
+    "text_en": "Total Nights",
+    "files": [
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "total_rooms",
+    "text_en": "Total Rooms",
+    "files": [
+      "component\\dashboard\\admin\\booking\\Booking.js"
+    ]
+  },
+  {
+    "key_suggestion": "total",
+    "text_en": "Total:",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js",
+      "component\\dashboard\\admin\\booking\\BookingDetails.js"
+    ]
+  },
+  {
+    "key_suggestion": "trend_view",
+    "text_en": "Trend View",
+    "files": [
+      "component\\dashboard\\admin\\sale\\Sale.js"
+    ]
+  },
+  {
+    "key_suggestion": "try_again",
+    "text_en": "Try Again",
+    "files": [
+      "app\\dashboard\\user\\paypal\\cancel\\page.js",
+      "app\\dashboard\\user\\stripe\\cancel\\page.js"
+    ]
+  },
+  {
+    "key_suggestion": "unfortunately_we_couldn_t_process_your_payment_please_try_ag",
+    "text_en": "Unfortunately, we couldn't process your payment. Please try again.",
+    "files": [
+      "app\\dashboard\\user\\paypal\\cancel\\page.js",
+      "app\\dashboard\\user\\stripe\\cancel\\page.js"
+    ]
+  },
+  {
+    "key_suggestion": "unlock_all_features",
+    "text_en": "Unlock all features",
+    "files": [
+      "component\\dashboard\\admin\\Admin.js"
+    ]
+  },
+  {
+    "key_suggestion": "unwind_in_style_with_our_premium_hospitality",
+    "text_en": "Unwind in style with our premium hospitality.",
+    "files": [
+      "component\\room\\Rooms.js"
+    ]
+  },
+  {
+    "key_suggestion": "update_profile",
+    "text_en": "Update Profile",
+    "files": [
+      "component\\dashboard\\admin\\profile\\Profile.js",
+      "component\\dashboard\\user\\PersonolInfo.js"
+    ]
+  },
+  {
+    "key_suggestion": "upgrade_to_pro",
+    "text_en": "Upgrade to Pro",
+    "files": [
+      "component\\dashboard\\admin\\Admin.js"
+    ]
+  },
+  {
+    "key_suggestion": "upload_image",
+    "text_en": "Upload Image",
+    "files": [
+      "component\\dashboard\\admin\\team\\AddTeamModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "upload_profile_image",
+    "text_en": "Upload Profile Image",
+    "files": [
+      "component\\dashboard\\admin\\profile\\Profile.js",
+      "component\\dashboard\\user\\PersonolInfo.js"
+    ]
+  },
+  {
+    "key_suggestion": "uploading",
+    "text_en": "Uploading...",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\EditManageRoomCategoriesModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "user",
+    "text_en": "User",
+    "files": [
+      "component\\dashboard\\user\\User.js"
+    ]
+  },
+  {
+    "key_suggestion": "user_avatar",
+    "text_en": "User Avatar",
+    "files": [
+      "component\\nav\\TopNav.js"
+    ]
+  },
+  {
+    "key_suggestion": "user_registrations_by_month",
+    "text_en": "User registrations by month",
+    "files": [
+      "component\\dashboard\\admin\\dashboard\\Dashboard.js"
+    ]
+  },
+  {
+    "key_suggestion": "verified",
+    "text_en": "Verified",
+    "files": [
+      "component\\blogs\\LeftSideContent.js"
+    ]
+  },
+  {
+    "key_suggestion": "vertical_tabs_example",
+    "text_en": "Vertical tabs example",
+    "files": [
+      "component\\dashboard\\user\\User.js"
+    ]
+  },
+  {
+    "key_suggestion": "view",
+    "text_en": "View",
+    "files": [
+      "component\\dashboard\\admin\\manageroomcategories\\EditManageRoomCategoriesModal.js"
+    ]
+  },
+  {
+    "key_suggestion": "view",
+    "text_en": "View &",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "view_and_manage_your_booking_here",
+    "text_en": "View and manage your Booking here.",
+    "files": [
+      "component\\dashboard\\admin\\Admin.js"
+    ]
+  },
+  {
+    "key_suggestion": "view_your_reports_and_analytics",
+    "text_en": "View your reports and analytics.",
+    "files": [
+      "component\\dashboard\\admin\\Admin.js"
+    ]
+  },
+  {
+    "key_suggestion": "view",
+    "text_en": "View:",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "views",
+    "text_en": "Views",
+    "files": [
+      "component\\blogs\\LeftSideContent.js"
+    ]
+  },
+  {
+    "key_suggestion": "we_are_the_agency_who_always_gives_you_a_priority_on_the_fre",
+    "text_en": "We are the agency who always gives you a priority on the free of question and you can easily make a question on the bunch.",
+    "files": [
+      "component\\faqsection\\Faqsection .js"
+    ]
+  },
+  {
+    "key_suggestion": "write_your_review_here",
+    "text_en": "Write your review here...",
+    "files": [
+      "component\\Bookingdetails\\BookingComponent.js"
+    ]
+  },
+  {
+    "key_suggestion": "your_ultimate_guide_to_finding_the_best_products_services_an",
+    "text_en": "Your Ultimate Guide to Finding the Best Products, Services, and Deals Online",
+    "files": [
+      "component\\home\\Home.js"
+    ]
+  },
+  {
+    "key_suggestion": "zip_code",
+    "text_en": "Zip Code *",
+    "files": [
+      "component\\checkout\\BillingDetails.js"
+    ]
+  }
+]
