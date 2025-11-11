@@ -26,11 +26,18 @@ const PaymentGateways = ({
   const { t } = useTranslation("component/checkout/PaymentGateways");
 
   const paymentMethods = [
+    // {
+    //   value: "cod",
+    //   label: t("cash_on_delivery", "Cash on Delivery"),
+    //   icon: <LocalAtmIcon />,
+    //   color: iconColors.cod,
+    // },
+
     {
-      value: "cod",
-      label: t("cash_on_delivery", "Cash on Delivery"),
-      icon: <LocalAtmIcon />,
-      color: iconColors.cod,
+      value: "VN Pay",
+      label: "Ví điện tử VN Pay",
+      icon: <CreditCardIcon />,
+      // color: iconColors.stripe,
     },
     // Uncomment if needed
     // {

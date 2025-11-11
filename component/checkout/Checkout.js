@@ -207,6 +207,28 @@ export default function Home() {
     }
   };
 
+  const handleVNPay = async (orderData) => {
+    try {
+      const response = await fetch(
+        `${process.env.API}/user/payment/vnpaypayment/vnpay`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(orderData),
+        }
+      );
+
+      const data = await response.json();
+      if (!response.ok) {
+        toast.error(t("vnpay_failed", "VN Pay payment failed"));
+      } else {
+        window.location.href = data.paymentUrl; // Redirect đến VN Pay
+      }
+    } catch (error) {
+      console.log("error", error);
+      toast.error(t("vnpay_error", "Unable to initiate VN Pay payment"));
+    }
+  };
   const handlePlaceOrder = async () => {
     if (!billingDetails?.isValid) {
       const errorField = Object.entries(billingDetails?.data || {}).find(
