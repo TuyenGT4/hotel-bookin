@@ -6,15 +6,14 @@ import { authOptions } from "@/utils/authOptions";
 
 import Booking from "@/model/booking";
 
- import RoomBookedDate from "@/model/roomBookedDate"
-import Razorpay from "razorpay"; 
+import RoomBookedDate from "@/model/roomBookedDate";
+import Razorpay from "razorpay";
 
 // Initialize Razorpay instance using the key and secret from environment variables
 var razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID, 
-  key_secret: process.env.RAZORPAY_KEY_SECRET, 
+  key_id: process.env.RAZORPAY_KEY_ID,
+  key_secret: process.env.RAZORPAY_KEY_SECRET,
 });
-
 
 function generateBookingCode(length = 8) {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -65,9 +64,7 @@ export async function POST(req) {
       paymentMethod,
     } = await req.json();
 
-
-
- console.log("billing",{
+    console.log("billing", {
       pricePerNight,
       nights,
       subtotal,
@@ -83,18 +80,10 @@ export async function POST(req) {
       image,
       billingDetails,
       paymentMethod,
-    })
-
-
+    });
 
     const { country, name, email, phone, address, state, zipCode } =
       billingDetails;
-
-
-
-
-
-
 
     const newBooking = new Booking({
       rooms_id: room_id,
@@ -138,10 +127,8 @@ export async function POST(req) {
 
     await RoomBookedDate.insertMany(bookedDates);
 
-
-
- const options = {
-      amount: parseFloat(total.toFixed(2)* 100 ) , // Convert the course price to the smallest unit (paise) for Razorpay
+    const options = {
+      amount: parseFloat(total.toFixed(2) * 100), // Convert the course price to the smallest unit (paise) for Razorpay
       currency: "INR", // Set the currency to INR (Indian Rupee)
       receipt: "hotel_receipt", // Define a unique receipt identifier for the order
       notes: {
@@ -156,9 +143,6 @@ export async function POST(req) {
 
     // Return the order details as a JSON response
     return NextResponse.json(order);
-
-
-
   } catch (err) {
     console.error("Order creation error:", err);
     return NextResponse.json(

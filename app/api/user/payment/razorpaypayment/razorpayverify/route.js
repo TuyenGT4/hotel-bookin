@@ -49,8 +49,8 @@ export async function POST(req) {
       }
 
       console.log("Updated booking:", updatedBooking);
-      
-      console.log("Payment successful and booking updated")
+
+      console.log("Payment successful and booking updated");
       return NextResponse.json(
         { success: "Payment successful and booking updated" },
         { status: 200 }
@@ -63,9 +63,6 @@ export async function POST(req) {
     }
   } catch (err) {
     console.log("payment error", err);
-    return NextResponse.json(
-      { error: err.message },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }
