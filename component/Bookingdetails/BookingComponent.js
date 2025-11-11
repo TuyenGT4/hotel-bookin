@@ -270,7 +270,7 @@ const BookingComponent = ({ content, loading, setLoading }) => {
                       {t("subtotal", "Subtotal")}:
                     </Typography>
                     <Typography sx={pricingSummaryStyles.value}>
-                      ${pricingData.subtotal.toFixed(2)}
+                      {pricingData.subtotal.toFixed(2)} VND
                     </Typography>
                   </Box>
 
@@ -282,7 +282,7 @@ const BookingComponent = ({ content, loading, setLoading }) => {
                           {pricingData.discountPercent}%):
                         </Typography>
                         <Typography sx={pricingSummaryStyles.discountValue}>
-                          -${pricingData.discountAmount.toFixed(2)}
+                          - {pricingData.discountAmount.toFixed(2)} VND
                         </Typography>
                       </Box>
                     </>
@@ -295,7 +295,7 @@ const BookingComponent = ({ content, loading, setLoading }) => {
                       {t("total", "Total")}:
                     </Typography>
                     <Typography sx={pricingSummaryStyles.totalValue}>
-                      ${pricingData.total.toFixed(2)}
+                      {pricingData.total.toFixed(2)} VND
                     </Typography>
                   </Box>
                 </Box>
@@ -331,7 +331,7 @@ const BookingComponent = ({ content, loading, setLoading }) => {
                   {t("price", "Price")}:
                 </Typography>
                 <Chip
-                  label={`$${originalPrice}/${t("night", "Night")}`}
+                  label={`${originalPrice} VND/${t("night", "Night")}`}
                   color="primary"
                   sx={bookingStyles.originalPriceChip}
                 />
@@ -437,7 +437,7 @@ const BookingComponent = ({ content, loading, setLoading }) => {
                     <Box sx={{ display: "flex", alignItems: "center" }}>
                       <SquareFootIcon sx={{ mr: 1, color: "primary.main" }} />
                       <Typography variant="body1">
-                        {t("size", "Size")}: {roomData?.size} ft²
+                        {t("size", "Size")}: {roomData?.size} m²
                       </Typography>
                     </Box>
                   </Box>

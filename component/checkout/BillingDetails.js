@@ -2,24 +2,7 @@ import { useState, useEffect } from "react";
 import { Grid, TextField, MenuItem } from "@mui/material";
 import { useTranslation } from "react-i18next"; // ✅ thêm i18n
 
-const countries = [
-  "India",
-  "USA",
-  "Canada",
-  "Australia",
-  "Japan",
-  "Germany",
-  "Brazil",
-  "South Africa",
-  "France",
-  "China",
-  "UK",
-  "Mexico",
-  "Italy",
-  "Spain",
-  "Russia",
-  "Viet Nam",
-];
+const countries = ["Viet Nam"];
 
 const BillingDetails = ({ onBillingDetailsChange }) => {
   const { t } = useTranslation("component/checkout/BillingDetails"); // ✅ thêm i18n
