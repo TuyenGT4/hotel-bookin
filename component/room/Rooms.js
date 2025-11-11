@@ -5,12 +5,12 @@ import { Container, Box, Grid, Typography, Skeleton } from "@mui/material";
 import { useSearchParams } from "next/navigation";
 import RoomCard from "./RoomCard";
 import { mainHeadingStyles, subHeadingStyles } from "./HeadingStyles";
+import { useTranslation } from "react-i18next"; // ✅ thêm i18n
 
 const RoomsRates = () => {
+  const { t } = useTranslation("component/room/Rooms");
   const [rooms, setRooms] = useState([]);
-
   const [loading, setLoading] = useState(true);
-
   const searchParams = useSearchParams();
 
   const searchParamsObj = {
@@ -45,9 +45,7 @@ const RoomsRates = () => {
         }
 
         const res = await fetch(url);
-
         const data = await res.json();
-
         setRooms(data);
       } catch (error) {
         console.log(error);
@@ -89,7 +87,7 @@ const RoomsRates = () => {
           gutterBottom
           sx={mainHeadingStyles}
         >
-          Check In & Chill Out
+          {t("check_in_chill_out", "Check In & Chill Out")}
         </Typography>
         <Typography
           variant="h6"
@@ -97,7 +95,10 @@ const RoomsRates = () => {
           gutterBottom
           sx={subHeadingStyles}
         >
-          Unwind in style with our premium hospitality.
+          {t(
+            "unwind_in_style",
+            "Unwind in style with our premium hospitality."
+          )}
         </Typography>
 
         <Grid container spacing={3}>
@@ -116,7 +117,10 @@ const RoomsRates = () => {
           ) : (
             <Grid item xs={12}>
               <Typography align="center" sx={{ py: 4 }}>
-                No rooms available for the selected criteria
+                {t(
+                  "no_rooms_available",
+                  "No rooms available for the selected criteria"
+                )}
               </Typography>
             </Grid>
           )}

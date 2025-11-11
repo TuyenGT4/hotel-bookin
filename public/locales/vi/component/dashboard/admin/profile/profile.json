@@ -1,0 +1,22 @@
+{
+  "update_profile": "Cập nhật hồ sơ",
+  "profile_preview": "Xem trước ảnh đại diện",
+  "name": "Họ và tên",
+  "email": "Email",
+  "mobile_number": "Số điện thoại",
+  "address": "Địa chỉ",
+  "country": "Quốc gia",
+  "password": "Mật khẩu",
+  "confirm_password": "Xác nhận mật khẩu",
+  "upload_image": "Tải ảnh đại diện lên",
+
+  "name_required": "Vui lòng nhập họ tên",
+  "email_required": "Vui lòng nhập email",
+  "email_invalid": "Email không hợp lệ",
+  "mobile_invalid": "Vui lòng nhập số điện thoại hợp lệ (10 số)",
+  "address_short": "Địa chỉ quá ngắn",
+  "country_invalid": "Vui lòng chọn quốc gia hợp lệ",
+  "password_required": "Vui lòng nhập mật khẩu",
+  "password_mismatch": "Mật khẩu không khớp",
+  "image_uploaded": "Tải ảnh thành công"
+}

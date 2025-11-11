@@ -232,7 +232,6 @@ const PageContent = ({ path }) => {
             backgroundColor: "#000",
           }}
         >
-       
           {/* <Typography paragraph>Welcome to your dashboard. Here you can see an overview of your application.</Typography> */}
 
           <DashBoard />
@@ -678,7 +677,7 @@ function CustomDashboardLayout({ navigation, router, window }) {
             {router.pathname === "/traffic" && "Traffic Report"}
             {router.pathname === "/category" && "Category"}
             {router.pathname === "/blog" && "Blog"}
-                {router.pathname === "/bloglist" && "BlogList"}
+            {router.pathname === "/bloglist" && "BlogList"}
             {![
               "/dashboard",
               "/orders",
@@ -693,7 +692,7 @@ function CustomDashboardLayout({ navigation, router, window }) {
               "/manageroomcategories",
               "/category",
               "/blog",
-              "/bloglist"
+              "/bloglist",
             ].includes(router.pathname) && "Page Not Found"}
           </Typography>
           <Box sx={{ flexGrow: 1 }} />

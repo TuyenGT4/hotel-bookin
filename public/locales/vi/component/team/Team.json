@@ -1,0 +1,23 @@
+{
+  "team_heading": "Đội ngũ tài năng đứng sau thương hiệu",
+  "positions": {
+    "founder": "Nhà sáng lập",
+    "co_founder": "Đồng sáng lập",
+    "ceo": "Giám đốc điều hành",
+    "cto": "Giám đốc công nghệ",
+    "cfo": "Giám đốc tài chính",
+    "coo": "Giám đốc vận hành",
+    "hr_manager": "Trưởng phòng nhân sự",
+    "marketing_manager": "Trưởng phòng marketing",
+    "sales_manager": "Trưởng phòng kinh doanh",
+    "receptionist": "Lễ tân",
+    "customer_support": "Hỗ trợ khách hàng",
+    "room_service": "Nhân viên phục vụ phòng",
+    "event_planner": "Người tổ chức sự kiện",
+    "housekeeping_staff": "Nhân viên dọn phòng",
+    "designer": "Nhà thiết kế",
+    "developer": "Lập trình viên",
+    "photographer": "Nhiếp ảnh gia",
+    "content_writer": "Biên tập nội dung"
+  }
+}

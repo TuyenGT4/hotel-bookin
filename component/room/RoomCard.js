@@ -8,8 +8,10 @@ import {
   FeatureChip,
   BookNowText,
 } from "./RoomCardStyles";
+import { useTranslation } from "react-i18next"; // ✅ thêm i18n
 
 const RoomCard = ({ room, searchParams = {} }) => {
+  const { t } = useTranslation("component/room/RoomCard");
   const { checkIn = "", checkOut = "", guests = "" } = searchParams;
 
   const queryString = new URLSearchParams({
@@ -31,10 +33,14 @@ const RoomCard = ({ room, searchParams = {} }) => {
           />
 
           {room.discount > 0 && (
-            <DiscountBadge>{room.discount}% OFF</DiscountBadge>
+            <DiscountBadge>
+              {room.discount}% {t("off", "OFF")}
+            </DiscountBadge>
           )}
           <QuickViewOverlay>
-            <Typography variant="body2">Click to view details</Typography>
+            <Typography variant="body2">
+              {t("click_view_details", "Click to view details")}
+            </Typography>
           </QuickViewOverlay>
         </Box>
 
@@ -44,13 +50,13 @@ const RoomCard = ({ room, searchParams = {} }) => {
               {room.roomtype_id.name}
             </Typography>
             <Typography variant="body1" fontWeight="bold" color="primary">
-              ${room.price}{" "}
+              {room.price} VND
               <Typography
                 component="span"
                 variant="body2"
                 color="text.secondary"
               >
-                / night
+                / {t("night", "night")}
               </Typography>
             </Typography>
           </Box>
@@ -68,7 +74,9 @@ const RoomCard = ({ room, searchParams = {} }) => {
               <FeatureChip>{room.bed_style}</FeatureChip>
             </Grid>
             <Grid item>
-              <FeatureChip>{room.size} sq.ft</FeatureChip>
+              <FeatureChip>
+                {room.size} {t("sqft", "sq.ft")}
+              </FeatureChip>
             </Grid>
           </Grid>
 
@@ -89,11 +97,13 @@ const RoomCard = ({ room, searchParams = {} }) => {
               />
               <Typography variant="caption" color="text.secondary">
                 ({parseInt(room.total_adult) + parseInt(room.total_child)}{" "}
-                guests)
+                {t("guests", "guests")})
               </Typography>
             </Box>
 
-            <BookNowText color="primary">Book Now →</BookNowText>
+            <BookNowText color="primary">
+              {t("book_now", "Book Now →")}
+            </BookNowText>
           </Box>
         </CardContent>
       </StyledCard>

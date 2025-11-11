@@ -14,8 +14,10 @@ import {
 import { Save, Cancel, UploadFile } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
 import { updateBlogPost } from "@/slice/blogSlice";
+import { useTranslation } from "react-i18next";
 
 const EditBlogModal = ({ open, onClose, post }) => {
+  const { t } = useTranslation("editBlog");
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
@@ -27,11 +29,8 @@ const EditBlogModal = ({ open, onClose, post }) => {
 
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState("");
-
   const [uploading, setUploading] = useState("");
-
   const [loading, setLoading] = useState(false);
-
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -42,14 +41,12 @@ const EditBlogModal = ({ open, onClose, post }) => {
         description: post.description,
         image: post.image,
       });
-
       setImagePreview(post.image);
     }
   }, [post]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setFormData((prev) => ({
       ...prev,
       [name]: value,
@@ -58,7 +55,6 @@ const EditBlogModal = ({ open, onClose, post }) => {
 
   const handleImageChange = async (e) => {
     const file = e.target.files[0];
-
     if (file) {
       setImageFile(file);
 
@@ -66,11 +62,9 @@ const EditBlogModal = ({ open, onClose, post }) => {
       reader.onloadend = () => {
         setImagePreview(reader.result);
       };
-
       reader.readAsDataURL(file);
 
       setUploading(true);
-
       try {
         const uploadedUrl = await uploadImageToCloudinary(file);
         setFormData((prev) => ({
@@ -78,7 +72,7 @@ const EditBlogModal = ({ open, onClose, post }) => {
           image: uploadedUrl,
         }));
       } catch (error) {
-        setError("image upload faield");
+        setError(t("image_upload_failed"));
       } finally {
         setUploading(false);
       }
@@ -87,7 +81,6 @@ const EditBlogModal = ({ open, onClose, post }) => {
 
   const uploadImageToCloudinary = async (imageFile) => {
     const formData = new FormData();
-
     formData.append("file", imageFile);
     formData.append("upload_preset", "ml_default");
 
@@ -99,31 +92,26 @@ const EditBlogModal = ({ open, onClose, post }) => {
           body: formData,
         }
       );
-
       if (!response.ok) {
         throw new Error("Failed to upload image");
       }
-      console.log("imag  response", response);
       const data = await response.json();
       return data.secure_url;
     } catch (error) {
-      console.log("error uploading image", error);
       throw error;
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setLoading(true);
     setError(null);
-
     try {
       await dispatch(updateBlogPost({ id: post?._id, ...formData })).unwrap();
       setLoading(false);
-      onclose();
+      onClose();
     } catch (error) {
-      setError(error.message || "Failed to update blog post");
+      setError(error.message || t("update_failed"));
     } finally {
       setLoading(false);
     }
@@ -131,7 +119,7 @@ const EditBlogModal = ({ open, onClose, post }) => {
 
   return (
     <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
-      <DialogTitle>Edit Blog Post</DialogTitle>
+      <DialogTitle>{t("edit_blog_post")}</DialogTitle>
 
       <form onSubmit={handleSubmit}>
         <DialogContent dividers>
@@ -143,7 +131,7 @@ const EditBlogModal = ({ open, onClose, post }) => {
 
           <TextField
             fullWidth
-            label="Title"
+            label={t("title")}
             name="title"
             value={formData.title}
             onChange={handleChange}
@@ -153,7 +141,7 @@ const EditBlogModal = ({ open, onClose, post }) => {
 
           <TextField
             fullWidth
-            label="Slug"
+            label={t("slug")}
             name="slug"
             value={formData.slug}
             onChange={handleChange}
@@ -163,7 +151,7 @@ const EditBlogModal = ({ open, onClose, post }) => {
 
           <TextField
             fullWidth
-            label="Description"
+            label={t("description")}
             name="description"
             value={formData.description}
             onChange={handleChange}
@@ -175,7 +163,7 @@ const EditBlogModal = ({ open, onClose, post }) => {
 
           <Box sx={{ my: 2 }}>
             <Typography variant="subtitle1" gutterBottom>
-              Post Image
+              {t("post_image")}
             </Typography>
             {imagePreview && (
               <Box sx={{ mb: 2 }}>
@@ -197,7 +185,7 @@ const EditBlogModal = ({ open, onClose, post }) => {
               startIcon={<UploadFile />}
               disabled={uploading}
             >
-              {uploading ? "Uploading..." : "Upload Image"}
+              {uploading ? t("uploading") : t("upload_image")}
               <input
                 type="file"
                 accept="image/*"
@@ -210,7 +198,7 @@ const EditBlogModal = ({ open, onClose, post }) => {
 
         <DialogActions>
           <Button onClick={onClose} startIcon={<Cancel />} disabled={loading}>
-            Cancel
+            {t("cancel")}
           </Button>
           <Button
             type="submit"
@@ -219,7 +207,7 @@ const EditBlogModal = ({ open, onClose, post }) => {
             startIcon={loading ? <CircularProgress size={20} /> : <Save />}
             disabled={loading || uploading}
           >
-            {loading ? "Saving..." : "Save Changes"}
+            {loading ? t("saving") : t("save_changes")}
           </Button>
         </DialogActions>
       </form>

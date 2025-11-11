@@ -1,0 +1,15 @@
+{
+  "fetch_failed": "Không thể tải danh sách bài viết",
+  "fetch_single_failed": "Không thể tải bài viết",
+  "create_failed": "Không thể tạo bài viết mới",
+  "update_failed": "Không thể cập nhật bài viết",
+  "delete_failed": "Không thể xóa bài viết",
+  "create_success": "Tạo bài viết thành công",
+  "update_success": "Cập nhật bài viết thành công",
+  "delete_success": "Xóa bài viết thành công",
+  "error_loading_posts": "Lỗi khi tải danh sách bài viết",
+  "error_loading_post": "Lỗi khi tải bài viết",
+  "error_creating": "Lỗi khi tạo bài viết",
+  "error_updating": "Lỗi khi cập nhật bài viết",
+  "error_deleting": "Lỗi khi xóa bài viết"
+}

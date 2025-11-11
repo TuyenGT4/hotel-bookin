@@ -1,0 +1,9 @@
+{
+  "fetch_failed": "Failed to fetch user data",
+  "user_avatar_alt": "User",
+  "dashboard_tab": "Dashboard",
+  "personal_info_tab": "Personal Info",
+  "change_password_tab": "Change Password",
+  "booking_details_tab": "Booking Details",
+  "logout_tab": "Logout"
+}

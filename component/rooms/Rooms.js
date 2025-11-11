@@ -5,7 +5,6 @@ import {
   Typography,
   Skeleton,
   Box,
-  Button,
   Rating,
   keyframes,
 } from "@mui/material";
@@ -22,6 +21,7 @@ import PeopleIcon from "@mui/icons-material/People";
 import CropSquareIcon from "@mui/icons-material/CropSquare";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import BedIcon from "@mui/icons-material/Bed";
+import { useTranslation } from "react-i18next"; // ✅ Thêm hook dịch
 
 // Shimmer animation for skeleton
 const shimmer = keyframes`
@@ -33,7 +33,7 @@ const shimmer = keyframes`
 const ImageSkeleton = styled(Skeleton)({
   width: "100%",
   height: "100%",
-  transform: "none", // remove default skeleton animation
+  transform: "none",
   background: "#e0e0e0",
   backgroundImage: `linear-gradient(
     to right,
@@ -48,37 +48,31 @@ const ImageSkeleton = styled(Skeleton)({
 
 export default function Rooms() {
   const [rooms, setRooms] = useState([]);
-
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation("component/rooms/Rooms");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
-
         const res = await fetch(`${process.env.API}/homeroom`);
-
         const data = await res.json();
 
         setTimeout(() => {
           setRooms(data);
-
           setLoading(false);
         }, 4000);
       } catch (error) {
         console.log("error fetching rooms", error);
-
         setTimeout(() => setLoading(false), 4000);
       }
     };
 
-
-    fetchData()
+    fetchData();
   }, []);
 
   const RoomCardSkeleton = () => (
     <RoomCardContainer>
-      {/* Improved Image Skeleton */}
       <Box
         sx={{
           width: "55%",
@@ -87,7 +81,7 @@ export default function Rooms() {
           overflow: "hidden",
           "@media (max-width: 600px)": {
             width: "100%",
-            height: "200px", // Fixed height on mobile
+            height: "200px",
           },
         }}
       >
@@ -99,7 +93,6 @@ export default function Rooms() {
             transition: "transform 0.3s ease-in-out",
           }}
         />
-        {/* Discount badge skeleton */}
         <Skeleton
           width={60}
           height={24}
@@ -163,7 +156,7 @@ export default function Rooms() {
         gutterBottom
         sx={headingStyles}
       >
-        Reserve Your Room (and Your Future)
+        {t("reserve_your_room", "Reserve Your Room (and Your Future)")}
       </Typography>
 
       <Grid container spacing={4}>

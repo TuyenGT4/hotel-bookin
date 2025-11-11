@@ -1,0 +1,22 @@
+{
+  "title": "Đăng nhập",
+  "fields": {
+    "email": "Email",
+    "phone": "Số điện thoại",
+    "password": "Mật khẩu"
+  },
+  "buttons": {
+    "login": "Đăng nhập",
+    "google": "Đăng nhập bằng Google"
+  },
+  "or": "hoặc",
+  "forgot_password": "Quên mật khẩu?",
+  "no_account": "Chưa có tài khoản? Đăng ký",
+  "success": "Đăng nhập thành công!",
+  "errors": {
+    "required": "Vui lòng nhập đầy đủ Email/SĐT và mật khẩu",
+    "invalid_login": "Vui lòng nhập Email hoặc SĐT hợp lệ",
+    "failed": "Đăng nhập thất bại",
+    "server": "Có lỗi xảy ra, vui lòng thử lại"
+  }
+}

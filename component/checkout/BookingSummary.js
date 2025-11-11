@@ -9,9 +9,11 @@ import {
   Star as StarIcon,
 } from "@mui/icons-material";
 import { bookingSummaryStyles } from "./bookingSummaryStyles";
-
+import { useTranslation } from "react-i18next";
 
 const BookingSummary = ({ pricingData }) => {
+  const { t } = useTranslation("component/checkout/BookingSummary");
+
   if (!pricingData) return null;
 
   const {
@@ -37,50 +39,46 @@ const BookingSummary = ({ pricingData }) => {
     });
   };
 
-
-
-// Icon colors and configurations
-const details = [
-  {
-    icon: <NightsIcon fontSize="small" />,
-    label: "Nights",
-    value: `${nights} ${nights === 1 ? "Night" : "Nights"}`,
-    iconStyle: {
-      background: "linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)",
-      color: "#d32f2f",
+  const details = [
+    {
+      icon: <NightsIcon fontSize="small" />,
+      label: t("nights", "Nights"),
+      value: `${nights} ${
+        nights === 1 ? t("night", "Night") : t("nights", "Nights")
+      }`,
+      iconStyle: {
+        background: "linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)",
+        color: "#d32f2f",
+      },
     },
-  },
-  {
-    icon: <CalendarIcon fontSize="small" />,
-    label: "Dates",
-    value: `${formatDate(checkIn)} - ${formatDate(checkOut)}`,
-    iconStyle: {
-      background: "linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%)",
-      color: "#1976d2",
+    {
+      icon: <CalendarIcon fontSize="small" />,
+      label: t("dates", "Dates"),
+      value: `${formatDate(checkIn)} - ${formatDate(checkOut)}`,
+      iconStyle: {
+        background: "linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%)",
+        color: "#1976d2",
+      },
     },
-  },
-  {
-    icon: <PeopleIcon fontSize="small" />,
-    label: "Guests",
-    value: guests,
-    iconStyle: {
-      background: "linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%)",
-      color: "#2e7d32",
+    {
+      icon: <PeopleIcon fontSize="small" />,
+      label: t("guests", "Guests"),
+      value: guests,
+      iconStyle: {
+        background: "linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%)",
+        color: "#2e7d32",
+      },
     },
-  },
-  {
-    icon: <RoomIcon fontSize="small" />,
-    label: "Rooms",
-    value: rooms,
-    iconStyle: {
-      background: "linear-gradient(135deg, #ffc3a0 0%, #ffafbd 100%)",
-      color: "#e65100",
+    {
+      icon: <RoomIcon fontSize="small" />,
+      label: t("rooms", "Rooms"),
+      value: rooms,
+      iconStyle: {
+        background: "linear-gradient(135deg, #ffc3a0 0%, #ffafbd 100%)",
+        color: "#e65100",
+      },
     },
-  },
-];
-
-
-
+  ];
 
   return (
     <Card sx={bookingSummaryStyles.card}>
@@ -108,7 +106,7 @@ const details = [
               component="span"
               sx={{ fontSize: "0.9rem", opacity: 0.8, ml: 0.5 }}
             >
-              /night
+              /{t("night", "night")}
             </Typography>
           </Box>
         </Box>
@@ -147,7 +145,9 @@ const details = [
               >
                 <ReceiptIcon fontSize="small" />
               </Box>
-              <Typography component="span">Subtotal</Typography>
+              <Typography component="span">
+                {t("subtotal", "Subtotal")}
+              </Typography>
             </Box>
             <Typography component="div" sx={bookingSummaryStyles.detailValue}>
               ${Number(subtotal).toFixed(2)}
@@ -166,14 +166,16 @@ const details = [
               >
                 <DiscountIcon fontSize="small" />
               </Box>
-              <Typography component="span">Discount</Typography>
+              <Typography component="span">
+                {t("discount", "Discount")}
+              </Typography>
             </Box>
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <Typography component="div" sx={bookingSummaryStyles.detailValue}>
                 -${Number(discountAmount).toFixed(2)}
               </Typography>
               <Box sx={bookingSummaryStyles.discountBadge}>
-                {discountPercent}% OFF
+                {discountPercent}% {t("off", "OFF")}
               </Box>
             </Box>
           </Box>
@@ -181,7 +183,7 @@ const details = [
 
         <Box sx={bookingSummaryStyles.totalContainer}>
           <Typography component="div" sx={bookingSummaryStyles.totalLabel}>
-            Total
+            {t("total", "Total")}
           </Typography>
           <Typography component="div" sx={bookingSummaryStyles.totalValue}>
             ${Number(total).toFixed(2)}

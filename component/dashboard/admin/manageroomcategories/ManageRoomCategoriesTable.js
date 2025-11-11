@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   Table,
   TableBody,
@@ -32,6 +33,9 @@ import EditManageRoomCategoriesModal from "./EditManageRoomCategoriesModal";
 import DeleteManageCategoriesModal from "./DeleteManageCategoriesModal";
 
 export default function ManageRoomCategoriesTable() {
+  const { t } = useTranslation(
+    "component/dashboard/admin/manageroomcategories/ManageRoomCategoriesTable"
+  );
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -61,7 +65,7 @@ export default function ManageRoomCategoriesTable() {
 
       setRoomType(data);
     } catch (error) {
-      toast.error("failed to fetch rom tpye");
+      toast.error(t("fetch_roomtype_failed", "Failed to fetch room type"));
     } finally {
       setLoading(false);
     }
@@ -75,7 +79,7 @@ export default function ManageRoomCategoriesTable() {
       const data = await response.json();
       setRooms(data);
     } catch (error) {
-      toast.error("Failed to  fetch rooms");
+      toast.error(t("fetch_rooms_failed", "Failed to fetch rooms"));
     }
   };
 
@@ -97,7 +101,6 @@ export default function ManageRoomCategoriesTable() {
   };
 
   const handleDeleteClick = (rooms) => {
-    // const roomData = getRoomForRoomType(rooms._id);
     setCurrentMember(rooms);
     setOpenDeleteModal(true);
   };
@@ -137,7 +140,7 @@ export default function ManageRoomCategoriesTable() {
             }}
             disabled={loading}
           >
-            Add Room Category
+            {t("add_room_category", "Add Room Category")}
           </Button>
         </Box>
 
@@ -145,85 +148,80 @@ export default function ManageRoomCategoriesTable() {
           <Table stickyHeader size={isSmallScreen ? "small" : "medium"}>
             <StyledTableHeader>
               <TableRow>
-                {!isSmallScreen && <StyledHeaderCell>Image</StyledHeaderCell>}
-                <StyledHeaderCell>Name</StyledHeaderCell>
-
-                <StyledHeaderCell>Actions</StyledHeaderCell>
+                {!isSmallScreen && (
+                  <StyledHeaderCell>{t("image", "Image")}</StyledHeaderCell>
+                )}
+                <StyledHeaderCell>{t("name", "Name")}</StyledHeaderCell>
+                <StyledHeaderCell>{t("actions", "Actions")}</StyledHeaderCell>
               </TableRow>
             </StyledTableHeader>
             <TableBody>
               {roomtype &&
                 roomtype
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((rooms, index) => { 
-
-                     const  room=getRoomForRoomType(rooms?._id)
-                     return (
-
- <AnimatedTableRow
-                      key={rooms?._id || `rooms-${index}`}
-                      hover
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {!isSmallScreen && (
-                        <TableCell>
-                          <Avatar
-                            src={room?.image}
-                            alt="room"
-                            sx={{
-                              width: 56,
-                              height: 56,
-                              border: "3px solid white",
-                              boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-                            }}
-                          />
+                  .map((rooms, index) => {
+                    const room = getRoomForRoomType(rooms?._id);
+                    return (
+                      <AnimatedTableRow
+                        key={rooms?._id || `rooms-${index}`}
+                        hover
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {!isSmallScreen && (
+                          <TableCell>
+                            <Avatar
+                              src={room?.image}
+                              alt={t("room", "room")}
+                              sx={{
+                                width: 56,
+                                height: 56,
+                                border: "3px solid white",
+                                boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                              }}
+                            />
+                          </TableCell>
+                        )}
+                        <TableCell sx={{ fontWeight: "700", color: "#2d3748" }}>
+                          {room?.roomtype_id?.name || t("na", "N/A")}
                         </TableCell>
-                      )}
-                      <TableCell sx={{ fontWeight: "700", color: "#2d3748" }}>
-                        {room?.roomtype_id?.name || "N/A"}
-                      </TableCell>
 
-                      <TableCell>
-                        <Box
-                          sx={{
-                            display: "flex",
-                            gap: isSmallScreen ? "4px" : "8px",
-                          }}
-                        >
-                          <Tooltip title="Edit">
-                            <IconButton
-                              onClick={() => handleEditClick(rooms)}
-                              sx={{ color: colors.edit }}
-                              size={isSmallScreen ? "small" : "medium"}
-                              disabled={loading}
-                            >
-                              <Edit
-                                fontSize={isSmallScreen ? "small" : "medium"}
-                              />
-                            </IconButton>
-                          </Tooltip>
-                          <Tooltip title="Delete">
-                            <IconButton
-                              onClick={() => handleDeleteClick(rooms)}
-                              sx={{ color: colors.delete }}
-                              size={isSmallScreen ? "small" : "medium"}
-                              disabled={loading}
-                            >
-                              <Delete
-                                fontSize={isSmallScreen ? "small" : "medium"}
-                              />
-                            </IconButton>
-                          </Tooltip>
-                        </Box>
-                      </TableCell>
-                    </AnimatedTableRow>
-
-
-                     )
-
-
+                        <TableCell>
+                          <Box
+                            sx={{
+                              display: "flex",
+                              gap: isSmallScreen ? "4px" : "8px",
+                            }}
+                          >
+                            <Tooltip title={t("edit", "Edit")}>
+                              <IconButton
+                                onClick={() => handleEditClick(rooms)}
+                                sx={{ color: colors.edit }}
+                                size={isSmallScreen ? "small" : "medium"}
+                                disabled={loading}
+                              >
+                                <Edit
+                                  fontSize={isSmallScreen ? "small" : "medium"}
+                                />
+                              </IconButton>
+                            </Tooltip>
+                            <Tooltip title={t("delete", "Delete")}>
+                              <IconButton
+                                onClick={() => handleDeleteClick(rooms)}
+                                sx={{ color: colors.delete }}
+                                size={isSmallScreen ? "small" : "medium"}
+                                disabled={loading}
+                              >
+                                <Delete
+                                  fontSize={isSmallScreen ? "small" : "medium"}
+                                />
+                              </IconButton>
+                            </Tooltip>
+                          </Box>
+                        </TableCell>
+                      </AnimatedTableRow>
+                    );
                   })}
             </TableBody>
           </Table>
@@ -239,7 +237,6 @@ export default function ManageRoomCategoriesTable() {
         />
       </StyledPaper>
 
-      {/* Modals - Make sure they can handle the roomData prop */}
       <AddManageRoomCategoriesModal
         open={openAddModal}
         onClose={() => setOpenAddModal(false)}
@@ -255,7 +252,7 @@ export default function ManageRoomCategoriesTable() {
         onSuccess={handleEditSuccess}
         loading={loading}
         setLoading={setLoading}
- fetchRooms={fetchRooms}
+        fetchRooms={fetchRooms}
       />
 
       <DeleteManageCategoriesModal

@@ -1,8 +1,11 @@
 "use client";
 import { signOut } from "next-auth/react";
 import { Button, Box } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 export default function LogOut() {
+  const { t } = useTranslation("component/dashboard/user/logout");
+
   const handleLogout = async () => {
     await signOut({ callbackUrl: "/" });
   };
@@ -21,9 +24,7 @@ export default function LogOut() {
           color="error"
           onClick={handleLogout}
         >
-Logout
-
-
+          {t("logout", "Logout")}
         </Button>
       </Box>
     </>

@@ -1,0 +1,21 @@
+{
+  "title": "Chỉnh sửa thành viên nhóm",
+  "fields": {
+    "name": "Tên",
+    "position": "Chức vụ"
+  },
+  "buttons": {
+    "cancel": "Hủy",
+    "change_image": "Đổi ảnh",
+    "update_member": "Cập nhật thành viên",
+    "updating": "Đang cập nhật..."
+  },
+  "preview": "Xem trước",
+  "messages": {
+    "update_success": "Cập nhật thành viên nhóm thành công"
+  },
+  "errors": {
+    "required_fields": "Vui lòng điền đầy đủ thông tin bắt buộc",
+    "update_failed": "Cập nhật thành viên thất bại"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "title": "Đăng ký",
+  "fields": {
+    "name": "Họ và tên",
+    "phone": "Số điện thoại",
+    "email": "Email",
+    "password": "Mật khẩu"
+  },
+  "buttons": {
+    "register": "Đăng ký",
+    "google": "Đăng nhập bằng Google"
+  },
+  "or": "hoặc",
+  "already_have_account": "Đã có tài khoản? Đăng nhập",
+  "errors": {
+    "required_all": "Vui lòng nhập đầy đủ thông tin.",
+    "invalid_phone": "Vui lòng nhập số điện thoại hợp lệ gồm 10 chữ số.",
+    "invalid_email": "Vui lòng nhập địa chỉ email hợp lệ.",
+    "failed": "Đăng ký thất bại. Vui lòng thử lại.",
+    "server": "Có lỗi xảy ra, vui lòng thử lại sau."
+  },
+  "success": "Đăng ký thành công!"
+}

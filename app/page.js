@@ -17,7 +17,7 @@ export default function Home() {
       <Rooms />
       <SnapBooking />
       <Team />
-      <Testimonial />
+      {/* <Testimonial /> */}
       <Service />
       <FAQSection />
       <Blog />

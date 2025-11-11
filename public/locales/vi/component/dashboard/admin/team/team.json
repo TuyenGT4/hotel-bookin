@@ -1,0 +1,18 @@
+{
+  "buttons": {
+    "add_member": "Thêm thành viên nhóm"
+  },
+  "columns": {
+    "profile": "Hồ sơ",
+    "name": "Tên",
+    "position": "Chức vụ",
+    "actions": "Hành động"
+  },
+  "tooltips": {
+    "edit": "Chỉnh sửa",
+    "delete": "Xóa"
+  },
+  "errors": {
+    "fetch_failed": "Không thể tải danh sách thành viên"
+  }
+}

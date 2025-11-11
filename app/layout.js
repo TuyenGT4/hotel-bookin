@@ -1,15 +1,15 @@
 "use client";
+import i18n from "../i18n";
+import { I18nextProvider } from "react-i18next";
+import { I18NProvider } from "next/dist/server/lib/i18n-provider";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import TopNav from "@/component/nav/TopNav";
 import Navbar from "@/component/nav/Navbar";
 import { SessionProvider } from "next-auth/react";
-import i18n from "../i18n";
-import { I18nextProvider } from "react-i18next";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import { usePathname } from "next/navigation";
-import { I18NProvider } from "next/dist/server/lib/i18n-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

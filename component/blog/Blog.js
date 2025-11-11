@@ -8,18 +8,16 @@ import {
   CardContent,
   Typography,
   Button,
-  IconButton,
   Box,
 } from "@mui/material";
-import { Favorite, Visibility } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
 
 const Blogs = () => {
   const router = useRouter();
   const [articles, setArticles] = useState([]);
-
   const [loading, setLoading] = useState(true);
-
   const [error, setError] = useState(null);
+  const { t } = useTranslation("component/blog/Blogs");
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -27,11 +25,10 @@ const Blogs = () => {
         const response = await fetch(`${process.env.API}/blogs`);
 
         if (!response.ok) {
-          throw new Error("Failed to fetch articles");
+          throw new Error(t("fetch_failed", "Failed to fetch articles"));
         }
 
         const data = await response.json();
-
         setArticles(data);
       } catch (error) {
         setError(error.message);
@@ -41,26 +38,34 @@ const Blogs = () => {
     };
 
     fetchArticles();
-  }, []);
+  }, [t]);
 
   const handleArticleClick = (slug) => {
     router.push(`/blogs?slug=${slug}`);
   };
 
-  if (loading) return <Typography>Loading...</Typography>;
-  if (error) return <Typography color="error">Error: {error}</Typography>;
+  if (loading) return <Typography>{t("loading", "Loading...")}</Typography>;
+  if (error)
+    return (
+      <Typography color="error">
+        {t("error", "Error")}: {error}
+      </Typography>
+    );
 
   return (
     <Container maxWidth="xl">
       <Box sx={{ padding: "2rem", textAlign: "center" }}>
         <Typography variant="overline" sx={{ color: "#FF6F61" }}>
-          TESTIMONIAL
+          {t("testimonial", "TESTIMONIAL")}
         </Typography>
         <Typography
           variant="h4"
           sx={{ fontWeight: "bold", marginBottom: "2rem" }}
         >
-          Our Latest Testimonials and What Our Client Says
+          {t(
+            "latest_testimonials",
+            "Our Latest Testimonials and What Our Clients Say"
+          )}
         </Typography>
       </Box>
 
@@ -93,7 +98,7 @@ const Blogs = () => {
                       year: "numeric",
                       month: "short",
                       day: "numeric",
-                    })}{" "}
+                    })}
                   </Typography>
                   <Typography variant="h6" gutterBottom>
                     {article.title}
@@ -115,7 +120,7 @@ const Blogs = () => {
                       handleArticleClick(article.slug);
                     }}
                   >
-                    Read More
+                    {t("read_more", "Read More")}
                   </Button>
                 </CardContent>
               </Card>

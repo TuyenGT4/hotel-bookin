@@ -1,0 +1,34 @@
+{
+  "table": {
+    "room_number": "Room Number",
+    "status": "Status",
+    "actions": "Actions"
+  },
+  "status": {
+    "active": "Active",
+    "inactive": "Inactive"
+  },
+  "modal": {
+    "edit_title": "Edit Room",
+    "delete_title": "Confirm Delete",
+    "delete_confirm": "Are you sure you want to delete room"
+  },
+  "fields": {
+    "room_number": "Room Number",
+    "status": "Status"
+  },
+  "buttons": {
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "add_room": "Add Room"
+  },
+  "add_section": {
+    "title": "Add New Room Number"
+  },
+  "toast": {
+    "update_success": "Room number updated successfully",
+    "delete_success": "Room deleted successfully",
+    "add_success": "Room added successfully"
+  }
+}

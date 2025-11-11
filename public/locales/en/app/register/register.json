@@ -1,0 +1,23 @@
+{
+  "title": "Register",
+  "fields": {
+    "name": "Full Name",
+    "phone": "Phone Number",
+    "email": "Email Address",
+    "password": "Password"
+  },
+  "buttons": {
+    "register": "Register",
+    "google": "Sign in with Google"
+  },
+  "or": "or",
+  "already_have_account": "Already have an account? Login",
+  "errors": {
+    "required_all": "All fields are required.",
+    "invalid_phone": "Please enter a valid 10-digit phone number.",
+    "invalid_email": "Please enter a valid email address.",
+    "failed": "Registration failed. Please try again.",
+    "server": "A server error occurred. Please try again later."
+  },
+  "success": "Registration successful!"
+}

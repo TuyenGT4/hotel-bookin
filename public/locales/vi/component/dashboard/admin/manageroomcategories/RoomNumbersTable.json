@@ -1,0 +1,34 @@
+{
+  "table": {
+    "room_number": "Số phòng",
+    "status": "Trạng thái",
+    "actions": "Hành động"
+  },
+  "status": {
+    "active": "Đang hoạt động",
+    "inactive": "Ngưng hoạt động"
+  },
+  "modal": {
+    "edit_title": "Chỉnh sửa phòng",
+    "delete_title": "Xác nhận xóa",
+    "delete_confirm": "Bạn có chắc chắn muốn xóa phòng"
+  },
+  "fields": {
+    "room_number": "Số phòng",
+    "status": "Trạng thái"
+  },
+  "buttons": {
+    "cancel": "Hủy",
+    "save": "Lưu",
+    "delete": "Xóa",
+    "add_room": "Thêm phòng"
+  },
+  "add_section": {
+    "title": "Thêm số phòng mới"
+  },
+  "toast": {
+    "update_success": "Cập nhật số phòng thành công",
+    "delete_success": "Xóa phòng thành công",
+    "add_success": "Thêm phòng thành công"
+  }
+}

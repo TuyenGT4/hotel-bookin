@@ -1,0 +1,14 @@
+{
+  "fetch_failed": "Không thể tải danh sách danh mục ({{status}})",
+  "fetch_success": "Tải danh sách danh mục thành công!",
+  "fetch_error": "Lỗi khi tải danh mục: {{message}}",
+  "add_success": "Thêm danh mục thành công!",
+  "add_failed": "Không thể thêm danh mục ({{status}})",
+  "add_error": "Lỗi khi thêm danh mục: {{message}}",
+  "update_success": "Cập nhật danh mục thành công!",
+  "update_failed": "Không thể cập nhật danh mục ({{status}})",
+  "update_error": "Lỗi khi cập nhật danh mục: {{message}}",
+  "delete_success": "Xóa danh mục thành công!",
+  "delete_failed": "Không thể xóa danh mục ({{status}})",
+  "delete_error": "Lỗi khi xóa danh mục: {{message}}"
+}

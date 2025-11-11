@@ -1,0 +1,17 @@
+{
+  "country": "Quốc gia",
+  "name": "Họ và tên",
+  "email": "Email",
+  "phone": "Số điện thoại",
+  "address": "Địa chỉ",
+  "state": "Tỉnh / Thành phố",
+  "zip_code": "Mã bưu chính",
+
+  "name_required": "Vui lòng nhập họ và tên",
+  "email_required": "Vui lòng nhập email",
+  "email_invalid": "Email không hợp lệ",
+  "phone_required": "Vui lòng nhập số điện thoại",
+  "address_required": "Vui lòng nhập địa chỉ",
+  "state_required": "Vui lòng nhập tỉnh / thành phố",
+  "zipcode_required": "Vui lòng nhập mã bưu chính"
+}

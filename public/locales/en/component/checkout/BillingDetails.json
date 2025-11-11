@@ -1,0 +1,17 @@
+{
+  "country": "Country",
+  "name": "Name",
+  "email": "Email",
+  "phone": "Phone",
+  "address": "Address",
+  "state": "State / Province",
+  "zip_code": "Zip Code",
+
+  "name_required": "Name is required",
+  "email_required": "Email is required",
+  "email_invalid": "Please enter a valid email",
+  "phone_required": "Phone is required",
+  "address_required": "Address is required",
+  "state_required": "State is required",
+  "zipcode_required": "Zip code is required"
+}

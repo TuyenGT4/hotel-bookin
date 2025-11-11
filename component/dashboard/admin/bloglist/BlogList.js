@@ -23,17 +23,16 @@ import {
   StyledReadMore,
   StyledIconButton,
 } from "./BlogStyles";
-import EditBlogModal from './EditBlogModal';
+import EditBlogModal from "./EditBlogModal";
+import { useTranslation } from "react-i18next";
 
 const BlogPostsList = () => {
+  const { t } = useTranslation("bloglist");
   const { list: blogs, loading } = useSelector((state) => state.blogs);
-
   const dispatch = useDispatch();
 
   const [error, setError] = useState(null);
-
   const [editModalOpen, setEditModalOpen] = useState(false);
-
   const [selectedPost, setSelectedPost] = useState(null);
 
   useEffect(() => {
@@ -41,20 +40,19 @@ const BlogPostsList = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    if (window.confirm("are you sure  you want  to delete  this post ?")) {
+    if (window.confirm(t("confirm_delete"))) {
       try {
         await dispatch(deleteBlogPost(id)).unwrap();
       } catch (error) {
-        setError(error.message || "failed to delete post");
+        setError(error.message || t("delete_failed"));
       }
     }
   };
 
   const handleEditClick = (post) => {
     setSelectedPost(post);
-
     setEditModalOpen(true);
-       dispatch(fetchBlogPosts());
+    dispatch(fetchBlogPosts());
   };
 
   const handleCloseModal = () => {
@@ -111,7 +109,7 @@ const BlogPostsList = () => {
                   <StyledActionBox>
                     <Link href="#" passHref>
                       <StyledReadMore component="div" color="primary">
-                        Read More
+                        {t("read_more")}
                       </StyledReadMore>
                     </Link>
 

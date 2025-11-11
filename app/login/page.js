@@ -15,30 +15,22 @@ import {
 } from "@mui/material";
 import { signIn } from "next-auth/react";
 import HotelHubLogo from "@/component/nav/HotelHubLogo";
-import {  useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import GoogleIcon from "@mui/icons-material/Google";
+import { useTranslation } from "react-i18next";
 
 const LoginPage = () => {
+  const { t } = useTranslation("app/login/login");
   const [loginId, setLoginId] = useState("");
-
   const [password, setPassword] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarSeverity, setSnackbarSeverity] = useState("success");
-
   const [isEmail, setIsEmail] = useState(true);
-
   const router = useRouter();
 
-  const validateEmail = (email) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
-  };
-
-  const validatedPhone = (phone) => {
-    const re = /^\d{10}$/;
-    return re.test(phone);
-  };
+  const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const validatedPhone = (phone) => /^\d{10}$/.test(phone);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -47,18 +39,15 @@ const LoginPage = () => {
     const isInputPhone = validatedPhone(loginId);
 
     if (!loginId || !password) {
-      setSnackbarMessage("Login Id and Password are required");
-
+      setSnackbarMessage(t("errors.required"));
       setSnackbarSeverity("error");
-
       setOpenSnackbar(true);
       return;
     }
 
     if (!isInputEmail && !isInputPhone) {
-      setSnackbarMessage("Please enter a valid email or phone number");
+      setSnackbarMessage(t("errors.invalid_login"));
       setSnackbarSeverity("error");
-
       setOpenSnackbar(true);
       return;
     }
@@ -71,34 +60,26 @@ const LoginPage = () => {
       });
 
       if (result?.error) {
-        setSnackbarMessage(result.error || " login  failed");
+        setSnackbarMessage(result.error || t("errors.failed"));
         setSnackbarSeverity("error");
       } else {
-        setSnackbarMessage("Login successfull");
+        setSnackbarMessage(t("success"));
         setSnackbarSeverity("success");
-
         router.push("/");
       }
     } catch (error) {
-      setSnackbarMessage("An error occurred Please try  again");
+      setSnackbarMessage(t("errors.server"));
+      setSnackbarSeverity("error");
     }
 
     setOpenSnackbar(true);
   };
 
-  const handleCloseSnackbar = () => {
-    setOpenSnackbar(false);
-  };
-
+  const handleCloseSnackbar = () => setOpenSnackbar(false);
   const handleLoginIdChange = (e) => {
     const value = e.target.value;
     setLoginId(value);
-
-    if (value.includes("@")) {
-      setIsEmail(true);
-    } else if (/^[0-9]+$/.test(value)) {
-      setIsEmail(false);
-    }
+    setIsEmail(value.includes("@"));
   };
 
   return (
@@ -110,89 +91,96 @@ const LoginPage = () => {
         justifyContent="center"
         sx={{ minHeight: "100vh" }}
       >
-        <Grid item xs={12} md={6}>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "background.paper",
+            height: "100vh",
+            p: 2,
+          }}
+        >
           <Box
             component="form"
-            display="flex"
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-            sx={{ p: 3 }}
             onSubmit={handleLogin}
+            sx={{
+              width: "100%",
+              maxWidth: 400,
+              display: "flex",
+              flexDirection: "column",
+              gap: 2,
+            }}
           >
-            <Typography variant="h4" gutterBottom>
+            <Typography variant="h4" gutterBottom align="center">
               <HotelHubLogo />
             </Typography>
 
-            <Typography variant="h4" gutterBottom>
-              Login
+            <Typography variant="h4" gutterBottom align="center">
+              {t("title")}
             </Typography>
+
             <TextField
-              label={isEmail ? "Email" : "Phone Number"}
+              label={isEmail ? t("fields.email") : t("fields.phone")}
               type={isEmail ? "email" : "tel"}
               variant="outlined"
               fullWidth
-              margin="normal"
               value={loginId}
               onChange={handleLoginIdChange}
-              InputLabelProps={{
-                style: { color: "red" },
-              }}
-              InputProps={{
-                style: {
-                  color: "#fff",
-                  borderColor: "red",
-                },
-              }}
               sx={{
-                input: { color: "black" },
                 "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "red",
-                  },
-                  "&:hover fieldset": {
-                    borderColor: "red",
-                  },
-                  "&.Mui-focused fieldset": {
-                    borderColor: "red",
-                  },
+                  "& fieldset": { borderColor: "red" },
+                  "&:hover fieldset": { borderColor: "red" },
+                  "&.Mui-focused fieldset": { borderColor: "red" },
                 },
-              }}
-            />
-            <TextField
-              label="Password"
-              type="password"
-              variant="outlined"
-              fullWidth
-              margin="normal"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              InputLabelProps={{
-                style: { color: "red" },
-              }}
-              InputProps={{
-                style: {
-                  color: "#fff",
-                  borderColor: "red",
-                },
-              }}
-              sx={{
-                input: { color: "black" },
-                "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "red",
-                  },
-                  "&:hover fieldset": {
-                    borderColor: "red",
-                  },
-                  "&.Mui-focused fieldset": {
-                    borderColor: "red",
-                  },
-                },
+                "& .MuiInputLabel-root": { color: "red" },
+                "& .MuiInputBase-input": { color: "black" },
               }}
             />
 
-            <Divider sx={{ mt: 2 }}>or</Divider>
+            <TextField
+              label={t("fields.password")}
+              type="password"
+              variant="outlined"
+              fullWidth
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": { borderColor: "red" },
+                  "&:hover fieldset": { borderColor: "red" },
+                  "&.Mui-focused fieldset": { borderColor: "red" },
+                },
+                "& .MuiInputLabel-root": { color: "red" },
+                "& .MuiInputBase-input": { color: "black" },
+              }}
+            />
+
+            <Link
+              href="/forgot-password"
+              variant="body2"
+              sx={{ alignSelf: "flex-end", mt: 1 }}
+            >
+              {t("forgot_password")}
+            </Link>
+
+            <Button
+              type="submit"
+              variant="contained"
+              fullWidth
+              sx={{
+                backgroundColor: "red",
+                "&:hover": { backgroundColor: "darkred" },
+                py: 1.5,
+              }}
+            >
+              {t("buttons.login")}
+            </Button>
+
+            <Divider>{t("or")}</Divider>
 
             <Button
               fullWidth
@@ -201,42 +189,19 @@ const LoginPage = () => {
               sx={{
                 color: "white",
                 backgroundColor: "red",
-                "&:hover": {
-                  color: "white",
-                  backgroundColor: "red",
-                },
-                mt: 2,
-                width: "100%",
+                "&:hover": { backgroundColor: "darkred" },
+                py: 1.5,
               }}
               onClick={() => signIn("google")}
             >
-              Log In with Google
+              {t("buttons.google")}
             </Button>
 
-            <Link
-              href="/forgot-password"
-              variant="body2"
-              sx={{ alignSelf: "flex-end", mt: 1 }}
-            >
-              Forgot Password?
-            </Link>
-            <Button
-              type="submit"
-              variant="contained"
-              sx={{
-                backgroundColor: "red",
-                "&:hover": {
-                  backgroundColor: "red",
-                },
-                mt: 2,
-                width: "100%",
-              }}
-            >
-              Login
-            </Button>
-            <Link href="/register" variant="body2" sx={{ mt: 2 }}>
-              Don't have an account? Sign Up
-            </Link>
+            <Typography align="center" sx={{ mt: 2 }}>
+              <Link href="/register" underline="hover">
+                {t("no_account")}
+              </Link>
+            </Typography>
           </Box>
         </Grid>
 
@@ -250,11 +215,9 @@ const LoginPage = () => {
           >
             <Box
               component="img"
-              src="/images/login5.jpg"
+              src="/images/login22.jpg"
               alt="Login image"
               sx={{
-                marginTop: "3px",
-                marginBottom: "2px",
                 width: "100%",
                 height: "100vh",
                 objectFit: "cover",
@@ -263,17 +226,12 @@ const LoginPage = () => {
           </Box>
         </Grid>
       </Grid>
+
       <Snackbar
         open={openSnackbar}
         autoHideDuration={6000}
         onClose={handleCloseSnackbar}
         anchorOrigin={{ vertical: "top", horizontal: "left" }}
-        sx={{
-          "& .MuiSnackbar-root": {
-            top: "24px",
-            left: "24px",
-          },
-        }}
       >
         <Alert
           onClose={handleCloseSnackbar}

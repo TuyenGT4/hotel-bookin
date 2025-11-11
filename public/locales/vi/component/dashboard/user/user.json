@@ -1,0 +1,9 @@
+{
+  "fetch_failed": "Không thể tải dữ liệu người dùng",
+  "user_avatar_alt": "Người dùng",
+  "dashboard_tab": "Tổng quan",
+  "personal_info_tab": "Thông tin cá nhân",
+  "change_password_tab": "Đổi mật khẩu",
+  "booking_details_tab": "Đặt phòng",
+  "logout_tab": "Đăng xuất"
+}

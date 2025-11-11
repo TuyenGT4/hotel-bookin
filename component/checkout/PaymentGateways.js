@@ -1,5 +1,4 @@
 import { styles, iconColors } from "./bookingSummaryStyles";
-
 import {
   Card,
   CardHeader,
@@ -16,50 +15,55 @@ import {
 import LocalAtmIcon from "@mui/icons-material/LocalAtm";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
-import AccountBalanceIcon from "@mui/icons-material/AccountBalance"; // Alternative for PayPal
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import { useTranslation } from "react-i18next";
+
 const PaymentGateways = ({
   selectedPaymentMethod,
   setSelectedPaymentMethod,
   handlePlaceOrder,
 }) => {
+  const { t } = useTranslation("component/checkout/PaymentGateways");
+
   const paymentMethods = [
     {
       value: "cod",
-      label: "Cash on Delivery",
+      label: t("cash_on_delivery", "Cash on Delivery"),
       icon: <LocalAtmIcon />,
       color: iconColors.cod,
     },
-    {
-      value: "stripe",
-      label: "Credit/Debit Card",
-      icon: <CreditCardIcon />,
-      color: iconColors.stripe,
-    },
-    {
-      value: "razorpay",
-      label: "Razorpay Wallet",
-      icon: <AccountBalanceWalletIcon />,
-      color: iconColors.razorpay,
-    },
-    {
-      value: "paypal",
-      label: "PayPal",
-      icon: <AccountBalanceIcon />,
-      color: iconColors.paypal,
-    },
+    // Uncomment if needed
+    // {
+    //   value: "stripe",
+    //   label: t("credit_card", "Credit/Debit Card"),
+    //   icon: <CreditCardIcon />,
+    //   color: iconColors.stripe,
+    // },
+    // {
+    //   value: "razorpay",
+    //   label: t("razorpay_wallet", "Razorpay Wallet"),
+    //   icon: <AccountBalanceWalletIcon />,
+    //   color: iconColors.razorpay,
+    // },
+    // {
+    //   value: "paypal",
+    //   label: t("paypal", "PayPal"),
+    //   icon: <AccountBalanceIcon />,
+    //   color: iconColors.paypal,
+    // },
   ];
 
   return (
     <Card sx={styles.card}>
       <CardHeader
-        title="Payment Method"
+        title={t("payment_method", "Payment Method")}
         sx={styles.cardHeader}
         titleTypographyProps={{ variant: "h6" }}
       />
       <CardContent>
         <FormControl component="fieldset" fullWidth>
           <FormLabel component="legend" sx={styles.formLabel}>
-            Choose your preferred payment
+            {t("choose_payment", "Choose your preferred payment")}
           </FormLabel>
           <RadioGroup
             aria-label="payment-method"
@@ -128,7 +132,7 @@ const PaymentGateways = ({
             </svg>
           }
         >
-          Confirm & Pay Now
+          {t("confirm_pay", "Confirm & Pay Now")}
         </Button>
       </CardContent>
     </Card>

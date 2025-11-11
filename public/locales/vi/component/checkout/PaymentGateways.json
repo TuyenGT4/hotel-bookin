@@ -1,0 +1,9 @@
+{
+  "payment_method": "Phương thức thanh toán",
+  "choose_payment": "Chọn hình thức thanh toán ưa thích",
+  "cash_on_delivery": "Thanh toán khi nhận hàng",
+  "credit_card": "Thẻ tín dụng/Ghi nợ",
+  "razorpay_wallet": "Ví Razorpay",
+  "paypal": "PayPal",
+  "confirm_pay": "Xác nhận và thanh toán ngay"
+}

@@ -11,7 +11,11 @@ import {
   Box,
 } from "@mui/material";
 import BeatLoader from "react-spinners/BeatLoader";
+import { useTranslation } from "react-i18next";
+
 const ChangePasswordForm = () => {
+  const { t } = useTranslation("component/dashboard/user/changepassword");
+
   const [oldPassword, setOldPassword] = useState("");
 
   const [newPassword, setNewPassword] = useState("");
@@ -31,7 +35,7 @@ const ChangePasswordForm = () => {
     if (newPassword !== confirmPassword) {
       setAlert({
         type: "error",
-        message: "new password  do not match",
+        message: t("password_mismatch", "New password do not match"),
       });
       return;
     }
@@ -54,7 +58,10 @@ const ChangePasswordForm = () => {
 
         setAlert({
           type: "success",
-          message: "password  change successfully",
+          message: t(
+            "password_change_success",
+            "Password changed successfully"
+          ),
         });
 
         setOldPassword("");
@@ -64,13 +71,13 @@ const ChangePasswordForm = () => {
         setLoading(false);
         setAlert({
           type: "error",
-          message: data?.err,
+          message: data?.err || t("update_failed", "Password update failed"),
         });
       }
     } catch (error) {
       setAlert({
         type: "error",
-        message: "something went wrong",
+        message: t("something_wrong", "Something went wrong"),
       });
     }
   };
@@ -94,12 +101,12 @@ const ChangePasswordForm = () => {
           </Alert>
         )}
         <Typography variant="h4" component="h1" gutterBottom align="center">
-          Change Password
+          {t("change_password_title", "Change Password")}
         </Typography>
 
         <form onSubmit={handleSubmit}>
           <TextField
-            label="Old Password"
+            label={t("old_password", "Old Password")}
             type="password"
             value={oldPassword}
             onChange={(e) => setOldPassword(e.target.value)}
@@ -126,7 +133,7 @@ const ChangePasswordForm = () => {
             }}
           />
           <TextField
-            label="New Password"
+            label={t("new_password", "New Password")}
             type="password"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
@@ -153,7 +160,7 @@ const ChangePasswordForm = () => {
             }}
           />
           <TextField
-            label="Confirm Password"
+            label={t("confirm_password", "Confirm Password")}
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
@@ -209,7 +216,7 @@ const ChangePasswordForm = () => {
               data-testid="loader"
             />
 
-            {loading ? "" : "change password"}
+            {loading ? "" : t("change_password_button", "Change Password")}
           </Button>
         </form>
       </Box>

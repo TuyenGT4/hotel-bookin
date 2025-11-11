@@ -1,0 +1,21 @@
+{
+  "title": "Thêm thành viên mới",
+  "fields": {
+    "name": "Họ và tên",
+    "position": "Chức vụ"
+  },
+  "buttons": {
+    "upload_image": "Tải ảnh lên",
+    "cancel": "Hủy",
+    "add": "Thêm thành viên",
+    "adding": "Đang thêm..."
+  },
+  "errors": {
+    "required_fields": "Vui lòng điền đầy đủ thông tin",
+    "add_failed": "Thêm thành viên thất bại"
+  },
+  "messages": {
+    "add_success": "Đã thêm thành viên vào nhóm thành công"
+  },
+  "preview": "Xem trước"
+}

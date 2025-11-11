@@ -1,0 +1,21 @@
+{
+  "title": "Edit Team Member",
+  "fields": {
+    "name": "Name",
+    "position": "Position"
+  },
+  "buttons": {
+    "cancel": "Cancel",
+    "change_image": "Change Image",
+    "update_member": "Update Member",
+    "updating": "Updating..."
+  },
+  "preview": "Preview",
+  "messages": {
+    "update_success": "Team member updated successfully"
+  },
+  "errors": {
+    "required_fields": "Please fill all required fields",
+    "update_failed": "Failed to update team member"
+  }
+}

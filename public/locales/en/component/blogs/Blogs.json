@@ -1,0 +1,8 @@
+{
+  "blog_not_found": "Blog post not found",
+  "fetch_failed": "Failed to fetch blog data",
+  "no_slug": "No slug parameter provided in URL",
+  "loading_blog": "Loading blog post...",
+  "error": "Error",
+  "no_blog_data": "No blog data available"
+}

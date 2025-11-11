@@ -1,0 +1,12 @@
+{
+  "add_room_category": "Thêm danh mục phòng",
+  "image": "Hình ảnh",
+  "name": "Tên",
+  "actions": "Hành động",
+  "room": "phòng",
+  "na": "Không có",
+  "edit": "Chỉnh sửa",
+  "delete": "Xóa",
+  "fetch_roomtype_failed": "Lấy loại phòng thất bại",
+  "fetch_rooms_failed": "Lấy danh sách phòng thất bại"
+}

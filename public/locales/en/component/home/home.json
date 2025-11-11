@@ -1,0 +1,14 @@
+{
+  "fill_required_fields": "Please fill all required fields",
+  "checkout_after_checkin": "Check-out date must be after check-in date",
+  "listify_title": "Listify: Discover, Compare, and Choose",
+  "listify_subtitle": "Your ultimate guide to finding the best hotels, deals, and experiences online.",
+  "checkin_date": "Check-in Date",
+  "checkout_date": "Check-out Date",
+  "select_checkin": "Please select check-in date",
+  "select_checkout": "Please select check-out date",
+  "num_guests": "Number of Guests",
+  "guest": "Guest",
+  "guests": "Guests",
+  "check_availability": "Check Availability"
+}

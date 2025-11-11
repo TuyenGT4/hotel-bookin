@@ -12,6 +12,7 @@ import {
   FormControl,
   InputLabel,
 } from "@mui/material";
+import { useTranslation } from "react-i18next"; // ✅ added
 
 // List of countries for the dropdown
 const countries = [
@@ -19,11 +20,12 @@ const countries = [
   { code: "CA", name: "Canada" },
   { code: "GB", name: "United Kingdom" },
   { code: "AU", name: "Australia" },
-  { code: "IN", name: "India" },
+  { code: "VN", name: "Viet Nam" },
   // Add more countries as needed
 ];
 
 export default function ProfileUpdateForm() {
+  const { t } = useTranslation("component/dashboard/admin/profile/profile"); // ✅ added
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -55,11 +57,9 @@ export default function ProfileUpdateForm() {
       const data = await response.json();
 
       setEmail(data?.email);
-
       setName(data?.name);
       setProfileImagePreview(data?.image);
       setMobileNumber(data?.mobileNumber || "");
-
       setAddress(data?.address || "");
       setCountry(data?.country);
     } catch (error) {
@@ -70,47 +70,47 @@ export default function ProfileUpdateForm() {
   const validateForm = () => {
     const errors = {};
 
-    if (!name) errors.name = "name is required";
-
+    if (!name) errors.name = t("name_required", "Name is required");
     if (!email) {
-      errors.email = "email is required";
+      errors.email = t("email_required", "Email is required");
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      errors.email = "email is invalid";
+      errors.email = t("email_invalid", "Email is invalid");
     }
 
     if (!mobileNumber && !/^[0-9]{10}$/.test(mobileNumber)) {
-      errors.mobileNumber = "please enter a valid 10  digit mobile number";
+      errors.mobileNumber = t(
+        "mobile_invalid",
+        "Please enter a valid 10-digit mobile number"
+      );
     }
 
     if (address && address.length < 5) {
-      errors.address = "Address is too short";
+      errors.address = t("address_short", "Address is too short");
     }
 
     if (
       country &&
       !countries.some((c) => c.code === country || c.name === country)
     ) {
-      errors.country = "Please select a valid country";
+      errors.country = t("country_invalid", "Please select a valid country");
     }
 
-    if (!password) errors.password = "Password is required";
+    if (!password)
+      errors.password = t("password_required", "Password is required");
 
     if (password !== confirmPassword) {
-      errors.confirmPassword = "Password  do not match";
+      errors.confirmPassword = t("password_mismatch", "Passwords do not match");
     }
 
     setErrors(errors);
-
     return Object.keys(errors).length === 0;
   };
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-
     if (file) {
       setProfileImage(file);
       const reader = new FileReader();
-
       reader.onloadend = () => {
         setProfileImagePreview(reader.result);
       };
@@ -132,12 +132,11 @@ export default function ProfileUpdateForm() {
     );
 
     const data = await response.json();
-    console.log(data);
     return data.secure_url;
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //alert("submit form")
     setServerMessage("");
 
     if (!validateForm()) return;
@@ -145,9 +144,8 @@ export default function ProfileUpdateForm() {
     let imageUrl = profileImagePreview;
     if (profileImage) {
       imageUrl = await uploadImageToCloudinary(profileImage);
-
       setIsSuccess(true);
-      setServerMessage("Image Uploaded successfully");
+      setServerMessage(t("image_uploaded", "Image uploaded successfully"));
     }
 
     const requestBody = {
@@ -159,8 +157,6 @@ export default function ProfileUpdateForm() {
       country,
       profileImage: imageUrl,
     };
-
-    console.log(requestBody);
 
     const response = await fetch(`${process.env.API}/admin/profile`, {
       method: "POST",
@@ -177,9 +173,7 @@ export default function ProfileUpdateForm() {
       setServerMessage(data?.err);
     } else {
       setIsSuccess(true);
-
       setServerMessage(data?.msg);
-
       setPassword("");
       setConfirmPassword("");
     }
@@ -228,7 +222,7 @@ export default function ProfileUpdateForm() {
                 <div className="image-container">
                   <img
                     src={profileImagePreview}
-                    alt="Profile Preview"
+                    alt={t("profile_preview", "Profile Preview")}
                     className="profile-image"
                   />
                 </div>
@@ -245,7 +239,7 @@ export default function ProfileUpdateForm() {
             }}
           >
             <Typography variant="h4" component="h1" gutterBottom>
-              Update Profile
+              {t("update_profile", "Update Profile")}
             </Typography>
             {serverMessage && (
               <Alert severity={isSuccess ? "success" : "error"}>
@@ -253,7 +247,7 @@ export default function ProfileUpdateForm() {
               </Alert>
             )}
             <TextField
-              label="Name"
+              label={t("name", "Name")}
               variant="outlined"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -267,20 +261,14 @@ export default function ProfileUpdateForm() {
                 mb: 3,
                 input: { color: "white" },
                 "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "#8A12FC",
-                  },
-                  "&:hover fieldset": {
-                    borderColor: "#8A12FC",
-                  },
-                  "&.Mui-focused fieldset": {
-                    borderColor: "#8A12FC",
-                  },
+                  "& fieldset": { borderColor: "#8A12FC" },
+                  "&:hover fieldset": { borderColor: "#8A12FC" },
+                  "&.Mui-focused fieldset": { borderColor: "#8A12FC" },
                 },
               }}
             />
             <TextField
-              label="Email"
+              label={t("email", "Email")}
               variant="outlined"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -294,20 +282,14 @@ export default function ProfileUpdateForm() {
                 mb: 3,
                 input: { color: "white" },
                 "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "#8A12FC",
-                  },
-                  "&:hover fieldset": {
-                    borderColor: "#8A12FC",
-                  },
-                  "&.Mui-focused fieldset": {
-                    borderColor: "#8A12FC",
-                  },
+                  "& fieldset": { borderColor: "#8A12FC" },
+                  "&:hover fieldset": { borderColor: "#8A12FC" },
+                  "&.Mui-focused fieldset": { borderColor: "#8A12FC" },
                 },
               }}
             />
             <TextField
-              label="Mobile Number"
+              label={t("mobile_number", "Mobile Number")}
               variant="outlined"
               value={mobileNumber}
               onChange={(e) => setMobileNumber(e.target.value)}
@@ -321,20 +303,14 @@ export default function ProfileUpdateForm() {
                 mb: 3,
                 input: { color: "white" },
                 "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "#8A12FC",
-                  },
-                  "&:hover fieldset": {
-                    borderColor: "#8A12FC",
-                  },
-                  "&.Mui-focused fieldset": {
-                    borderColor: "#8A12FC",
-                  },
+                  "& fieldset": { borderColor: "#8A12FC" },
+                  "&:hover fieldset": { borderColor: "#8A12FC" },
+                  "&.Mui-focused fieldset": { borderColor: "#8A12FC" },
                 },
               }}
             />
             <TextField
-              label="Address"
+              label={t("address", "Address")}
               variant="outlined"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
@@ -350,25 +326,19 @@ export default function ProfileUpdateForm() {
                 mb: 3,
                 textarea: { color: "white" },
                 "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "#8A12FC",
-                  },
-                  "&:hover fieldset": {
-                    borderColor: "#8A12FC",
-                  },
-                  "&.Mui-focused fieldset": {
-                    borderColor: "#8A12FC",
-                  },
+                  "& fieldset": { borderColor: "#8A12FC" },
+                  "&:hover fieldset": { borderColor: "#8A12FC" },
+                  "&.Mui-focused fieldset": { borderColor: "#8A12FC" },
                 },
               }}
             />
             <FormControl fullWidth sx={{ mb: 3 }}>
               <InputLabel id="country-select-label" sx={{ color: "#8A12FC" }}>
-                Country
+                {t("country", "Country")}
               </InputLabel>
               <Select
                 labelId="country-select-label"
-                label="Country"
+                label={t("country", "Country")}
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
                 error={!!errors.country}
@@ -398,7 +368,7 @@ export default function ProfileUpdateForm() {
               )}
             </FormControl>
             <TextField
-              label="Password"
+              label={t("password", "Password")}
               type="password"
               variant="outlined"
               value={password}
@@ -413,20 +383,14 @@ export default function ProfileUpdateForm() {
                 mb: 3,
                 input: { color: "white" },
                 "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "#8A12FC",
-                  },
-                  "&:hover fieldset": {
-                    borderColor: "#8A12FC",
-                  },
-                  "&.Mui-focused fieldset": {
-                    borderColor: "#8A12FC",
-                  },
+                  "& fieldset": { borderColor: "#8A12FC" },
+                  "&:hover fieldset": { borderColor: "#8A12FC" },
+                  "&.Mui-focused fieldset": { borderColor: "#8A12FC" },
                 },
               }}
             />
             <TextField
-              label="Confirm Password"
+              label={t("confirm_password", "Confirm Password")}
               type="password"
               variant="outlined"
               value={confirmPassword}
@@ -441,15 +405,9 @@ export default function ProfileUpdateForm() {
                 mb: 3,
                 input: { color: "white" },
                 "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "#8A12FC",
-                  },
-                  "&:hover fieldset": {
-                    borderColor: "#8A12FC",
-                  },
-                  "&.Mui-focused fieldset": {
-                    borderColor: "#8A12FC",
-                  },
+                  "& fieldset": { borderColor: "#8A12FC" },
+                  "&:hover fieldset": { borderColor: "#8A12FC" },
+                  "&.Mui-focused fieldset": { borderColor: "#8A12FC" },
                 },
               }}
             />
@@ -461,20 +419,16 @@ export default function ProfileUpdateForm() {
                 backgroundColor: "#8A12FC",
                 input: { color: "white" },
                 "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "#8A12FC",
-                  },
+                  "& fieldset": { borderColor: "#8A12FC" },
                   "&:hover fieldset": {
                     borderColor: "#8A12FC",
                     backgroundColor: "#8A12FC",
                   },
-                  "&.Mui-focused fieldset": {
-                    borderColor: "#8A12FC",
-                  },
+                  "&.Mui-focused fieldset": { borderColor: "#8A12FC" },
                 },
               }}
             >
-              Upload Profile Image
+              {t("upload_image", "Upload Profile Image")}
               <input type="file" hidden onChange={handleImageChange} />
             </Button>
             <Button
@@ -484,20 +438,16 @@ export default function ProfileUpdateForm() {
                 backgroundColor: "#8A12FC",
                 input: { color: "white" },
                 "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "#8A12FC",
-                  },
+                  "& fieldset": { borderColor: "#8A12FC" },
                   "&:hover fieldset": {
                     borderColor: "#8A12FC",
                     backgroundColor: "#8A12FC",
                   },
-                  "&.Mui-focused fieldset": {
-                    borderColor: "#8A12FC",
-                  },
+                  "&.Mui-focused fieldset": { borderColor: "#8A12FC" },
                 },
               }}
             >
-              Update Profile
+              {t("update_profile", "Update Profile")}
             </Button>
           </Box>
           <style jsx>{`

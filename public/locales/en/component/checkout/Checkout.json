@@ -1,0 +1,19 @@
+{
+  "fetch_failed": "Failed to fetch pricing",
+  "pricing_error": "Unable to fetch room pricing",
+  "razorpay_loaded": "Razorpay script loaded",
+  "test_payment": "Test Payment",
+  "your_address": "Your address",
+  "payment_failed": "Payment initiation failed",
+  "payment_success": "Payment successful",
+  "stripe_failed": "Stripe payment failed",
+  "stripe_error": "Unable to initiate Stripe payment",
+  "paypal_failed": "PayPal payment failed",
+  "paypal_error": "Unable to initiate PayPal payment",
+  "fill_field": "Please fill in",
+  "correctly": "correctly",
+  "fill_required": "Please fill in all required fields correctly",
+  "select_payment": "Please select a payment method",
+  "order_success": "Order placed successfully",
+  "order_failed": "Order failed"
+}

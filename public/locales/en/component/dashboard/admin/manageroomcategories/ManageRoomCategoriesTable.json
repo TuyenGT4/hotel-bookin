@@ -1,0 +1,12 @@
+{
+  "add_room_category": "Add Room Category",
+  "image": "Image",
+  "name": "Name",
+  "actions": "Actions",
+  "room": "room",
+  "na": "N/A",
+  "edit": "Edit",
+  "delete": "Delete",
+  "fetch_roomtype_failed": "Failed to fetch room type",
+  "fetch_rooms_failed": "Failed to fetch rooms"
+}

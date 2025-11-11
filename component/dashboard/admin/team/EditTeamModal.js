@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { toast } from "react-toastify";
 import { modalStyle } from "./styles";
+import { useTranslation } from "react-i18next"; // ✅ thêm
 
 export default function EditTeamModal({
   open,
@@ -19,6 +20,8 @@ export default function EditTeamModal({
   loading,
   setLoading,
 }) {
+  const { t } = useTranslation("component/dashboard/admin/team/editteammodal"); // ✅ namespace
+
   const [editedMember, setEditedMember] = useState({
     name: "",
     position: "",
@@ -39,7 +42,6 @@ export default function EditTeamModal({
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-
     setEditedMember((prev) => ({
       ...prev,
       [name]: value,
@@ -48,10 +50,8 @@ export default function EditTeamModal({
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
-
     if (file) {
       const reader = new FileReader();
-
       reader.onloadend = () => {
         setEditedMember((prev) => ({
           ...prev,
@@ -59,24 +59,24 @@ export default function EditTeamModal({
           previewImage: reader.result,
         }));
       };
-
       reader.readAsDataURL(file);
     }
   };
 
   const handleUpdateMember = async () => {
     if (!editedMember.name || !editedMember.position) {
-      toast.error("Please fil all required fields");
+      toast.error(
+        t("errors.required_fields", "Please fill all required fields")
+      );
+      return;
     }
 
     try {
       setLoading(true);
 
       let imageUrl = member.image;
-
       if (editedMember.image && typeof editedMember.image !== "string") {
         const imageData = new FormData();
-
         imageData.append("file", editedMember.image);
         imageData.append("upload_preset", "ml_default");
 
@@ -89,7 +89,6 @@ export default function EditTeamModal({
         );
 
         const data = await response.json();
-
         imageUrl = data.secure_url;
       }
 
@@ -97,9 +96,7 @@ export default function EditTeamModal({
         `${process.env.API}/admin/team/${member._id}`,
         {
           method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             name: editedMember.name,
             position: editedMember.position,
@@ -109,11 +106,13 @@ export default function EditTeamModal({
       );
 
       const updatedEmployee = await response.json();
-
       onSuccess(updatedEmployee);
-      toast.success("Team member updated successfully");
+
+      toast.success(
+        t("messages.update_success", "Team member updated successfully")
+      );
     } catch (error) {
-      toast.error(error);
+      toast.error(t("errors.update_failed", "Failed to update team member"));
     } finally {
       setLoading(false);
     }
@@ -131,12 +130,13 @@ export default function EditTeamModal({
             color: "#1a202c",
           }}
         >
-          Edit Team Member
+          {t("title", "Edit Team Member")}
         </h2>
+
         <Stack spacing={3}>
           <TextField
             fullWidth
-            label="Name"
+            label={t("fields.name", "Name")}
             name="name"
             value={editedMember.name}
             onChange={handleInputChange}
@@ -155,7 +155,7 @@ export default function EditTeamModal({
 
           <TextField
             fullWidth
-            label="Position"
+            label={t("fields.position", "Position")}
             name="position"
             value={editedMember.position}
             onChange={handleInputChange}
@@ -192,14 +192,15 @@ export default function EditTeamModal({
                   "&:hover": { backgroundColor: "#7a0eeb" },
                 }}
               >
-                Change Image
+                {t("buttons.change_image", "Change Image")}
               </Button>
             </label>
+
             {(editedMember.previewImage || member?.image) && (
               <Box sx={{ mt: 2, display: "flex", justifyContent: "center" }}>
                 <Avatar
                   src={editedMember.previewImage || member?.image}
-                  alt="Preview"
+                  alt={t("preview", "Preview")}
                   sx={{
                     width: 100,
                     height: 100,
@@ -218,7 +219,7 @@ export default function EditTeamModal({
               sx={{ borderRadius: "12px" }}
               disabled={loading}
             >
-              Cancel
+              {t("buttons.cancel", "Cancel")}
             </Button>
             <Button
               variant="contained"
@@ -229,7 +230,9 @@ export default function EditTeamModal({
               }}
               disabled={loading}
             >
-              {loading ? "Updating..." : "Update Member"}
+              {loading
+                ? t("buttons.updating", "Updating...")
+                : t("buttons.update_member", "Update Member")}
             </Button>
           </Box>
         </Stack>

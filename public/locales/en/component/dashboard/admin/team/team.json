@@ -1,0 +1,18 @@
+{
+  "buttons": {
+    "add_member": "Add Team Member"
+  },
+  "columns": {
+    "profile": "Profile",
+    "name": "Name",
+    "position": "Position",
+    "actions": "Actions"
+  },
+  "tooltips": {
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "errors": {
+    "fetch_failed": "Failed to fetch team members"
+  }
+}

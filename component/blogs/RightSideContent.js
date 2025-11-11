@@ -8,9 +8,12 @@ import {
 } from "@mui/material";
 import { useEffect } from "react";
 import Link from "next/link";
-
 import { useRouter } from "next/navigation";
+import { useTranslation } from "react-i18next";
+
 export const RightSideContent = ({ categories, listings }) => {
+  const { t } = useTranslation("component/blogs/RightSideContent");
+
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
@@ -18,7 +21,7 @@ export const RightSideContent = ({ categories, listings }) => {
           sx={{ display: "flex", alignItems: "center", marginBottom: "10px" }}
         >
           <TextField
-            label="Search"
+            label={t("search", "Search")}
             variant="outlined"
             sx={{ flexGrow: 1, marginRight: "10px" }}
           />
@@ -34,7 +37,7 @@ export const RightSideContent = ({ categories, listings }) => {
               },
             }}
           >
-            Search
+            {t("search", "Search")}
           </Button>
         </Box>
       </Grid>
@@ -55,7 +58,7 @@ export const RightSideContent = ({ categories, listings }) => {
             variant="body2"
             sx={{ fontWeight: "bold", marginBottom: "10px" }}
           >
-            Categories
+            {t("categories", "Categories")}
           </Typography>
           {categories.map((category, index) => (
             <Box key={index}>
@@ -90,7 +93,7 @@ export const RightSideContent = ({ categories, listings }) => {
             variant="body2"
             sx={{ fontWeight: "bold", marginBottom: "10px" }}
           >
-            Similar blogs
+            {t("similar_blogs", "Similar blogs")}
           </Typography>
 
           {listings.map((listing, index) => (
@@ -115,28 +118,26 @@ export const RightSideContent = ({ categories, listings }) => {
                 }}
               />
               <Box sx={{ flex: 1 }}>
-               
-                  <a
- href={`/blogs?slug=${listing.slug}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ textDecoration: "none", color: "inherit" }}
+                <a
+                  href={`/blogs?slug=${listing.slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontWeight: "bold",
+                      "&:hover": {
+                        color: "primary.main",
+                        textDecoration: "underline",
+                        cursor: "pointer",
+                      },
+                    }}
                   >
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        fontWeight: "bold",
-                        "&:hover": {
-                          color: "primary.main",
-                          textDecoration: "underline",
-                          cursor: "pointer",
-                        },
-                      }}
-                    >
-                      {listing.title}
-                    </Typography>
-                  </a>
-              
+                    {listing.title}
+                  </Typography>
+                </a>
 
                 <Box
                   sx={{
@@ -149,7 +150,7 @@ export const RightSideContent = ({ categories, listings }) => {
                     {listing.postedDate}
                   </Typography>
                   <Typography variant="body2" color="textSecondary">
-                    {listing.commentsCount} comm
+                    {listing.commentsCount} {t("comments", "comm")}
                   </Typography>
                 </Box>
               </Box>

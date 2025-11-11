@@ -15,11 +15,14 @@ import {
   Chip,
   Box,
 } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 export default function BookingsPage() {
   const [bookings, setBookings] = useState([]);
 
   const [loading, setLoading] = useState(true);
+
+  const { t } = useTranslation("component/dashboard/user/bookings");
 
   useEffect(() => {
     fetch(`${process.env.API}/user/booking`)
@@ -69,7 +72,7 @@ export default function BookingsPage() {
           WebkitTextFillColor: "transparent",
         }}
       >
-        🌟 My Bookings
+        🌟 {t("my_bookings", "My Bookings")}
       </Typography>
 
       {loading ? (
@@ -84,7 +87,7 @@ export default function BookingsPage() {
           ))}
         </Box>
       ) : bookings.length === 0 ? (
-        <Typography>No bookings found.</Typography>
+        <Typography>{t("no_bookings_found", "No bookings found.")}</Typography>
       ) : (
         <TableContainer
           component={Paper}
@@ -101,13 +104,13 @@ export default function BookingsPage() {
                 }}
               >
                 {[
-                  "Check In",
-                  "Check Out",
-                  "Name",
-                  "Rooms",
-                  "Total Price",
-                  "Status",
-                  "Payment",
+                  t("check_in", "Check In"),
+                  t("check_out", "Check Out"),
+                  t("name", "Name"),
+                  t("rooms", "Rooms"),
+                  t("total_price", "Total Price"),
+                  t("status", "Status"),
+                  t("payment", "Payment"),
                 ].map((heading) => (
                   <TableCell
                     key={heading}
@@ -142,7 +145,7 @@ export default function BookingsPage() {
                   </TableCell>
                   <TableCell>
                     <Chip
-                      label={booking.status}
+                      label={t(booking.status, booking.status)}
                       color={getStatusColor(booking.status)}
                       variant="filled"
                       size="small"
@@ -150,7 +153,7 @@ export default function BookingsPage() {
                   </TableCell>
                   <TableCell>
                     <Chip
-                      label={booking.payment_method}
+                      label={t(booking.payment_method, booking.payment_method)}
                       color={getPaymentColor(booking.payment_method)}
                       variant="outlined"
                       size="small"

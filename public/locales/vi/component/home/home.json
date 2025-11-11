@@ -1,0 +1,14 @@
+{
+  "fill_required_fields": "Vui lòng điền đầy đủ các trường bắt buộc",
+  "checkout_after_checkin": "Ngày trả phòng phải sau ngày nhận phòng",
+  "listify_title": "Listify: Khám phá - So sánh - Lựa chọn",
+  "listify_subtitle": "Lựa chọn hoàn hảo giúp bạn tìm khách sạn, ưu đãi và trải nghiệm tốt nhất trực tuyến.",
+  "checkin_date": "Ngày nhận phòng",
+  "checkout_date": "Ngày trả phòng",
+  "select_checkin": "Vui lòng chọn ngày nhận phòng",
+  "select_checkout": "Vui lòng chọn ngày trả phòng",
+  "num_guests": "Số lượng khách",
+  "guest": "Khách",
+  "guests": "Khách",
+  "check_availability": "Kiểm tra phòng trống"
+}

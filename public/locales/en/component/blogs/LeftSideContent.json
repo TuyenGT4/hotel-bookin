@@ -1,0 +1,15 @@
+{
+  "fetch_failed": "Failed to fetch blog data",
+  "blog_not_found": "Blog post not found",
+  "no_slug": "No slug parameter provided in URL",
+  "loading_blog": "Loading blog post...",
+  "error": "Error",
+  "no_blog_data": "No blog data available",
+
+  "main_image_alt": "Main image",
+  "verified": "Verified",
+  "add_to_favorites": "Add to Favorites",
+  "views": "{{count}} views",
+  "open": "Open",
+  "login_comment": "Login to leave a comment."
+}

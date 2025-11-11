@@ -1,0 +1,15 @@
+{
+  "title": "Xác nhận xóa",
+  "content": "Bạn có chắc chắn muốn xóa {{name}} không? Hành động này không thể hoàn tác.",
+  "buttons": {
+    "cancel": "Hủy",
+    "delete": "Xóa",
+    "deleting": "Đang xóa..."
+  },
+  "messages": {
+    "delete_success": "Xóa thành viên nhóm thành công"
+  },
+  "errors": {
+    "delete_failed": "Xóa thành viên thất bại"
+  }
+}

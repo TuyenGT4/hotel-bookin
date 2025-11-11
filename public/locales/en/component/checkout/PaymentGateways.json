@@ -1,0 +1,9 @@
+{
+  "payment_method": "Payment Method",
+  "choose_payment": "Choose your preferred payment",
+  "cash_on_delivery": "Cash on Delivery",
+  "credit_card": "Credit/Debit Card",
+  "razorpay_wallet": "Razorpay Wallet",
+  "paypal": "PayPal",
+  "confirm_pay": "Confirm & Pay Now"
+}

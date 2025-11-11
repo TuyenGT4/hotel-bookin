@@ -1,0 +1,18 @@
+{
+  "title": "Thêm loại phòng mới",
+  "fields": {
+    "name": "Tên loại phòng"
+  },
+  "buttons": {
+    "cancel": "Hủy",
+    "add": "Thêm loại phòng",
+    "adding": "Đang thêm..."
+  },
+  "messages": {
+    "add_success": "Thêm loại phòng mới thành công"
+  },
+  "errors": {
+    "required": "Vui lòng điền đầy đủ các trường bắt buộc",
+    "add_failed": "Không thể thêm loại phòng mới"
+  }
+}

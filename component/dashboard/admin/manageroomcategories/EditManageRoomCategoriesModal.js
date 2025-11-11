@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import {
   Box,
   Modal,
@@ -37,10 +38,13 @@ export default function EditManageRoomCategoriesModal({
   setLoading,
   fetchRooms,
 }) {
+  const { t } = useTranslation(
+    "component/dashboard/admin/manageroomcategories/EditManageRoomCategoriesModal"
+  );
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const fileInputRef = useRef(null);
-  const bulkFileInputRef = useRef(null); // For bulk image upload
+  const bulkFileInputRef = useRef(null);
 
   const [bulkUploadProgress, setBulkUploadProgress] = useState(0);
   const [uploadedImages, setUploadedImages] = useState([]);
@@ -65,48 +69,46 @@ export default function EditManageRoomCategoriesModal({
     room_id: "",
     roomtype_id: "",
     facilities: [],
-    gallery_images: [], // Ensure this is initialized as an array
+    gallery_images: [],
     room_numbers: [],
   });
   const [activeTab, setActiveTab] = useState(0);
 
-  console.log("memberx==>", member);
-
   // View options
   const viewOptions = [
-    "Sea View",
-    "Garden View",
-    "Mountain View",
-    "City View",
-    "Pool View",
+    t("view_sea", "Sea View"),
+    t("view_garden", "Garden View"),
+    t("view_mountain", "Mountain View"),
+    t("view_city", "City View"),
+    t("view_pool", "Pool View"),
   ];
 
   // Bed style options
   const bedStyleOptions = [
-    "Single Bed",
-    "Double Bed",
-    "King Size Bed",
-    "Queen Size Bed",
-    "Twin Beds",
-    "Bunk Beds",
+    t("bed_single", "Single Bed"),
+    t("bed_double", "Double Bed"),
+    t("bed_king", "King Size Bed"),
+    t("bed_queen", "Queen Size Bed"),
+    t("bed_twin", "Twin Beds"),
+    t("bed_bunk", "Bunk Beds"),
   ];
 
   // Facility options
   const facilityOptions = [
-    "Free WiFi",
-    "Swimming Pool",
-    "Air Conditioning",
-    "TV",
-    "Mini Bar",
-    "Safe",
-    "Room Service",
-    "Breakfast Included",
-    "Laundry Service",
-    "Parking",
-    "Gym",
-    "Spa",
-    "Pet Friendly",
-    "Accessible Room",
+    t("facility_wifi", "Free WiFi"),
+    t("facility_pool", "Swimming Pool"),
+    t("facility_ac", "Air Conditioning"),
+    t("facility_tv", "TV"),
+    t("facility_minibar", "Mini Bar"),
+    t("facility_safe", "Safe"),
+    t("facility_roomservice", "Room Service"),
+    t("facility_breakfast", "Breakfast Included"),
+    t("facility_laundry", "Laundry Service"),
+    t("facility_parking", "Parking"),
+    t("facility_gym", "Gym"),
+    t("facility_spa", "Spa"),
+    t("facility_pet", "Pet Friendly"),
+    t("facility_accessible", "Accessible Room"),
   ];
 
   useEffect(() => {
@@ -124,14 +126,12 @@ export default function EditManageRoomCategoriesModal({
         discount: member?.discount || 0,
         short_desc: member?.short_desc || "",
         description: member?.description || "",
-
         status: member?.status || 0,
         roomNumber: member?.roomNumber || "",
         room_id: member?._id || "",
         roomtype_id: member?.roomtype_id?._id || "",
         facilities: member?.facilities || [],
-        gallery_images: member?.gallery_images || [], // Ensure this is initialized
-
+        gallery_images: member?.gallery_images || [],
         room_numbers: member?.room_numbers || [],
       });
       setSelectedFacilities(member?.facilities || []);
@@ -167,9 +167,6 @@ export default function EditManageRoomCategoriesModal({
     }
   }, [member]);
 
-  console.log("member=======================", member);
-
-  // Add this to your useEffect to initialize uploadedImages when member data is loaded
   useEffect(() => {
     if (member?.gallery_images) {
       setUploadedImages(member.gallery_images);
@@ -207,11 +204,9 @@ export default function EditManageRoomCategoriesModal({
     try {
       setIsUploading(true);
 
-      // Create a preview URL for the image
       const previewUrl = URL.createObjectURL(file);
       setImagePreview(previewUrl);
 
-      // Upload to Cloudinary
       const formData = new FormData();
       formData.append("file", file);
       formData.append("upload_preset", "ml_default");
@@ -230,13 +225,15 @@ export default function EditManageRoomCategoriesModal({
           ...prev,
           image: data.secure_url,
         }));
-        toast.success("Image uploaded successfully!");
+        toast.success(
+          t("image_upload_success", "Image uploaded successfully!")
+        );
       } else {
         throw new Error("Failed to upload image");
       }
     } catch (error) {
       console.error("Error uploading image:", error);
-      toast.error("Failed to upload image");
+      toast.error(t("image_upload_failed", "Failed to upload image"));
       setImagePreview("");
     } finally {
       setIsUploading(false);
@@ -248,13 +245,14 @@ export default function EditManageRoomCategoriesModal({
   };
 
   const handleUpdateMember = async () => {
-    // Basic validation
     if (activeTab === 0 && (!editedMember.name || !member)) {
-      toast.error("Please fill all required room fields");
+      toast.error(
+        t("fill_required_fields", "Please fill all required room fields")
+      );
       return;
     }
     if (activeTab !== 0 && !editedMember.roomNumber) {
-      toast.error("Please enter a room number");
+      toast.error(t("enter_room_number", "Please enter a room number"));
       return;
     }
 
@@ -263,14 +261,14 @@ export default function EditManageRoomCategoriesModal({
 
       const endpoint =
         activeTab === 0
-          ? `${process.env.API}/admin/room/${member?._id}` // Room update
-          : `${process.env.API}/admin/room/roomno`; // Room number create/update
+          ? `${process.env.API}/admin/room/${member?._id}`
+          : `${process.env.API}/admin/room/roomno`;
 
       const method = activeTab === 0 ? "PUT" : "POST";
 
       const payload =
         activeTab === 0
-          ? editedMember // Send all room data
+          ? editedMember
           : {
               room_id: editedMember.room_id || member._id,
               roomtype_id: editedMember.roomtype_id,
@@ -285,18 +283,20 @@ export default function EditManageRoomCategoriesModal({
       });
 
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    fetchRooms();
+      fetchRooms();
       const result = await response.json();
       onSuccess(result);
       toast.success(
         activeTab === 0
-          ? "Room updated successfully!"
-          : "Room number saved successfully!"
+          ? t("room_update_success", "Room updated successfully!")
+          : t("room_number_save_success", "Room number saved successfully!")
       );
     } catch (error) {
-      console.error("Update error****:", error);
+      console.error("Update error:", error);
       toast.error(
-        activeTab === 0 ? "Failed to update room" : "Failed to save room number"
+        activeTab === 0
+          ? t("room_update_failed", "Failed to update room")
+          : t("room_number_save_failed", "Failed to save room number")
       );
     } finally {
       setLoading(false);
@@ -317,12 +317,10 @@ export default function EditManageRoomCategoriesModal({
 
       for (const file of files) {
         try {
-          // Create form data for each file
           const formData = new FormData();
           formData.append("file", file);
           formData.append("upload_preset", "ml_default");
 
-          // Upload to Cloudinary
           const response = await fetch(
             `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload`,
             {
@@ -342,7 +340,7 @@ export default function EditManageRoomCategoriesModal({
           );
         } catch (error) {
           console.error("Error uploading image:", file.name, error);
-          toast.error(`Failed to upload ${file.name}`);
+          toast.error(t("upload_failed_file", `Failed to upload ${file.name}`));
         }
       }
 
@@ -353,12 +351,15 @@ export default function EditManageRoomCategoriesModal({
           gallery_images: [...prev.gallery_images, ...uploadedUrls],
         }));
         toast.success(
-          `Uploaded ${uploadedUrls.length} of ${totalFiles} images successfully!`
+          t(
+            "bulk_upload_success",
+            `Uploaded ${uploadedUrls.length} of ${totalFiles} images successfully!`
+          )
         );
       }
     } catch (error) {
       console.log("Error in bulk upload:", error);
-      toast.error("Bulk upload failed");
+      toast.error(t("bulk_upload_failed", "Bulk upload failed"));
     } finally {
       setIsUploading(false);
       setBulkUploadProgress(0);
@@ -406,7 +407,7 @@ export default function EditManageRoomCategoriesModal({
             color: "#1a202c",
           }}
         >
-          Room Management
+          {t("room_management", "Room Management")}
         </h2>
 
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -417,8 +418,20 @@ export default function EditManageRoomCategoriesModal({
             variant={isMobile ? "scrollable" : "standard"}
             scrollButtons="auto"
           >
-            <Tab label={isMobile ? "Categories" : "Room Categories"} />
-            <Tab label={isMobile ? "Room No." : "Room Number"} />
+            <Tab
+              label={
+                isMobile
+                  ? t("categories", "Categories")
+                  : t("room_categories", "Room Categories")
+              }
+            />
+            <Tab
+              label={
+                isMobile
+                  ? t("room_no_short", "Room No.")
+                  : t("room_number", "Room Number")
+              }
+            />
           </Tabs>
         </Box>
 
@@ -429,26 +442,26 @@ export default function EditManageRoomCategoriesModal({
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
-                  label="Name"
+                  label={t("name", "Name")}
                   name="name"
                   value={editedMember.name}
                   onChange={handleInputChange}
                   variant="outlined"
                   size="small"
-                  {...textFieldStyles} // Spread the styles here
+                  {...textFieldStyles}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
-                  label="Total Adults"
+                  label={t("total_adults", "Total Adults")}
                   name="total_adult"
                   value={editedMember.total_adult}
                   onChange={handleInputChange}
                   variant="outlined"
                   size="small"
                   type="number"
-                  {...textFieldStyles} // Spread the styles here
+                  {...textFieldStyles}
                 />
               </Grid>
 
@@ -456,26 +469,26 @@ export default function EditManageRoomCategoriesModal({
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
-                  label="Total Children"
+                  label={t("total_children", "Total Children")}
                   name="total_child"
                   value={editedMember.total_child}
                   onChange={handleInputChange}
                   variant="outlined"
                   size="small"
                   type="number"
-                  {...textFieldStyles} // Spread the styles here
+                  {...textFieldStyles}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
-                  label="Room Capacity"
+                  label={t("room_capacity", "Room Capacity")}
                   name="room_capacity"
                   value={editedMember.room_capacity}
                   onChange={handleInputChange}
                   variant="outlined"
                   size="small"
-                  {...textFieldStyles} // Spread the styles here
+                  {...textFieldStyles}
                 />
               </Grid>
 
@@ -483,16 +496,16 @@ export default function EditManageRoomCategoriesModal({
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
-                  label="Price"
+                  label={t("price", "Price")}
                   name="price"
                   value={editedMember.price}
                   onChange={handleInputChange}
                   variant="outlined"
                   size="small"
-                  {...textFieldStyles} // Spread the styles here
+                  {...textFieldStyles}
                   InputProps={{
                     startAdornment: (
-                      <InputAdornment position="start">$</InputAdornment>
+                      <InputAdornment position="start">VND</InputAdornment>
                     ),
                   }}
                   type="number"
@@ -501,14 +514,14 @@ export default function EditManageRoomCategoriesModal({
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
-                  label="Discount (%)"
+                  label={t("discount", "Discount (%)")}
                   name="discount"
                   value={editedMember.discount}
                   onChange={handleInputChange}
                   variant="outlined"
                   size="small"
                   type="number"
-                  {...textFieldStyles} // Spread the styles here
+                  {...textFieldStyles}
                 />
               </Grid>
 
@@ -516,16 +529,18 @@ export default function EditManageRoomCategoriesModal({
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
-                  label="Room Size"
+                  label={t("room_size", "Room Size")}
                   name="size"
                   value={editedMember.size}
                   onChange={handleInputChange}
                   variant="outlined"
                   size="small"
-                  {...textFieldStyles} // Spread the styles here
+                  {...textFieldStyles}
                   InputProps={{
                     endAdornment: (
-                      <InputAdornment position="end">sq ft</InputAdornment>
+                      <InputAdornment position="end">
+                        {t("sq_ft", "sq ft")}
+                      </InputAdornment>
                     ),
                   }}
                 />
@@ -536,12 +551,12 @@ export default function EditManageRoomCategoriesModal({
                   size="small"
                   sx={selectStyles.formControl.sx}
                 >
-                  <InputLabel>View</InputLabel>
+                  <InputLabel>{t("view", "View")}</InputLabel>
                   <Select
                     name="view"
                     value={editedMember.view}
                     onChange={handleInputChange}
-                    label="View"
+                    label={t("view", "View")}
                     sx={selectStyles.select.sx}
                   >
                     {viewOptions.map((option) => (
@@ -560,12 +575,12 @@ export default function EditManageRoomCategoriesModal({
                   size="small"
                   sx={selectStyles.formControl.sx}
                 >
-                  <InputLabel>Bed Style</InputLabel>
+                  <InputLabel>{t("bed_style", "Bed Style")}</InputLabel>
                   <Select
                     name="bed_style"
                     value={editedMember.bed_style}
                     onChange={handleInputChange}
-                    label="Bed Style"
+                    label={t("bed_style", "Bed Style")}
                     sx={selectStyles.select.sx}
                   >
                     {bedStyleOptions.map((option) => (
@@ -582,19 +597,19 @@ export default function EditManageRoomCategoriesModal({
                   size="small"
                   sx={selectStyles.formControl.sx}
                 >
-                  <InputLabel>Status</InputLabel>
+                  <InputLabel>{t("status", "Status")}</InputLabel>
                   <Select
                     name="status"
                     value={editedMember.status}
                     onChange={handleInputChange}
-                    label="Status"
+                    label={t("status", "Status")}
                     sx={selectStyles.select.sx}
                   >
                     <MenuItem sx={selectStyles.menuItem.sx} value={0}>
-                      Inactive
+                      {t("inactive", "Inactive")}
                     </MenuItem>
                     <MenuItem sx={selectStyles.menuItem.sx} value={1}>
-                      Active
+                      {t("active", "Active")}
                     </MenuItem>
                   </Select>
                 </FormControl>
@@ -608,14 +623,14 @@ export default function EditManageRoomCategoriesModal({
                   sx={selectStyles.formControl.sx}
                 >
                   <InputLabel style={selectStyles.inputLabel}>
-                    Facilities
+                    {t("facilities", "Facilities")}
                   </InputLabel>
                   <Select
                     multiple
                     name="facilities"
                     value={selectedFacilities}
                     onChange={handleFacilityChange}
-                    label="Facilities"
+                    label={t("facilities", "Facilities")}
                     renderValue={(selected) => selected.join(", ")}
                     sx={selectStyles.select.sx}
                   >
@@ -642,7 +657,7 @@ export default function EditManageRoomCategoriesModal({
                   {imagePreview && (
                     <Avatar
                       src={imagePreview}
-                      alt="Room Preview"
+                      alt={t("room_preview", "Room Preview")}
                       sx={{ width: 200, height: 200 }}
                       variant="rounded"
                     />
@@ -666,7 +681,9 @@ export default function EditManageRoomCategoriesModal({
                         "&:hover": { backgroundColor: "#7a0eeb" },
                       }}
                     >
-                      {isUploading ? "Uploading..." : "Upload Image"}
+                      {isUploading
+                        ? t("uploading", "Uploading...")
+                        : t("upload_image", "Upload Image")}
                     </Button>
                   </Box>
                 </Box>
@@ -676,7 +693,7 @@ export default function EditManageRoomCategoriesModal({
               <Grid item xs={12}>
                 <TextField
                   fullWidth
-                  label="Short Description"
+                  label={t("short_description", "Short Description")}
                   name="short_desc"
                   value={editedMember.short_desc}
                   onChange={handleInputChange}
@@ -684,7 +701,7 @@ export default function EditManageRoomCategoriesModal({
                   size="small"
                   multiline
                   rows={2}
-                  {...textFieldStyles} // Spread the styles here
+                  {...textFieldStyles}
                 />
               </Grid>
 
@@ -692,7 +709,7 @@ export default function EditManageRoomCategoriesModal({
               <Grid item xs={12}>
                 <TextField
                   fullWidth
-                  label="Full Description"
+                  label={t("full_description", "Full Description")}
                   name="description"
                   value={editedMember.description}
                   onChange={handleInputChange}
@@ -700,11 +717,11 @@ export default function EditManageRoomCategoriesModal({
                   size="small"
                   multiline
                   rows={4}
-                  {...textFieldStyles} // Spread the styles here
+                  {...textFieldStyles}
                 />
               </Grid>
 
-              {/* New Row - Bulk Image Upload */}
+              {/* Bulk Image Upload */}
               <Grid item xs={12}>
                 <Box sx={{ mt: 2 }}>
                   <input
@@ -728,7 +745,7 @@ export default function EditManageRoomCategoriesModal({
                       "&:hover": { backgroundColor: "#7a0eeb" },
                     }}
                   >
-                    Bulk Upload Images
+                    {t("bulk_upload_images", "Bulk Upload Images")}
                   </Button>
 
                   {bulkUploadProgress > 0 && bulkUploadProgress < 100 && (
@@ -739,7 +756,7 @@ export default function EditManageRoomCategoriesModal({
                           justifyContent: "space-between",
                         }}
                       >
-                        <span>Uploading...</span>
+                        <span>{t("uploading", "Uploading...")}</span>
                         <span>{bulkUploadProgress}%</span>
                       </Box>
                       <Box
@@ -770,23 +787,26 @@ export default function EditManageRoomCategoriesModal({
                             key={index}
                             sx={{
                               position: "relative",
-                              border: "5px solid #8A12FC", // Purple border
-                              borderRadius: 2, // Matches Avatar's rounded variant
-                              p: 0.5, // Padding inside the border
-                              transition: "all 0.3s ease", // Smooth hover effect
+                              border: "5px solid #8A12FC",
+                              borderRadius: 2,
+                              p: 0.5,
+                              transition: "all 0.3s ease",
                               "&:hover": {
-                                boxShadow: "0 0 0 2px rgba(138, 18, 252, 0.3)", // Glow effect
-                                transform: "scale(1.02)", // Slight zoom
+                                boxShadow: "0 0 0 2px rgba(138, 18, 252, 0.3)",
+                                transform: "scale(1.02)",
                               },
                             }}
                           >
                             <Avatar
                               src={img}
-                              alt={`Gallery Preview ${index + 1}`}
+                              alt={t(
+                                "gallery_preview",
+                                `Gallery Preview ${index + 1}`
+                              )}
                               sx={{
                                 width: 100,
                                 height: 100,
-                                boxShadow: 1, // Subtle shadow on the image
+                                boxShadow: 1,
                               }}
                               variant="rounded"
                             />
@@ -795,17 +815,17 @@ export default function EditManageRoomCategoriesModal({
                               onClick={() => removeImage(index)}
                               sx={{
                                 position: "absolute",
-                                top: -12, // Adjusted position
-                                right: -12, // Adjusted position
-                                bgcolor: "#8A12FC", // Using your purple color
+                                top: -12,
+                                right: -12,
+                                bgcolor: "#8A12FC",
                                 color: "white",
-                                border: "2px solid white", // White border for contrast
-                                boxShadow: 2, // Shadow for depth
+                                border: "2px solid white",
+                                boxShadow: 2,
                                 "&:hover": {
-                                  bgcolor: "#6a0bc7", // Darker purple on hover
-                                  transform: "scale(1.1)", // Slight grow effect
+                                  bgcolor: "#6a0bc7",
+                                  transform: "scale(1.1)",
                                 },
-                                transition: "all 0.2s ease", // Smooth transition
+                                transition: "all 0.2s ease",
                               }}
                             >
                               <DeleteIcon fontSize="small" />
@@ -820,17 +840,12 @@ export default function EditManageRoomCategoriesModal({
             </Grid>
           ) : (
             <>
-
-
-
-            <RoomNumbersTable
+              <RoomNumbersTable
                 editedMember={editedMember}
                 setEditedMember={setEditedMember}
                 handleInputChange={handleInputChange}
                 handleAddRoomNumberSubmit={handleUpdateMember}
-
-                // if you have a submit handler
-              /> 
+              />
             </>
           )}
 
@@ -852,7 +867,7 @@ export default function EditManageRoomCategoriesModal({
                 disabled={loading}
                 size={isMobile ? "small" : "medium"}
               >
-                Cancel
+                {t("cancel", "Cancel")}
               </Button>
               <Button
                 fullWidth={isMobile}
@@ -867,11 +882,11 @@ export default function EditManageRoomCategoriesModal({
               >
                 {loading
                   ? isMobile
-                    ? "Saving..."
-                    : "Saving Changes..."
+                    ? t("saving", "Saving...")
+                    : t("saving_changes", "Saving Changes...")
                   : isMobile
-                  ? "Save"
-                  : "Save Changes"}
+                  ? t("save", "Save")
+                  : t("save_changes", "Save Changes")}
               </Button>
             </Box>
           )}

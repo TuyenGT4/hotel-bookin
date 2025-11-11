@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { toast } from "react-toastify";
 import { modalStyle } from "./styles";
+import { useTranslation } from "react-i18next"; // ✅ thêm vào
 
 export default function AddTeamModal({
   open,
@@ -18,6 +19,7 @@ export default function AddTeamModal({
   loading,
   setLoading,
 }) {
+  const { t } = useTranslation("component/dashboard/admin/team/addteammodal");
   const [newMember, setNewMember] = useState({
     name: "",
     position: "",
@@ -35,26 +37,24 @@ export default function AddTeamModal({
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
-
     if (file) {
       const reader = new FileReader();
-
       reader.onloadend = () => {
         setNewMember((prev) => ({
           ...prev,
           image: file,
-
           previewImage: reader.result,
         }));
       };
-
       reader.readAsDataURL(file);
     }
   };
 
   const handleAddMember = async () => {
     if (!newMember.name || !newMember.position) {
-      toast.error("Please fill all required fields");
+      toast.error(
+        t("errors.required_fields", "Please fill all required fields")
+      );
       return;
     }
 
@@ -77,7 +77,6 @@ export default function AddTeamModal({
         );
 
         const data = await response.json();
-
         imageUrl = data.secure_url;
       }
 
@@ -97,7 +96,9 @@ export default function AddTeamModal({
 
       onSuccess(data);
 
-      toast.success("Team member added successfully");
+      toast.success(
+        t("messages.add_success", "Team member added successfully")
+      );
 
       setNewMember({
         name: "",
@@ -107,8 +108,7 @@ export default function AddTeamModal({
       });
     } catch (error) {
       console.log("error adding team", error);
-
-      toast.error("Failed to add team member");
+      toast.error(t("errors.add_failed", "Failed to add team member"));
     } finally {
       setLoading(false);
     }
@@ -126,13 +126,13 @@ export default function AddTeamModal({
             color: "#1a202c",
           }}
         >
-          Add New Team Member
+          {t("title", "Add New Team Member")}
         </h2>
 
         <Stack spacing={3}>
           <TextField
             fullWidth
-            label="Name"
+            label={t("fields.name", "Name")}
             name="name"
             value={newMember.name}
             onChange={handleInputChange}
@@ -151,7 +151,7 @@ export default function AddTeamModal({
 
           <TextField
             fullWidth
-            label="Position"
+            label={t("fields.position", "Position")}
             name="position"
             value={newMember.position}
             onChange={handleInputChange}
@@ -188,14 +188,14 @@ export default function AddTeamModal({
                   "&:hover": { backgroundColor: "#7a0eeb" },
                 }}
               >
-                Upload Image
+                {t("buttons.upload_image", "Upload Image")}
               </Button>
             </label>
             {newMember.previewImage && (
               <Box sx={{ mt: 2, display: "flex", justifyContent: "center" }}>
                 <Avatar
                   src={newMember.previewImage}
-                  alt="Preview"
+                  alt={t("preview", "Preview")}
                   sx={{
                     width: 100,
                     height: 100,
@@ -214,7 +214,7 @@ export default function AddTeamModal({
               sx={{ borderRadius: "12px" }}
               disabled={loading}
             >
-              Cancel
+              {t("buttons.cancel", "Cancel")}
             </Button>
             <Button
               variant="contained"
@@ -225,7 +225,9 @@ export default function AddTeamModal({
               }}
               disabled={loading}
             >
-              {loading ? "Adding..." : "Add Member"}
+              {loading
+                ? t("buttons.adding", "Adding...")
+                : t("buttons.add", "Add Member")}
             </Button>
           </Box>
         </Stack>

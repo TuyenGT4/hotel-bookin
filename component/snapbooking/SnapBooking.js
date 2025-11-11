@@ -9,8 +9,11 @@ import {
   ErrorMessage,
   MainTitle,
 } from "./styles";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
+  const { t } = useTranslation("component/snapbooking/snapbooking");
+
   const [promo, setPromo] = useState({
     mainTitle: "",
     shortDesc: "",
@@ -27,7 +30,7 @@ export default function Home() {
         const response = await fetch(`${process.env.API}/bookarea`);
 
         if (!response.ok) {
-          throw new Error("Faoled to fetch data");
+          throw new Error(t("fetch_failed", "Failed to fetch data"));
         }
 
         const data = await response.json();
@@ -39,12 +42,10 @@ export default function Home() {
             linkUrl: data?.linkUrl,
             photoUrl: data?.photoUrl,
           });
-
           setLoading(false);
         }, 2000);
       } catch (error) {
         setError(error.message);
-
         setTimeout(() => setLoading(false), 200);
       }
     };
@@ -55,10 +56,10 @@ export default function Home() {
   if (loading) return <ColorfulLoader />;
 
   if (error) return <ErrorMessage error={error} />;
+
   return (
     <RootContainer maxWidth="xl">
       <MainTitle />
-
       <Grid container spacing={4}>
         <Grid item xs={12} md={6}>
           <Box textAlign={{ xs: "center", md: "left" }}>
@@ -77,7 +78,7 @@ export default function Home() {
                 },
               }}
             >
-              Book Now
+              {t("book_now", "Book Now")}
             </StyledButton>
           </Box>
         </Grid>
@@ -85,7 +86,7 @@ export default function Home() {
         <Grid item xs={12} md={6}>
           <StyledImage
             src={promo.photoUrl}
-            alt="Luxury Resort"
+            alt={t("alt_image", "Luxury Resort")}
             onError={(e) => {
               e.target.src = "/images/hotel18.webp";
             }}

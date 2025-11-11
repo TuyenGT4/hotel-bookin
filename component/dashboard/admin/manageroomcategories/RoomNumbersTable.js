@@ -20,10 +20,9 @@ import {
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-
 import { toast } from "react-toastify";
-
 import { textFieldStyles } from "./styles";
+import { useTranslation } from "react-i18next";
 
 const RoomNumbersTable = ({
   setEditedMember,
@@ -31,11 +30,13 @@ const RoomNumbersTable = ({
   handleInputChange,
   handleAddRoomNumberSubmit,
 }) => {
+  const { t } = useTranslation(
+    "component/dashboard/admin/manageroomcategories/RoomNumbersTable"
+  );
+
   const [openEditModal, setOpenEditModal] = useState(false);
   const [currentRoom, setCurrentRoom] = useState(null);
-
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
-
   const [roomToDelete, setRoomToDelete] = useState(null);
 
   const handleOpenEditModal = (room) => {
@@ -53,9 +54,7 @@ const RoomNumbersTable = ({
       `${process.env.API}/admin/room/roomno/${currentRoom._id}`,
       {
         method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(currentRoom),
       }
     );
@@ -69,8 +68,9 @@ const RoomNumbersTable = ({
       room_numbers: updatedRooms,
     });
 
-    toast.success("room no  updated successfully");
-
+    toast.success(
+      t("toast.update_success", "Room number updated successfully")
+    );
     handleCloseEditModal();
   };
 
@@ -92,12 +92,9 @@ const RoomNumbersTable = ({
   };
 
   const handleConfirmDelete = async () => {
-    const resposne = await fetch(
-      `${process.env.API}/admin/room/roomno/${roomToDelete?._id}`,
-      {
-        method: "DELETE",
-      }
-    );
+    await fetch(`${process.env.API}/admin/room/roomno/${roomToDelete?._id}`, {
+      method: "DELETE",
+    });
 
     const updatedRooms = editedMember.room_numbers.filter(
       (room) => room._id !== roomToDelete._id
@@ -107,7 +104,9 @@ const RoomNumbersTable = ({
       ...editedMember,
       room_numbers: updatedRooms,
     });
-      handleCloseDeleteConfirm();
+
+    toast.success(t("toast.delete_success", "Room deleted successfully"));
+    handleCloseDeleteConfirm();
   };
 
   return (
@@ -116,9 +115,9 @@ const RoomNumbersTable = ({
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Room Number</TableCell>
-              <TableCell>Status</TableCell>
-              <TableCell>Actions</TableCell>
+              <TableCell>{t("table.room_number", "Room Number")}</TableCell>
+              <TableCell>{t("table.status", "Status")}</TableCell>
+              <TableCell>{t("table.actions", "Actions")}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -126,7 +125,9 @@ const RoomNumbersTable = ({
               <TableRow key={room._id || room.roomNumber}>
                 <TableCell>{room.room_no}</TableCell>
                 <TableCell>
-                  {room.status === 1 ? "Active" : "Inactive"}
+                  {room.status === 1
+                    ? t("status.active", "Active")
+                    : t("status.inactive", "Inactive")}
                 </TableCell>
                 <TableCell>
                   <IconButton onClick={() => handleOpenEditModal(room)}>
@@ -156,40 +157,42 @@ const RoomNumbersTable = ({
             p: 4,
           }}
         >
-          <h2>Edit Room</h2>
+          <h2>{t("modal.edit_title", "Edit Room")}</h2>
 
           {currentRoom && (
             <Stack spacing={3}>
               <TextField
                 fullWidth
-                label="Room Number"
+                label={t("fields.room_number", "Room Number")}
                 name="room_no"
                 value={currentRoom.room_no || ""}
                 onChange={handleRoomChange}
                 variant="outlined"
                 size="small"
-                {...textFieldStyles} // Spread the styles here
+                {...textFieldStyles}
               />
 
               <FormControl fullWidth size="small">
-                <InputLabel>Status</InputLabel>
+                <InputLabel>{t("fields.status", "Status")}</InputLabel>
                 <Select
                   name="status"
                   value={currentRoom.status || 0}
                   onChange={handleRoomChange}
-                  label="Status"
+                  label={t("fields.status", "Status")}
                 >
-                  <MenuItem value={0}>Inactive</MenuItem>
-                  <MenuItem value={1}>Active</MenuItem>
+                  <MenuItem value={0}>
+                    {t("status.inactive", "Inactive")}
+                  </MenuItem>
+                  <MenuItem value={1}>{t("status.active", "Active")}</MenuItem>
                 </Select>
               </FormControl>
 
               <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
                 <Button onClick={handleCloseEditModal} sx={{ mr: 2 }}>
-                  Cancel
+                  {t("buttons.cancel", "Cancel")}
                 </Button>
                 <Button variant="contained" onClick={handleSaveRoom}>
-                  Save
+                  {t("buttons.save", "Save")}
                 </Button>
               </Box>
             </Stack>
@@ -211,20 +214,21 @@ const RoomNumbersTable = ({
             p: 4,
           }}
         >
-          <h2>Confirm Delete</h2>
+          <h2>{t("modal.delete_title", "Confirm Delete")}</h2>
           <p>
-            Are you sure you want to delete room {roomToDelete?.roomNumber}?
+            {t("modal.delete_confirm", "Are you sure you want to delete room")}{" "}
+            {roomToDelete?.roomNumber}?
           </p>
           <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
             <Button onClick={handleCloseDeleteConfirm} sx={{ mr: 2 }}>
-              Cancel
+              {t("buttons.cancel", "Cancel")}
             </Button>
             <Button
               variant="contained"
               color="error"
               onClick={handleConfirmDelete}
             >
-              Delete
+              {t("buttons.delete", "Delete")}
             </Button>
           </Box>
         </Box>
@@ -232,7 +236,7 @@ const RoomNumbersTable = ({
 
       {/* Add New Room Section */}
       <Box sx={{ mt: 3 }}>
-        <h3>Add New Room Number</h3>
+        <h3>{t("add_section.title", "Add New Room Number")}</h3>
         <input
           type="hidden"
           name="room_id"
@@ -243,29 +247,30 @@ const RoomNumbersTable = ({
           name="room_type_id"
           value={editedMember.roomtype_id || ""}
         />
+
         <Stack spacing={3}>
           <TextField
             fullWidth
-            label="Room Number"
+            label={t("fields.room_number", "Room Number")}
             name="roomNumber"
             value={editedMember.roomNumber}
             onChange={handleInputChange}
             variant="outlined"
             size="small"
-            {...textFieldStyles} // Spread the styles here
+            {...textFieldStyles}
           />
         </Stack>
 
         <FormControl fullWidth size="small" sx={{ mt: 2 }}>
-          <InputLabel>Status</InputLabel>
+          <InputLabel>{t("fields.status", "Status")}</InputLabel>
           <Select
             name="status"
             value={editedMember.status}
             onChange={handleInputChange}
-            label="Status"
+            label={t("fields.status", "Status")}
           >
-            <MenuItem value={0}>Inactive</MenuItem>
-            <MenuItem value={1}>Active</MenuItem>
+            <MenuItem value={0}>{t("status.inactive", "Inactive")}</MenuItem>
+            <MenuItem value={1}>{t("status.active", "Active")}</MenuItem>
           </Select>
         </FormControl>
 
@@ -275,23 +280,22 @@ const RoomNumbersTable = ({
           onClick={() => {
             if (editedMember.roomNumber) {
               const newRoom = {
-                _id: Date.now().toString(), // temporary ID
+                _id: Date.now().toString(),
                 roomNumber: editedMember.roomNumber,
                 status: editedMember.status,
               };
-
               setEditedMember({
                 ...editedMember,
                 room_numbers: [...(editedMember.room_numbers || []), newRoom],
                 roomNumber: "",
                 status: 0,
               });
-
               handleAddRoomNumberSubmit();
+              toast.success(t("toast.add_success", "Room added successfully"));
             }
           }}
         >
-          Add Room
+          {t("buttons.add_room", "Add Room")}
         </Button>
       </Box>
     </div>

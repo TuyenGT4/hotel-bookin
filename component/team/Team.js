@@ -5,12 +5,13 @@ import {
   Grid,
   Card,
   CardMedia,
-  CardContent,
   Typography,
   Box,
 } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const Team = () => {
+  const { t } = useTranslation("component/team/Team");
   const [employees, setEmployees] = useState([]);
 
   useEffect(() => {
@@ -20,9 +21,7 @@ const Team = () => {
   const fetchEmployees = async () => {
     try {
       const response = await fetch(`${process.env.API}/team`);
-
       const data = await response.json();
-
       setEmployees(data);
     } catch (error) {
       console.log("error fetching employee", error);
@@ -52,8 +51,9 @@ const Team = () => {
           },
         }}
       >
-        Brains Behind the Brand
+        {t("team_heading", "Brains Behind the Brand")}
       </Typography>
+
       <Grid container spacing={4}>
         {employees &&
           employees.map((member) => (
@@ -73,6 +73,7 @@ const Team = () => {
                   image={member.image}
                   title={member.name}
                 />
+
                 <Box
                   className="overlay"
                   sx={{
@@ -158,7 +159,12 @@ const Team = () => {
                           letterSpacing: "1px",
                         }}
                       >
-                        {member.position}
+                        {t(
+                          `positions.${member.position
+                            .toLowerCase()
+                            .replace(/\s+/g, "_")}`,
+                          member.position
+                        )}
                       </Typography>
                     </Box>
                   </Box>

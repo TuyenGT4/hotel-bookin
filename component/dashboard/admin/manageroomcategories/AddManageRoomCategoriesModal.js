@@ -1,15 +1,8 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Modal,
-  TextField,
-  Stack,
-  Input,
-  Button,
-  Avatar,
-} from "@mui/material";
+import { Box, Modal, TextField, Stack, Button } from "@mui/material";
 import { toast } from "react-toastify";
 import { modalStyle } from "./styles";
+import { useTranslation } from "react-i18next";
 
 export default function AddManageRoomCategoriesModal({
   open,
@@ -18,13 +11,16 @@ export default function AddManageRoomCategoriesModal({
   loading,
   setLoading,
 }) {
+  const { t } = useTranslation(
+    "component/dashboard/admin/manageroomcategories/AddManageRoomCategoriesModal"
+  );
+
   const [newroomtype, setNewRoomType] = useState({
     name: "",
   });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-
     setNewRoomType((prev) => ({
       ...prev,
       [name]: value,
@@ -33,7 +29,7 @@ export default function AddManageRoomCategoriesModal({
 
   const handleAddRoomType = async () => {
     if (!newroomtype.name) {
-      toast.error("Please fill all required  fields");
+      toast.error(t("errors.required", "Please fill all required fields"));
       return;
     }
 
@@ -45,7 +41,6 @@ export default function AddManageRoomCategoriesModal({
         headers: {
           "Content-Type": "application/json",
         },
-
         body: JSON.stringify({
           name: newroomtype.name,
         }),
@@ -54,20 +49,22 @@ export default function AddManageRoomCategoriesModal({
       const data = await response.json();
       onSuccess(data);
 
-      toast.success("New Room Type Added successfully");
+      toast.success(
+        t("messages.add_success", "New Room Type Added successfully")
+      );
 
       setNewRoomType({
         name: "",
       });
     } catch (error) {
-      toast.error("Failed to add  new room type");
+      toast.error(t("errors.add_failed", "Failed to add new room type"));
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <Modal open={open} onClose={onClose} aria-labelledby="add-team-modal">
+    <Modal open={open} onClose={onClose} aria-labelledby="add-roomtype-modal">
       <Box sx={modalStyle}>
         <h2
           style={{
@@ -78,13 +75,13 @@ export default function AddManageRoomCategoriesModal({
             color: "#1a202c",
           }}
         >
-          Add New RoomType
+          {t("title", "Add New Room Type")}
         </h2>
 
         <Stack spacing={3}>
           <TextField
             fullWidth
-            label="Name"
+            label={t("fields.name", "Name")}
             name="name"
             value={newroomtype.name}
             onChange={handleInputChange}
@@ -108,7 +105,7 @@ export default function AddManageRoomCategoriesModal({
               sx={{ borderRadius: "12px" }}
               disabled={loading}
             >
-              Cancel
+              {t("buttons.cancel", "Cancel")}
             </Button>
             <Button
               variant="contained"
@@ -119,7 +116,9 @@ export default function AddManageRoomCategoriesModal({
               }}
               disabled={loading}
             >
-              {loading ? "Adding..." : "Add Member"}
+              {loading
+                ? t("buttons.adding", "Adding...")
+                : t("buttons.add", "Add Room Type")}
             </Button>
           </Box>
         </Stack>

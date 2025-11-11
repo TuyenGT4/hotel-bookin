@@ -27,11 +27,13 @@ import {
   formContainerStyles,
   selectStyles,
 } from "@/component/home/styles/customStyles";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const router = useRouter();
+  const { t } = useTranslation("component/home/home");
 
   // State to store form values
   const [formData, setFormData] = useState({
@@ -78,7 +80,6 @@ export default function Home() {
     return date.toISOString().split("T")[0];
   };
 
-  
   // Handle form submission
   const handleCheckAvailability = () => {
     let hasErrors = false;
@@ -96,7 +97,7 @@ export default function Home() {
 
     if (hasErrors) {
       setErrors(newErrors);
-      alert("Please fill all required fields");
+      alert(t("fill_required_fields", "Please fill all required fields"));
       return;
     }
 
@@ -105,7 +106,12 @@ export default function Home() {
 
     // Additional validation: check-out must be after check-in
     if (new Date(checkOut) <= new Date(checkIn)) {
-      alert("Check-out date must be after check-in date");
+      alert(
+        t(
+          "checkout_after_checkin",
+          "Check-out date must be after check-in date"
+        )
+      );
       setErrors((prev) => ({
         ...prev,
         checkOutDate: true,
@@ -119,7 +125,7 @@ export default function Home() {
   };
 
   // Options for guests dropdown
-  const guestOptions = [1, 2, 3, 4, 5, 6, 7,8,9];
+  const guestOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   // Calculate minimum checkout date (checkin date or today)
   const minCheckoutDate =
@@ -134,11 +140,13 @@ export default function Home() {
           <Grid item xs={12} md={4}>
             <TransparentBoxx sx={transparentBoxStyles(isSmallScreen)}>
               <Typography variant="h4" component="h1">
-                Listify: Discover, Compare, and Choose
+                {t("listify_title", "Listify: Discover, Compare, and Choose")}
               </Typography>
               <Typography variant="h5" component="h2" sx={{ mb: 2 }}>
-                Your Ultimate Guide to Finding the Best Products, Services, and
-                Deals Online
+                {t(
+                  "listify_subtitle",
+                  "Your Ultimate Guide to Finding the Best Products, Services, and Deals Online"
+                )}
               </Typography>
             </TransparentBoxx>
           </Grid>
@@ -150,7 +158,7 @@ export default function Home() {
                 <TextField
                   id="checkInDate"
                   name="checkInDate"
-                  label="Check-in Date"
+                  label={t("checkin_date", "Check-in Date")}
                   type="date"
                   sx={datePickerStyles}
                   InputLabelProps={{
@@ -164,7 +172,9 @@ export default function Home() {
                   }}
                   error={errors.checkInDate}
                   helperText={
-                    errors.checkInDate ? "Please select check-in date" : ""
+                    errors.checkInDate
+                      ? t("select_checkin", "Please select check-in date")
+                      : ""
                   }
                   fullWidth
                 />
@@ -173,7 +183,7 @@ export default function Home() {
                 <TextField
                   id="checkOutDate"
                   name="checkOutDate"
-                  label="Check-out Date"
+                  label={t("checkout_date", "Check-out Date")}
                   type="date"
                   sx={datePickerStyles}
                   InputLabelProps={{
@@ -187,25 +197,32 @@ export default function Home() {
                   }}
                   error={errors.checkOutDate}
                   helperText={
-                    errors.checkOutDate ? "Please select check-out date" : ""
+                    errors.checkOutDate
+                      ? t("select_checkout", "Please select check-out date")
+                      : ""
                   }
                   fullWidth
                 />
 
                 {/* Guests Select - Fixed with proper handler */}
                 <FormControl sx={selectStyles} fullWidth>
-                  <InputLabel id="guests-label">Number of Guests</InputLabel>
+                  <InputLabel id="guests-label">
+                    {t("num_guests", "Number of Guests")}
+                  </InputLabel>
                   <Select
                     labelId="guests-label"
                     id="guests"
                     name="guests"
                     value={formData.guests}
-                    label="Number of Guests"
-                    onChange={handleSelectChange} // Using specific handler
+                    label={t("num_guests", "Number of Guests")}
+                    onChange={handleSelectChange}
                   >
                     {guestOptions.map((number) => (
                       <MenuItem key={number} value={number}>
-                        {number} {number === 1 ? "Guest" : "Guests"}
+                        {number}{" "}
+                        {number === 1
+                          ? t("guest", "Guest")
+                          : t("guests", "Guests")}
                       </MenuItem>
                     ))}
                   </Select>
@@ -217,7 +234,7 @@ export default function Home() {
                   onClick={handleCheckAvailability}
                   fullWidth
                 >
-                  Check Availability
+                  {t("check_availability", "Check Availability")}
                 </Button>
               </Box>
             </TransparentBox>

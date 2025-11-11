@@ -1,0 +1,19 @@
+{
+  "fetch_failed": "Không thể tải dữ liệu giá phòng",
+  "pricing_error": "Lỗi khi lấy thông tin giá phòng",
+  "razorpay_loaded": "Đã tải script Razorpay",
+  "test_payment": "Thanh toán thử nghiệm",
+  "your_address": "Địa chỉ của bạn",
+  "payment_failed": "Không thể khởi tạo thanh toán",
+  "payment_success": "Thanh toán thành công",
+  "stripe_failed": "Thanh toán Stripe thất bại",
+  "stripe_error": "Không thể khởi tạo thanh toán Stripe",
+  "paypal_failed": "Thanh toán PayPal thất bại",
+  "paypal_error": "Không thể khởi tạo thanh toán PayPal",
+  "fill_field": "Vui lòng điền vào",
+  "correctly": "chính xác",
+  "fill_required": "Vui lòng điền đầy đủ và chính xác các trường bắt buộc",
+  "select_payment": "Vui lòng chọn phương thức thanh toán",
+  "order_success": "Đặt hàng thành công",
+  "order_failed": "Đặt hàng thất bại"
+}

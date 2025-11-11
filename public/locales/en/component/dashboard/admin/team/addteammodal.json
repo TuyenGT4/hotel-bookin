@@ -1,0 +1,21 @@
+{
+  "title": "Add New Team Member",
+  "fields": {
+    "name": "Name",
+    "position": "Position"
+  },
+  "buttons": {
+    "upload_image": "Upload Image",
+    "cancel": "Cancel",
+    "add": "Add Member",
+    "adding": "Adding..."
+  },
+  "errors": {
+    "required_fields": "Please fill all required fields",
+    "add_failed": "Failed to add team member"
+  },
+  "messages": {
+    "add_success": "Team member added successfully"
+  },
+  "preview": "Preview"
+}

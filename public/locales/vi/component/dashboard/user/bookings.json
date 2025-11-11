@@ -1,0 +1,17 @@
+{
+  "my_bookings": "Đặt phòng của tôi",
+  "no_bookings_found": "Không có đơn đặt phòng nào.",
+  "check_in": "Ngày nhận phòng",
+  "check_out": "Ngày trả phòng",
+  "name": "Tên khách hàng",
+  "rooms": "Số phòng",
+  "total_price": "Tổng giá",
+  "status": "Trạng thái",
+  "payment": "Thanh toán",
+
+  "confirmed": "Đã xác nhận",
+  "pending": "Đang chờ",
+  "cancelled": "Đã hủy",
+  "paid": "Đã thanh toán",
+  "unpaid": "Chưa thanh toán"
+}

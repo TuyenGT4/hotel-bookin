@@ -1,0 +1,15 @@
+{
+  "title": "Confirm Delete",
+  "content": "Are you sure you want to delete {{name}}? This action cannot be undone.",
+  "buttons": {
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "deleting": "Deleting..."
+  },
+  "messages": {
+    "delete_success": "Team member deleted successfully"
+  },
+  "errors": {
+    "delete_failed": "Failed to delete team member"
+  }
+}

@@ -8,6 +8,7 @@ import {
   Button,
 } from "@mui/material";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next"; // ✅ thêm
 
 export default function DeleteTeamModal({
   open,
@@ -17,6 +18,10 @@ export default function DeleteTeamModal({
   loading,
   setLoading,
 }) {
+  const { t } = useTranslation(
+    "component/dashboard/admin/team/deleteteammodal"
+  ); // ✅ namespace riêng
+
   const handleDelete = async () => {
     try {
       setLoading(true);
@@ -27,9 +32,11 @@ export default function DeleteTeamModal({
 
       onSuccess(member._id);
 
-      toast.success("Team memebr deleted successfully");
+      toast.success(
+        t("messages.delete_success", "Team member deleted successfully")
+      );
     } catch (error) {
-      toast.error("Failed to  delete Team Member");
+      toast.error(t("errors.delete_failed", "Failed to delete team member"));
     } finally {
       setLoading(false);
     }
@@ -37,16 +44,19 @@ export default function DeleteTeamModal({
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Confirm Delete</DialogTitle>
+      <DialogTitle>{t("title", "Confirm Delete")}</DialogTitle>
       <DialogContent>
         <DialogContentText>
-          Are you sure you want to delete {member?.name}? This action cannot be
-          undone.
+          {t("content", {
+            defaultValue:
+              "Are you sure you want to delete {{name}}? This action cannot be undone.",
+            name: member?.name,
+          })}
         </DialogContentText>
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose} color="primary" disabled={loading}>
-          Cancel
+          {t("buttons.cancel", "Cancel")}
         </Button>
         <Button
           onClick={handleDelete}
@@ -55,7 +65,9 @@ export default function DeleteTeamModal({
           disabled={loading}
           autoFocus
         >
-          {loading ? "Deleting..." : "Delete"}
+          {loading
+            ? t("buttons.deleting", "Deleting...")
+            : t("buttons.delete", "Delete")}
         </Button>
       </DialogActions>
     </Dialog>

@@ -1,29 +1,27 @@
 "use client";
 import { Box, Grid } from "@mui/material";
- import { LeftSideContent } from "./LeftSideContent";
- import { RightSideContent } from "./RightSideContent";
+import { LeftSideContent } from "./LeftSideContent";
+import { RightSideContent } from "./RightSideContent";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function BlogPage() {
   const [blogData, setBlogData] = useState(null);
-
   const [loading, setLoading] = useState(true);
-
   const [error, setError] = useState(true);
-
   const [slug, setSlug] = useState(null);
+
+  // ✅ Thêm namespace rõ ràng
+  const { t } = useTranslation("component/blogs/Blogs");
 
   useEffect(() => {
     const getSlugFromUrl = () => {
       if (typeof window !== "undefined") {
         const searchParams = new URLSearchParams(window.location.search);
-
         const urlSlug = searchParams.get("slug");
-
         setSlug(urlSlug);
       }
     };
-
     getSlugFromUrl();
   }, []);
 
@@ -33,15 +31,15 @@ export default function BlogPage() {
     const fetchBlogData = async () => {
       try {
         setLoading(true);
-
         setError(null);
+
         const response = await fetch(`${process.env.API}/blogs/${slug}`);
 
         if (!response.ok) {
           throw new Error(
             response.status === 404
-              ? "Blog post not found"
-              : "Failed to fetch blog data"
+              ? t("blog_not_found", "Blog post not found")
+              : t("fetch_failed", "Failed to fetch blog data")
           );
         }
 
@@ -55,7 +53,7 @@ export default function BlogPage() {
     };
 
     fetchBlogData();
-  }, [slug]);
+  }, [slug, t]);
 
   if (!slug && !loading) {
     return (
@@ -68,7 +66,7 @@ export default function BlogPage() {
           color: "error.main",
         }}
       >
-        No slug parameter provided in URL
+        {t("no_slug", "No slug parameter provided in URL")}
       </Box>
     );
   }
@@ -83,7 +81,7 @@ export default function BlogPage() {
           minHeight: "80vh",
         }}
       >
-        Loading blog post...
+        {t("loading_blog", "Loading blog post...")}
       </Box>
     );
   }
@@ -101,7 +99,7 @@ export default function BlogPage() {
           p: 3,
         }}
       >
-        Error: {error}
+        {t("error", "Error")}: {error}
       </Box>
     );
   }
@@ -116,7 +114,7 @@ export default function BlogPage() {
           minHeight: "80vh",
         }}
       >
-        No blog data available
+        {t("no_blog_data", "No blog data available")}
       </Box>
     );
   }
@@ -131,8 +129,6 @@ export default function BlogPage() {
       }}
     >
       <Grid container spacing={3}>
-       
-
         <Grid item xs={12} md={8}>
           <LeftSideContent
             title={blogData?.post?.title}
@@ -149,7 +145,6 @@ export default function BlogPage() {
               image: post.image,
               title: post.title,
               postedDate: post.createdAt,
-
               slug: post.slug,
             }))}
           />

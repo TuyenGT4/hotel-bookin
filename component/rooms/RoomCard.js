@@ -10,9 +10,11 @@ import {
   RoomDetails,
 } from "./RoomCardStyles";
 import { useRouter } from "next/navigation";
+import { useTranslation } from "react-i18next";
 
 const RoomCard = ({ room }) => {
   const router = useRouter();
+  const { t } = useTranslation("component/rooms/RoomCard");
 
   const handleBookNow = () => {
     router.push("/allrooms");
@@ -27,7 +29,7 @@ const RoomCard = ({ room }) => {
         </Typography>
         <Rating value={5} readOnly sx={{ color: "red", mb: 1 }} />
         <Typography variant="body2" color="textSecondary">
-          ${room.price} / Per Night
+          {room.price} VND/ {t("per_night", "Per Night")}
         </Typography>
         <Typography variant="body1" gutterBottom>
           {room.short_desc.split(" ").slice(0, 20).join(" ") +
@@ -36,10 +38,12 @@ const RoomCard = ({ room }) => {
         <RoomDetails>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <PeopleIcon sx={{ color: "red" }} />
-            {parseInt(room.total_adult) + parseInt(room.total_child)} Persons
+            {parseInt(room.total_adult) + parseInt(room.total_child)}{" "}
+            {t("persons", "Persons")}
           </Box>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <CropSquareIcon sx={{ color: "red" }} /> {room.size} sq.ft
+            <CropSquareIcon sx={{ color: "red" }} /> {room.size}{" "}
+            {t("sqft", "sq.ft")}
           </Box>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <VisibilityIcon sx={{ color: "red" }} /> {room.view}
@@ -58,7 +62,7 @@ const RoomCard = ({ room }) => {
           }}
           onClick={handleBookNow}
         >
-          Book Now
+          {t("book_now", "Book Now")}
         </Button>
       </RoomContent>
     </RoomCardContainer>

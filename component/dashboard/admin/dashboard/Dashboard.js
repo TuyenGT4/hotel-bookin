@@ -11,6 +11,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 // Vibrant color palette
 const colors = [
@@ -62,6 +63,7 @@ const TriangleBar = (props) => {
 };
 
 const CustomTooltip = ({ active, payload }) => {
+  const { t } = useTranslation(); // ✅ added
   if (active && payload && payload.length) {
     return (
       <motion.div
@@ -94,7 +96,7 @@ const CustomTooltip = ({ active, payload }) => {
             fontWeight: 700,
           }}
         >
-          {payload[0].value.toLocaleString()} users
+          {payload[0].value.toLocaleString()} {t("users", "users")}
         </p>
       </motion.div>
     );
@@ -103,21 +105,18 @@ const CustomTooltip = ({ active, payload }) => {
 };
 
 export default function ModernTriangleChart() {
+  const { t } = useTranslation(); // ✅ added
   const [data, setData] = useState([]);
-
   const [activeIndex, setActiveIndex] = useState(null);
-
   const [loading, setLoading] = useState(true);
-
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchMonthlyUrses = async () => {
       try {
         const response = await fetch(`${process.env.API}/admin/dashboard`);
-
         if (!response.ok) {
-          throw new Error("failed to  fetch user data");
+          throw new Error(t("fetch_failed", "Failed to fetch user data"));
         }
 
         const result = await response.json();
@@ -136,7 +135,7 @@ export default function ModernTriangleChart() {
     };
 
     fetchMonthlyUrses();
-  }, []);
+  }, [t]);
 
   if (loading) {
     return (
@@ -150,7 +149,9 @@ export default function ModernTriangleChart() {
           background: "#000",
         }}
       >
-        <p style={{ color: "white" }}>Loading user data...</p>
+        <p style={{ color: "white" }}>
+          {t("loading_data", "Loading user data...")}
+        </p>
       </div>
     );
   }
@@ -167,7 +168,9 @@ export default function ModernTriangleChart() {
           background: "#000",
         }}
       >
-        <p style={{ color: "red" }}>Error: {error}</p>
+        <p style={{ color: "red" }}>
+          {t("error", "Error")}: {error}
+        </p>
       </div>
     );
   }
@@ -200,7 +203,7 @@ export default function ModernTriangleChart() {
               marginBottom: "4px",
             }}
           >
-            Monthly User Growth
+            {t("monthly_user_growth", "Monthly User Growth")}
           </h2>
           <p
             style={{
@@ -208,7 +211,7 @@ export default function ModernTriangleChart() {
               fontSize: "16px",
             }}
           >
-            User registrations by month
+            {t("user_registrations_by_month", "User registrations by month")}
           </p>
         </div>
       </div>
@@ -259,11 +262,15 @@ export default function ModernTriangleChart() {
               }}
               formatter={(value) => (
                 <span style={{ color: "#475569", fontWeight: 500 }}>
-                  {value}
+                  {t("total_users", "Total Users")}
                 </span>
               )}
             />
-            <Bar dataKey="users" name="Total Users" shape={<TriangleBar />}>
+            <Bar
+              dataKey="users"
+              name={t("total_users", "Total Users")}
+              shape={<TriangleBar />}
+            >
               {data.map((entry, index) => (
                 <Cell
                   key={`cell-${index}`}
@@ -285,7 +292,7 @@ export default function ModernTriangleChart() {
             marginBottom: "20px",
           }}
         >
-          Monthly Data
+          {t("monthly_data", "Monthly Data")}
         </h3>
 
         <div

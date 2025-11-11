@@ -8,6 +8,7 @@ import {
   Button,
 } from "@mui/material";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next"; // ✅ thêm
 
 export default function DeleteManageRoomCategoriesModal({
   open,
@@ -17,6 +18,10 @@ export default function DeleteManageRoomCategoriesModal({
   loading,
   setLoading,
 }) {
+  const { t } = useTranslation(
+    "component/dashboard/admin/manageroomcategories/DeleteManageCategoriesModal"
+  ); // ✅ namespace
+
   const handleDelete = async () => {
     try {
       setLoading(true);
@@ -28,9 +33,11 @@ export default function DeleteManageRoomCategoriesModal({
       );
 
       onSuccess(member._id);
-      toast.success("room type delete successfully");
+      toast.success(
+        t("messages.delete_success", "Room type deleted successfully")
+      );
     } catch (error) {
-      toast.error("faield to delete room type");
+      toast.error(t("errors.delete_failed", "Failed to delete room type"));
     } finally {
       setLoading(false);
     }
@@ -38,16 +45,19 @@ export default function DeleteManageRoomCategoriesModal({
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Confirm Delete</DialogTitle>
+      <DialogTitle>{t("title", "Confirm Delete")}</DialogTitle>
       <DialogContent>
         <DialogContentText>
-          Are you sure you want to delete {member?.name}? This action cannot be
-          undone.
+          {t("confirm_text", {
+            name: member?.name,
+            defaultValue:
+              "Are you sure you want to delete {{name}}? This action cannot be undone.",
+          })}
         </DialogContentText>
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose} color="primary" disabled={loading}>
-          Cancel
+          {t("buttons.cancel", "Cancel")}
         </Button>
         <Button
           onClick={handleDelete}
@@ -56,7 +66,9 @@ export default function DeleteManageRoomCategoriesModal({
           disabled={loading}
           autoFocus
         >
-          {loading ? "Deleting..." : "Delete"}
+          {loading
+            ? t("buttons.deleting", "Deleting...")
+            : t("buttons.delete", "Delete")}
         </Button>
       </DialogActions>
     </Dialog>

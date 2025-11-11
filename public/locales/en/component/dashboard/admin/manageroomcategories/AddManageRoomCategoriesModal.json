@@ -1,0 +1,18 @@
+{
+  "title": "Add New Room Type",
+  "fields": {
+    "name": "Name"
+  },
+  "buttons": {
+    "cancel": "Cancel",
+    "add": "Add Room Type",
+    "adding": "Adding..."
+  },
+  "messages": {
+    "add_success": "New Room Type Added successfully"
+  },
+  "errors": {
+    "required": "Please fill all required fields",
+    "add_failed": "Failed to add new room type"
+  }
+}

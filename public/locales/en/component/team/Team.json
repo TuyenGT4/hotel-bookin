@@ -1,0 +1,23 @@
+{
+  "team_heading": "Brains Behind the Brand",
+  "positions": {
+    "founder": "Founder",
+    "co_founder": "Co-Founder",
+    "ceo": "Chief Executive Officer",
+    "cto": "Chief Technology Officer",
+    "cfo": "Chief Financial Officer",
+    "coo": "Chief Operating Officer",
+    "hr_manager": "HR Manager",
+    "marketing_manager": "Marketing Manager",
+    "sales_manager": "Sales Manager",
+    "receptionist": "Receptionist",
+    "customer_support": "Customer Support",
+    "room_service": "Room Service",
+    "event_planner": "Event Planner",
+    "housekeeping_staff": "Housekeeping Staff",
+    "designer": "Designer",
+    "developer": "Developer",
+    "photographer": "Photographer",
+    "content_writer": "Content Writer"
+  }
+}

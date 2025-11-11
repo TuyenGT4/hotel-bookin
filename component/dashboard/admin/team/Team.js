@@ -25,15 +25,16 @@ import {
   colors,
 } from "./styles";
 import AddTeamModal from "./AddTeamModal";
- import EditTeamModal from "./EditTeamModal";
+import EditTeamModal from "./EditTeamModal";
 import DeleteTeamModal from "./DeleteTeamModal";
+import { useTranslation } from "react-i18next";
 
 export default function TeamTable() {
+  const { t } = useTranslation("component/dashboard/admin/team/team");
+
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-
   const theme = useTheme();
-
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [openAddModal, setOpenAddModal] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -49,13 +50,11 @@ export default function TeamTable() {
   const fetchEmployees = async () => {
     try {
       setLoading(true);
-
       const response = await fetch(`${process.env.API}/admin/team`);
-
       const data = await response.json();
       setEmployees(data);
     } catch (error) {
-      toast.error("Failed to fetch team member");
+      toast.error(t("errors.fetch_failed", "Failed to fetch team members"));
     } finally {
       setLoading(false);
     }
@@ -75,7 +74,6 @@ export default function TeamTable() {
     setEmployees((prev) =>
       prev.map((emp) => (emp._id === updatedMember._id ? updatedMember : emp))
     );
-
     setOpenEditModal(false);
   };
 
@@ -112,7 +110,7 @@ export default function TeamTable() {
             }}
             disabled={loading}
           >
-            Add Team Member
+            {t("buttons.add_member", "Add Team Member")}
           </Button>
         </Box>
 
@@ -137,12 +135,21 @@ export default function TeamTable() {
           >
             <StyledTableHeader>
               <TableRow>
-                {!isSmallScreen && <StyledHeaderCell>Profile</StyledHeaderCell>}
-                <StyledHeaderCell>Name</StyledHeaderCell>
-                <StyledHeaderCell>Position</StyledHeaderCell>
-                <StyledHeaderCell>Actions</StyledHeaderCell>
+                {!isSmallScreen && (
+                  <StyledHeaderCell>
+                    {t("columns.profile", "Profile")}
+                  </StyledHeaderCell>
+                )}
+                <StyledHeaderCell>{t("columns.name", "Name")}</StyledHeaderCell>
+                <StyledHeaderCell>
+                  {t("columns.position", "Position")}
+                </StyledHeaderCell>
+                <StyledHeaderCell>
+                  {t("columns.actions", "Actions")}
+                </StyledHeaderCell>
               </TableRow>
             </StyledTableHeader>
+
             <TableBody>
               {employees &&
                 employees
@@ -196,7 +203,7 @@ export default function TeamTable() {
                             gap: isSmallScreen ? "4px" : "8px",
                           }}
                         >
-                          <Tooltip title="Edit">
+                          <Tooltip title={t("tooltips.edit", "Edit")}>
                             <IconButton
                               onClick={() => handleEditClick(employee)}
                               sx={{ color: colors.edit }}
@@ -208,7 +215,7 @@ export default function TeamTable() {
                               />
                             </IconButton>
                           </Tooltip>
-                          <Tooltip title="Delete">
+                          <Tooltip title={t("tooltips.delete", "Delete")}>
                             <IconButton
                               onClick={() => handleDeleteClick(employee)}
                               sx={{ color: colors.delete }}
@@ -227,6 +234,7 @@ export default function TeamTable() {
             </TableBody>
           </Table>
         </TableContainer>
+
         <TablePagination
           rowsPerPageOptions={isSmallScreen ? [5, 10] : [5, 10, 25]}
           component="div"

@@ -1,0 +1,15 @@
+{
+  "fetch_failed": "Failed to fetch blog posts",
+  "fetch_single_failed": "Failed to fetch blog post",
+  "create_failed": "Failed to create blog post",
+  "update_failed": "Failed to update blog post",
+  "delete_failed": "Failed to delete blog post",
+  "create_success": "Blog post created successfully",
+  "update_success": "Blog post updated successfully",
+  "delete_success": "Blog post deleted successfully",
+  "error_loading_posts": "Error loading blog posts",
+  "error_loading_post": "Error loading blog post",
+  "error_creating": "Error creating blog post",
+  "error_updating": "Error updating blog post",
+  "error_deleting": "Error deleting blog post"
+}

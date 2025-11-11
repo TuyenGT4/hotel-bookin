@@ -1,0 +1,8 @@
+{
+  "blog_not_found": "Không tìm thấy bài viết",
+  "fetch_failed": "Không thể tải dữ liệu bài viết",
+  "no_slug": "Thiếu tham số slug trong URL",
+  "loading_blog": "Đang tải bài viết...",
+  "error": "Lỗi",
+  "no_blog_data": "Không có dữ liệu bài viết"
+}

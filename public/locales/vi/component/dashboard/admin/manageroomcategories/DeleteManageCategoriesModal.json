@@ -1,0 +1,15 @@
+{
+  "title": "Xác nhận xóa",
+  "confirm_text": "Bạn có chắc chắn muốn xóa {{name}}? Hành động này không thể hoàn tác.",
+  "buttons": {
+    "cancel": "Hủy",
+    "delete": "Xóa",
+    "deleting": "Đang xóa..."
+  },
+  "messages": {
+    "delete_success": "Xóa loại phòng này thành công"
+  },
+  "errors": {
+    "delete_failed": "Không thể xóa loại phòng này"
+  }
+}

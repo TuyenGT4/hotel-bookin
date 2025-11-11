@@ -1,0 +1,23 @@
+{
+  "update_profile_title": "Update Profile",
+  "update_profile_button": "Update Profile",
+  "name": "Name",
+  "email": "Email",
+  "mobile_number": "Mobile Number",
+  "address": "Address",
+  "country": "Country",
+  "password": "Password",
+  "confirm_password": "Confirm Password",
+  "upload_profile_image": "Upload Profile Image",
+  "profile_preview": "Profile Preview",
+
+  "fetch_failed": "Failed to fetch user data",
+  "name_required": "Name is required",
+  "email_required": "Email is required",
+  "invalid_mobile": "Please enter a valid 10-digit mobile number",
+  "address_short": "Address is too short",
+  "invalid_country": "Please select a valid country",
+  "password_required": "Password is required",
+  "password_mismatch": "Passwords do not match",
+  "image_uploaded": "Image uploaded successfully"
+}

@@ -15,16 +15,17 @@ import {
 } from "@mui/material";
 import HotelHubLogo from "@/component/nav/HotelHubLogo";
 import GoogleIcon from "@mui/icons-material/Google";
-
+import { useTranslation } from "react-i18next";
 import { signIn } from "next-auth/react";
-const RegisterPage = () => {
-  const [name, setName] = useState("");
 
+const RegisterPage = () => {
+  const { t } = useTranslation("app/register/register");
+
+  const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
-
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarSeverity, setSnackbarSeverity] = useState("success");
 
@@ -32,25 +33,22 @@ const RegisterPage = () => {
     e.preventDefault();
 
     if (!name || !phone || !email || !password) {
-      setSnackbarMessage("All fields are  required");
+      setSnackbarMessage(t("errors.required_all"));
       setSnackbarSeverity("error");
       setOpenSnackbar(true);
-
       return;
     }
 
     if (!/^\d{10}$/.test(phone)) {
-      setSnackbarMessage("Please   enter a valid 10  digit phone number");
+      setSnackbarMessage(t("errors.invalid_phone"));
       setSnackbarSeverity("error");
-
       setOpenSnackbar(true);
       return;
     }
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setSnackbarMessage("Please  enter a valid email  adrress");
+      setSnackbarMessage(t("errors.invalid_email"));
       setSnackbarSeverity("error");
-
       setOpenSnackbar(true);
       return;
     }
@@ -65,23 +63,19 @@ const RegisterPage = () => {
       });
 
       if (response.ok) {
-        setSnackbarMessage("Registration successful");
-
+        setSnackbarMessage(t("success"));
         setSnackbarSeverity("success");
-
         setName("");
         setPhone("");
-
         setEmail("");
-
         setPassword("");
       } else {
         const data = await response.json();
-        setSnackbarMessage(data.message || "register failed");
+        setSnackbarMessage(data.message || t("errors.failed"));
         setSnackbarSeverity("error");
       }
     } catch (error) {
-      setSnackbarMessage("an error occurresd please try  again");
+      setSnackbarMessage(t("errors.server"));
       setSnackbarSeverity("error");
     }
 
@@ -130,7 +124,7 @@ const RegisterPage = () => {
               display: "flex",
               justifyContent: "center",
               width: "100%",
-              ml: "5px", // Your left margin
+              ml: "5px",
             }}
           >
             <Typography variant="h4" gutterBottom>
@@ -139,11 +133,11 @@ const RegisterPage = () => {
           </Box>
 
           <Typography variant="h4" gutterBottom align="center">
-            Register
+            {t("title")}
           </Typography>
 
           <TextField
-            label="Name"
+            label={t("fields.name")}
             variant="outlined"
             fullWidth
             value={name}
@@ -160,7 +154,7 @@ const RegisterPage = () => {
           />
 
           <TextField
-            label="Phone"
+            label={t("fields.phone")}
             variant="outlined"
             fullWidth
             value={phone}
@@ -177,7 +171,7 @@ const RegisterPage = () => {
           />
 
           <TextField
-            label="Email"
+            label={t("fields.email")}
             type="email"
             variant="outlined"
             fullWidth
@@ -195,7 +189,7 @@ const RegisterPage = () => {
           />
 
           <TextField
-            label="Password"
+            label={t("fields.password")}
             type="password"
             variant="outlined"
             fullWidth
@@ -212,7 +206,20 @@ const RegisterPage = () => {
             }}
           />
 
-          <Divider>or</Divider>
+          <Button
+            type="submit"
+            variant="contained"
+            fullWidth
+            sx={{
+              backgroundColor: "red",
+              "&:hover": { backgroundColor: "darkred" },
+              py: 1.5,
+            }}
+          >
+            {t("buttons.register")}
+          </Button>
+
+          <Divider>{t("or")}</Divider>
 
           <Button
             fullWidth
@@ -226,31 +233,18 @@ const RegisterPage = () => {
             }}
             onClick={() => signIn("google")}
           >
-            Log In with Google
-          </Button>
-
-          <Button
-            type="submit"
-            variant="contained"
-            fullWidth
-            sx={{
-              backgroundColor: "red",
-              "&:hover": { backgroundColor: "darkred" },
-              py: 1.5,
-            }}
-          >
-            Register
+            {t("buttons.google")}
           </Button>
 
           <Typography align="center" sx={{ mt: 2 }}>
             <Link href="/login" underline="hover">
-              Already have an account? Login
+              {t("already_have_account")}
             </Link>
           </Typography>
         </Box>
       </Box>
 
-      {/* Right Side - Image (Hidden on mobile) */}
+      {/* Right Side - Image */}
       <Box
         sx={{
           display: { xs: "none", md: "block" },
@@ -260,7 +254,7 @@ const RegisterPage = () => {
       >
         <Box
           component="img"
-          src="/images/register.jpeg"
+          src="/images/registerr.jpeg"
           alt="Register"
           sx={{
             width: "100%",
@@ -288,8 +282,3 @@ const RegisterPage = () => {
 };
 
 export default RegisterPage;
-
-//   (!/^\d{10}$/.test(phone))
-
-// Validate email format (basic check)
-//  (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))

@@ -10,12 +10,14 @@ import {
   CircularProgress,
   Alert,
 } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 export default function PromoCardEditor() {
+  const { t } = useTranslation("promo"); // namespace promo.json
+
   const [form, setForm] = useState({
     shortTitle: "",
     mainTital: "",
-
     shortDesc: "",
     linkUrl: "",
     photo: null,
@@ -23,7 +25,6 @@ export default function PromoCardEditor() {
   });
 
   const [imagePreview, setImagePreview] = useState("");
-
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [serverMessage, setServerMessage] = useState({
@@ -38,7 +39,7 @@ export default function PromoCardEditor() {
         const response = await fetch(`${process.env.API}/admin/bookarea`);
 
         if (!response.ok) {
-          throw new Error("Faile to fetch promo data");
+          throw new Error(t("fetch_error", "Failed to fetch promo data"));
         }
 
         const data = await response.json();
@@ -46,7 +47,6 @@ export default function PromoCardEditor() {
         if (data) {
           setForm({
             shortTitle: data?.shortTitle || "",
-
             mainTital: data?.mainTital || "",
             shortDesc: data?.shortDesc || "",
             linkUrl: data?.linkUrl || "",
@@ -60,30 +60,29 @@ export default function PromoCardEditor() {
         }
       } catch (error) {
         console.log("error fetching promo data", error);
-        setServerMessage({ text: "Failed to load promo data", isError: true });
+        setServerMessage({
+          text: t("load_error_message", "Failed to load promo data"),
+          isError: true,
+        });
       } finally {
         setIsLoading(false);
       }
     };
 
-
-    fetchPromoData()
-  }, []);
+    fetchPromoData();
+  }, [t]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleFileChange = (e) => {
     const file = e.target.files?.[0];
-
     if (file) {
       setForm((prev) => ({ ...prev, photo: file }));
 
       const reader = new FileReader();
-
       reader.onloadend = () => {
         setImagePreview(reader.result);
       };
@@ -93,7 +92,6 @@ export default function PromoCardEditor() {
 
   const uploadImageToCloudinary = async (imageFile) => {
     const formData = new FormData();
-
     formData.append("file", imageFile);
     formData.append("upload_preset", "ml_default");
 
@@ -106,13 +104,13 @@ export default function PromoCardEditor() {
         }
       );
 
-      console.log(response);
       if (!response.ok) {
-        throw new Error("failed to upload image to cloudinary");
+        throw new Error(
+          t("upload_error", "Failed to upload image to Cloudinary")
+        );
       }
 
       const data = await response.json();
-      console.log(data);
       return data?.secure_url;
     } catch (error) {
       console.log("cloudinary upload error", error);
@@ -122,7 +120,6 @@ export default function PromoCardEditor() {
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
-
     setServerMessage({ text: "", isError: false });
 
     try {
@@ -141,23 +138,22 @@ export default function PromoCardEditor() {
 
       const response = await fetch(`${process.env.API}/admin/bookarea`, {
         method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestBody),
       });
 
       if (!response.ok) {
         const errorData = await response.json();
-
-        throw new Error(errorData.message || " failed to save promo");
+        throw new Error(
+          errorData.message || t("save_error", "Failed to save promo")
+        );
       }
 
       const result = await response.json();
 
       setServerMessage({
-        text: result.message || " Promo updated successdully",
+        text:
+          result.message || t("update_success", "Promo updated successfully"),
         isError: false,
       });
 
@@ -168,7 +164,8 @@ export default function PromoCardEditor() {
       }));
     } catch (error) {
       setServerMessage({
-        text: error.message || "an error occured while saving",
+        text:
+          error.message || t("general_error", "An error occurred while saving"),
         isError: true,
       });
     } finally {
@@ -188,7 +185,7 @@ export default function PromoCardEditor() {
       }}
     >
       <Typography variant="h6" mb={2}>
-        Snap Booking
+        {t("snap_booking", "Snap Booking")}
       </Typography>
 
       {serverMessage.text && (
@@ -203,7 +200,7 @@ export default function PromoCardEditor() {
       <Stack spacing={2}>
         <TextField
           name="shortTitle"
-          label="Short Title"
+          label={t("short_title", "Short Title")}
           value={form.shortTitle}
           onChange={handleChange}
           fullWidth
@@ -228,7 +225,7 @@ export default function PromoCardEditor() {
         />
         <TextField
           name="mainTitle"
-          label="Main Title"
+          label={t("main_title", "Main Title")}
           value={form.mainTitle}
           onChange={handleChange}
           fullWidth
@@ -253,7 +250,7 @@ export default function PromoCardEditor() {
         />
         <TextField
           name="shortDesc"
-          label="Short Description"
+          label={t("short_description", "Short Description")}
           value={form.shortDesc}
           onChange={handleChange}
           rows={5}
@@ -279,7 +276,7 @@ export default function PromoCardEditor() {
         />
         <TextField
           name="linkUrl"
-          label="Link URL"
+          label={t("link_url", "Link URL")}
           value={form.linkUrl}
           onChange={handleChange}
           fullWidth
@@ -303,11 +300,10 @@ export default function PromoCardEditor() {
           }}
         />
 
-        {/* Image preview */}
         {imagePreview && (
           <Box sx={{ mt: 2, mb: 2 }}>
             <Typography variant="subtitle1" gutterBottom>
-              Image Preview:
+              {t("image_preview", "Image Preview")}:
             </Typography>
             <img
               src={imagePreview}
@@ -327,23 +323,17 @@ export default function PromoCardEditor() {
           disabled={isSubmitting}
           sx={{
             backgroundColor: "#8A12FC",
-            "&:hover": {
-              backgroundColor: "#7a0ae8",
-            },
+            "&:hover": { backgroundColor: "#7a0ae8" },
             "& .MuiOutlinedInput-root": {
-              "& fieldset": {
-                borderColor: "#8A12FC",
-              },
-              "&:hover fieldset": {
-                borderColor: "#8A12FC",
-              },
-              "&.Mui-focused fieldset": {
-                borderColor: "#8A12FC",
-              },
+              "& fieldset": { borderColor: "#8A12FC" },
+              "&:hover fieldset": { borderColor: "#8A12FC" },
+              "&.Mui-focused fieldset": { borderColor: "#8A12FC" },
             },
           }}
         >
-          {imagePreview ? "Change Photo" : "Upload Photo"}
+          {imagePreview
+            ? t("change_photo", "Change Photo")
+            : t("upload_photo", "Upload Photo")}
           <input
             type="file"
             hidden
@@ -358,26 +348,18 @@ export default function PromoCardEditor() {
           disabled={isSubmitting}
           sx={{
             backgroundColor: "#8A12FC",
-            "&:hover": {
-              backgroundColor: "#7a0ae8",
-            },
+            "&:hover": { backgroundColor: "#7a0ae8" },
             "& .MuiOutlinedInput-root": {
-              "& fieldset": {
-                borderColor: "#8A12FC",
-              },
-              "&:hover fieldset": {
-                borderColor: "#8A12FC",
-              },
-              "&.Mui-focused fieldset": {
-                borderColor: "#8A12FC",
-              },
+              "& fieldset": { borderColor: "#8A12FC" },
+              "&:hover fieldset": { borderColor: "#8A12FC" },
+              "&.Mui-focused fieldset": { borderColor: "#8A12FC" },
             },
           }}
         >
           {isSubmitting ? (
             <CircularProgress size={24} color="inherit" />
           ) : (
-            "Update Snap Booking"
+            t("update_snap_booking", "Update Snap Booking")
           )}
         </Button>
       </Stack>

@@ -20,7 +20,6 @@ import ListItem from "@mui/material/ListItem";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
-
 import Link from "next/link";
 
 const Navbar = () => {
@@ -29,8 +28,7 @@ const Navbar = () => {
   const { data: session } = useSession();
   const router = useRouter();
   const [drawerOpen, setDrawerOpen] = useState(false);
-
-  const { i18n, t } = useTranslation();
+  const { i18n, t } = useTranslation("component/nav/topnav");
 
   const toggleDrawer = (newOpen) => () => {
     setDrawerOpen(newOpen);
@@ -50,23 +48,24 @@ const Navbar = () => {
         <ListItem>
           <LanguageIcon sx={{ mr: 1 }} />
           <Select
-            value="English"
+            value={i18n.language || "en"}
+            onChange={handleLanguageChange}
             variant="standard"
             disableUnderline
             sx={{ color: "black" }}
           >
-            <MenuItem value="English">English</MenuItem>
-            <MenuItem value="Spanish">Spanish</MenuItem>
+            <MenuItem value="vi">{t("vietnamese", "Vietnamese")}</MenuItem>
+            <MenuItem value="en">{t("english", "English")}</MenuItem>
           </Select>
         </ListItem>
         <ListItem>
           <Button color="inherit" startIcon={<AccountCircleIcon />}>
-            Login
+            {t("login", "Login")}
           </Button>
         </ListItem>
         <ListItem>
           <Button color="inherit" startIcon={<AccountCircleIcon />}>
-            Register
+            {t("register", "Register")}
           </Button>
         </ListItem>
       </List>
@@ -110,11 +109,11 @@ const Navbar = () => {
           >
             <HomeIcon sx={{ mr: 1 }} />
             <Typography variant="body1" sx={{ color: "white", mr: 2 }}>
-              "The Yolk's On You Manor" 127.0.0.0.1
+              {t("address", ` 127.0.0.0.1`)}
             </Typography>
             <PhoneIcon sx={{ mr: 1 }} />
             <Typography variant="body1" sx={{ color: "white", mr: 2 }}>
-              +1 222-363-5354
+              {t("phone", "+84 222-363-5354")}
             </Typography>
 
             {session?.user ? (
@@ -129,7 +128,7 @@ const Navbar = () => {
                   objectFit: "cover",
                   position: "relative",
                   zIndex: 2,
-                  cursor: "pointer", // This makes the hand pointer appear on hover
+                  cursor: "pointer",
                 }}
               />
             ) : (
@@ -140,7 +139,7 @@ const Navbar = () => {
                       component="span"
                       sx={{ textDecoration: "none", color: "white" }}
                     >
-                      Login
+                      {t("login", "Login")}
                     </Box>
                   </Link>
                 </Button>
@@ -150,7 +149,7 @@ const Navbar = () => {
                       component="span"
                       sx={{ textDecoration: "none", color: "white" }}
                     >
-                      Register
+                      {t("register", "Register")}
                     </Box>
                   </Link>
                 </Button>

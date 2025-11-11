@@ -1,0 +1,17 @@
+{
+  "my_bookings": "My Bookings",
+  "no_bookings_found": "No bookings found.",
+  "check_in": "Check In",
+  "check_out": "Check Out",
+  "name": "Name",
+  "rooms": "Rooms",
+  "total_price": "Total Price",
+  "status": "Status",
+  "payment": "Payment",
+
+  "confirmed": "Confirmed",
+  "pending": "Pending",
+  "cancelled": "Cancelled",
+  "paid": "Paid",
+  "unpaid": "Unpaid"
+}

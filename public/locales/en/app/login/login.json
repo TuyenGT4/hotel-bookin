@@ -1,0 +1,22 @@
+{
+  "title": "Login",
+  "fields": {
+    "email": "Email",
+    "phone": "Phone Number",
+    "password": "Password"
+  },
+  "buttons": {
+    "login": "Login",
+    "google": "Log In with Google"
+  },
+  "or": "or",
+  "forgot_password": "Forgot Password?",
+  "no_account": "Don't have an account? Sign Up",
+  "success": "Login successful!",
+  "errors": {
+    "required": "Login ID and password are required",
+    "invalid_login": "Please enter a valid email or phone number",
+    "failed": "Login failed",
+    "server": "An error occurred, please try again"
+  }
+}
