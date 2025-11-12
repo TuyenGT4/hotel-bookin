@@ -20,6 +20,12 @@ export async function POST(req, context) {
       guests,
     });
 
+    if (!checkIn || !checkOut) {
+      return NextResponse.json(
+        { error: "Check in and check out dates are required" },
+        { status: 400 }
+      );
+    }
     // Calculate number of nights
     const checkInDate = new Date(checkIn);
     const checkOutDate = new Date(checkOut);
@@ -37,7 +43,7 @@ export async function POST(req, context) {
       return NextResponse.json({ error: "Room not found" }, { status: 404 });
     }
 
-    const pricePerNight = room.price;
+    const pricePerNight = parseFloat(room.price);
     const discountPercent = room.discount || 0;
 
     const subtotal = pricePerNight * nights * rooms;

@@ -100,7 +100,7 @@ const BookingSummary = ({ pricingData }) => {
         <Box sx={{ px: 3, pt: 2 }}>
           <Box sx={bookingSummaryStyles.priceHighlight}>
             <Typography component="span">
-              ${Number(pricePerNight).toFixed(2)}
+              {Number(pricePerNight).toFixed(2)} VND
             </Typography>
             <Typography
               component="span"
@@ -150,7 +150,7 @@ const BookingSummary = ({ pricingData }) => {
               </Typography>
             </Box>
             <Typography component="div" sx={bookingSummaryStyles.detailValue}>
-              ${Number(subtotal).toFixed(2)}
+              {Number(subtotal).toFixed(2)} VND
             </Typography>
           </Box>
 
@@ -172,7 +172,7 @@ const BookingSummary = ({ pricingData }) => {
             </Box>
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <Typography component="div" sx={bookingSummaryStyles.detailValue}>
-                -${Number(discountAmount).toFixed(2)}
+                - {Number(discountAmount).toFixed(2)} VND
               </Typography>
               <Box sx={bookingSummaryStyles.discountBadge}>
                 {discountPercent}% {t("off", "OFF")}
@@ -186,7 +186,7 @@ const BookingSummary = ({ pricingData }) => {
             {t("total", "Total")}
           </Typography>
           <Typography component="div" sx={bookingSummaryStyles.totalValue}>
-            ${Number(total).toFixed(2)}
+            {Number(total).toFixed(2)} VND
           </Typography>
         </Box>
       </CardContent>

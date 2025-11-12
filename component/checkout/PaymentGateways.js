@@ -26,38 +26,11 @@ const PaymentGateways = ({
   const { t } = useTranslation("component/checkout/PaymentGateways");
 
   const paymentMethods = [
-    // {
-    //   value: "cod",
-    //   label: t("cash_on_delivery", "Cash on Delivery"),
-    //   icon: <LocalAtmIcon />,
-    //   color: iconColors.cod,
-    // },
-
     {
-      value: "VN Pay",
+      value: "vn_pay",
       label: "Ví điện tử VN Pay",
-      icon: <CreditCardIcon />,
-      // color: iconColors.stripe,
+      icon: <AccountBalanceWalletIcon />,
     },
-    // Uncomment if needed
-    // {
-    //   value: "stripe",
-    //   label: t("credit_card", "Credit/Debit Card"),
-    //   icon: <CreditCardIcon />,
-    //   color: iconColors.stripe,
-    // },
-    // {
-    //   value: "razorpay",
-    //   label: t("razorpay_wallet", "Razorpay Wallet"),
-    //   icon: <AccountBalanceWalletIcon />,
-    //   color: iconColors.razorpay,
-    // },
-    // {
-    //   value: "paypal",
-    //   label: t("paypal", "PayPal"),
-    //   icon: <AccountBalanceIcon />,
-    //   color: iconColors.paypal,
-    // },
   ];
 
   return (

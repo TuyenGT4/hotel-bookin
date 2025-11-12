@@ -22,12 +22,22 @@ export default function Home() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
+      const checkInParam = params.get("checkIn");
+      const checkOutParam = params.get("checkOut");
+      const checkOut =
+        checkOutParam ||
+        (checkInParam
+          ? new Date(new Date(checkInParam).getTime() + 24 * 60 * 60 * 1000)
+              .toISOString()
+              .split("T")[0]
+          : "");
+
       const alldata = {
         roomId: params.get("roomId"),
-        checkIn: params.get("checkIn"),
-        checkOut: params.get("checkOut"),
-        guests: parseInt(params.get("guests")),
-        rooms: parseInt(params.get("rooms")),
+        checkIn: checkInParam,
+        checkOut: checkOut,
+        guests: parseInt(params.get("guests")) || 1,
+        rooms: parseInt(params.get("rooms")) || 1,
       };
       fetchPricingData(alldata);
     }
@@ -209,26 +219,34 @@ export default function Home() {
 
   const handleVNPay = async (orderData) => {
     try {
-      const response = await fetch(
+      const res = await fetch(
         `${process.env.API}/user/payment/vnpaypayment/vnpay`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(orderData),
+          body: JSON.stringify({
+            orderId: Date.now(), // ID ngẫu nhiên
+            amount: orderData?.totalPrice || 100000, // Tổng tiền (VNĐ)
+            orderInfo: "Thanh toán đặt phòng tại Serenova", // Mô tả đơn hàng
+          }),
         }
       );
 
-      const data = await response.json();
-      if (!response.ok) {
-        toast.error(t("vnpay_failed", "VN Pay payment failed"));
+      const data = await res.json();
+
+      if (data.url) {
+        // 👉 Redirect sang trang thanh toán VNPay
+        window.location.href = data.url;
       } else {
-        window.location.href = data.paymentUrl; // Redirect đến VN Pay
+        alert("Không tạo được liên kết thanh toán VNPay!");
+        console.error(data);
       }
     } catch (error) {
-      console.log("error", error);
-      toast.error(t("vnpay_error", "Unable to initiate VN Pay payment"));
+      console.error("VNPay Error:", error);
+      alert("Thanh toán VNPay thất bại: " + error.message);
     }
   };
+
   const handlePlaceOrder = async () => {
     if (!billingDetails?.isValid) {
       const errorField = Object.entries(billingDetails?.data || {}).find(
@@ -270,6 +288,9 @@ export default function Home() {
           break;
         case "paypal":
           await handlePaypal(orderData);
+          break;
+        case "vn_pay":
+          await handleVNPay(orderData);
           break;
         default:
           const response = await fetch(`${process.env.API}/user/place-order`, {

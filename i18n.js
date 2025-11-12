@@ -14,7 +14,7 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: "vi",
-    debug: true,
+    debug: false,
     detection: languageDetectorOptions,
     backend: {
       // ⚡ Cho phép load nhiều namespace ở các thư mục con
