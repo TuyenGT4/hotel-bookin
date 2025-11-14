@@ -105,7 +105,7 @@ const CustomTooltip = ({ active, payload }) => {
 };
 
 export default function ModernTriangleChart() {
-  const { t } = useTranslation(); // ✅ added
+  const { t } = useTranslation();
   const [data, setData] = useState([]);
   const [activeIndex, setActiveIndex] = useState(null);
   const [loading, setLoading] = useState(true);

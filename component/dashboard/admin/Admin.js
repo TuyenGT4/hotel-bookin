@@ -63,47 +63,47 @@ const NAVIGATION = [
   },
   {
     segment: "dashboard",
-    title: "Dashboard",
+    title: "Tổng quan",
     icon: <DashboardIcon />,
     color: "#6366F1", // Indigo
   },
   {
     segment: "orders",
-    title: "Booking List",
+    title: "Danh sách đơn",
     icon: <ShoppingCartIcon />,
     color: "#EC4899", // Pink
   },
   {
     segment: "profile",
-    title: "Profile",
+    title: "Hồ sơ cá nhân",
     icon: <PersonOutlineIcon />,
     color: "#10B981", // Gray
   },
 
   {
     segment: "team",
-    title: "Team",
+    title: "Nhóm",
     icon: <GroupAddIcon />,
     color: "#32a8a8", // Gray
   },
 
   {
     segment: "teamlist",
-    title: "TeamList",
+    title: "Danh sách nhóm",
     icon: <MarkunreadMailboxIcon />,
     color: "#360be3", // Gray
   },
 
   {
     segment: "snapbooking",
-    title: "Snapbooking",
+    title: "Đặt nhanh",
     icon: <QuickreplyIcon />,
     color: "#32a8a8", // Gray
   },
 
   {
     segment: "manageroomcategories",
-    title: "Manage Room Categories",
+    title: "Danh mục phòng",
     icon: <ManageHistoryIcon />,
     color: "#10B981", // Gray
   },
@@ -114,11 +114,11 @@ const NAVIGATION = [
 
   {
     kind: "header",
-    title: "Analytics",
+    title: "Phân tích",
   },
   {
     segment: "reports",
-    title: "Reports",
+    title: "Báo cáo",
     icon: <BarChartIcon />,
     color: "#10B981", // Emerald
     children: [
@@ -139,7 +139,7 @@ const NAVIGATION = [
 
   {
     segment: "category",
-    title: "Category",
+    title: "Danh mục",
     icon: <LayersIcon />,
     color: "#8B5CF6", // Violet
   },
@@ -153,7 +153,7 @@ const NAVIGATION = [
 
   {
     segment: "bloglist",
-    title: "BlogList",
+    title: "Danh sách blog",
     icon: <FormatListBulletedIcon />,
     color: "#f54287", // Violet
   },
