@@ -38,18 +38,18 @@ const formatDate = (dateString) => {
 };
 
 const getPaymentStatus = (paymentStatus) => {
-  return paymentStatus === "1" ? "Paid" : "Pending";
+  return paymentStatus === "1" ? "Đã thanh toán" : "Chờ phê duyệt";
 };
 
 const getStatusBadge = (status) => {
   switch (status) {
     case "active":
-      return "Confirmed";
+      return "Đã xác nhân";
 
     case "inactive":
-      return "Pending";
+      return "Chờ phê duyệt";
     case "cancelled":
-      return "Cancelled";
+      return "Đã hủy";
 
     default:
       return status;
@@ -73,16 +73,16 @@ const BookingTable = () => {
   const [bookings, setBookings] = useState([]);
   const [mobileMenuAnchorEl, setMobileMenuAnchorEl] = useState(null);
   const headers = [
-    "SI",
-    "Booking Code ",
-    "Booking Date",
-    "Customer",
-    "Check IN/Out",
-    "Total Rooms ",
-    "Guests",
-    "Payment",
-    "Status",
-    "Action",
+    "STT",
+    "Mã đơn",
+    "Ngày đặt",
+    "Khách hàng",
+    "Ngày nhận/trả phòng",
+    "Sô lượng phòng",
+    "Số người",
+    "Thanh toán",
+    "Trạng thái",
+    "Hành động",
   ];
 
   const paginatedBookings = bookings.slice(
@@ -333,7 +333,7 @@ const BookingTable = () => {
   return (
     <>
       <ResponsiveWrapper>
-        <SectionTitle variant="h6">Booking List</SectionTitle>
+        <SectionTitle variant="h6">Danh sách đơn</SectionTitle>
         <ModernTableContainer>
           <Table>
             <TableHead>
@@ -432,13 +432,12 @@ const BookingTable = () => {
         </ModernTableContainer>
       </ResponsiveWrapper>
 
-
-        <EditBookingModal
-          booking={currentEditBooking}
-          open={editModalOpen}
-          onClose={() => setEditModalOpen(false)}
-          onSave={handleSaveBooking}
-        />
+      <EditBookingModal
+        booking={currentEditBooking}
+        open={editModalOpen}
+        onClose={() => setEditModalOpen(false)}
+        onSave={handleSaveBooking}
+      />
     </>
   );
 };

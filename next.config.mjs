@@ -3,7 +3,7 @@ import config from "./config.js";
 const nextConfig = {
   env: {
     DB_URL: config.DB_URL,
-
+    NEXT_PUBLIC_API: config.API,
     API: config.API,
     CLOUDINARY_CLOUD_NAME: config.CLOUDINARY_CLOUD_NAME,
     CLOUDINARY_API_KEY: config.CLOUDINARY_API_KEY,

@@ -60,7 +60,7 @@ export async function POST(req) {
     console.log("updatedUser", updatedUser);
 
     return NextResponse.json(
-      { msg: "user updated successfully" },
+      { msg: "Cập nhật thông tin thành công" },
       { status: 200 }
     );
   } catch (error) {

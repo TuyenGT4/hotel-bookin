@@ -54,7 +54,7 @@ const RegisterPage = () => {
     }
 
     try {
-      const response = await fetch(`${process.env.API}/register`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API}/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

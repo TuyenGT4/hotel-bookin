@@ -240,7 +240,7 @@ const PageContent = ({ path }) => {
     case "/orders":
       return (
         <Box>
-          <Typography paragraph>View and manage your Booking here.</Typography>
+          <Typography paragraph>Quản lý đơn đặt</Typography>
 
           <Booking />
         </Box>
@@ -660,8 +660,8 @@ function CustomDashboardLayout({ navigation, router, window }) {
             sx={{ fontWeight: 600 }}
           >
             {router.pathname === "/dashboard" && "Dashboard"}
-            {router.pathname === "/orders" && "Booking List"}
-            {router.pathname === "/profile" && "Admin Profile"}
+            {router.pathname === "/orders" && "Danh sách đơn"}
+            {router.pathname === "/profile" && "Hồ sơ cá nhân"}
 
             {router.pathname === "/team" && "Team Members"}
 
@@ -670,7 +670,7 @@ function CustomDashboardLayout({ navigation, router, window }) {
             {router.pathname === "/snapbooking" && "Snap Booking"}
 
             {router.pathname === "/manageroomcategories" &&
-              "manage room categories"}
+              "Quản lý loại phòng"}
 
             {router.pathname === "/reports" && "Reports"}
             {router.pathname === "/sales" && "Sales Report"}

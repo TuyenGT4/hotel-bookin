@@ -48,7 +48,7 @@ export async function POST(req) {
     }
 
     return NextResponse.json(
-      { msg: "user updated successfully" },
+      { msg: "Cập nhật thông tin thành công" },
       { status: 200 }
     );
   } catch (error) {

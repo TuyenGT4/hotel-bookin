@@ -44,12 +44,10 @@ const userSchema = new mongoose.Schema(
 
     address: {
       type: String,
-      unique: true,
     },
 
     country: {
       type: String,
-      unique: true,
     },
   },
   { timestamps: true }
